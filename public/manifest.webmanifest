@@ -1,0 +1,13 @@
+{
+  "name": "滑记",
+  "short_name": "滑记",
+  "description": "间隔复习 · 记忆卡片 · 学习社区",
+  "start_url": "/today",
+  "display": "standalone",
+  "background_color": "#d7e4df",
+  "theme_color": "#2aa89a",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
