@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">V 记 — 把知识变成卡片，让复习成为日常</title>
+  <desc id="desc">薄荷绿的 V 记标题与叠放的问答卡。卡片以 affect 和 effect 为例，循环路径表示根据回忆反馈安排下一次复习。本图是概念插图，真实应用截图见下方。</desc>
+
+  <rect width="1200" height="500" rx="28" fill="#edf7f2"/>
+
+  <g id="identity" fill="#163c34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="64" y="63" fill="#55786e" font-size="18" font-weight="500" letter-spacing="3">YOUR KNOWLEDGE, WELL KEPT.</text>
+    <text x="58" y="205" font-size="118" font-weight="650" letter-spacing="-6">V 记</text>
+    <text x="64" y="290" font-size="42" font-weight="550" letter-spacing="-1">把知识变成卡片，</text>
+    <text x="64" y="348" font-size="42" font-weight="550" letter-spacing="-1">让复习成为日常。</text>
+    <path d="M64 401h44" stroke="#248d7c" stroke-width="4" stroke-linecap="round"/>
+    <text x="64" y="443" fill="#55786e" font-size="22">记忆卡片 · AI 制卡 · 间隔复习</text>
+  </g>
+
+  <g id="card-stack">
+    <rect x="707" y="82" width="354" height="304" rx="24" transform="rotate(-12 884 234)" fill="#c6e5d8"/>
+    <rect x="735" y="72" width="354" height="318" rx="24" transform="rotate(-5 912 231)" fill="#d9ede3" stroke="#badbce" stroke-width="2"/>
+    <g id="question-card" transform="rotate(5 926 246)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+      <rect x="751" y="85" width="358" height="322" rx="24" fill="#163c34" opacity="0.05" transform="translate(0 8)"/>
+      <rect x="751" y="85" width="358" height="322" rx="24" fill="#ffffff" stroke="#d6e8de" stroke-width="2"/>
+      <text x="783" y="135" fill="#55786e" font-size="20" font-weight="500">问答卡</text>
+      <path d="M1059 113h17v25l-8.5-5-8.5 5z" fill="none" stroke="#248d7c" stroke-width="2" stroke-linejoin="round"/>
+      <text x="783" y="198" fill="#163c34" font-size="34" font-weight="600" letter-spacing="-1">affect / effect</text>
+      <text x="783" y="245" fill="#163c34" font-size="32" font-weight="550">如何区分？</text>
+      <path d="M783 276h294" stroke="#dfede6" stroke-width="2"/>
+      <text x="783" y="318" fill="#55786e" font-size="22">先回忆，再看答案。</text>
+      <rect x="783" y="343" width="132" height="38" rx="19" fill="#edf7f2"/>
+      <text x="849" y="369" text-anchor="middle" fill="#55786e" font-size="20">忘记</text>
+      <rect x="931" y="343" width="146" height="38" rx="19" fill="#248d7c"/>
+      <text x="1004" y="369" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="550">记得</text>
+    </g>
+  </g>
+
+  <g id="review-loop" fill="none" stroke="#248d7c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1127 337c34 0 31 87-18 103-58 19-154 13-222 13"/>
+    <path d="m899 444-12 9 12 9"/>
+  </g>
+  <text x="694" y="464" fill="#55786e" font-size="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">下一次，再记起。</text>
+</svg>
