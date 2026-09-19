@@ -21,6 +21,12 @@ export type ReviewPayload = {
   next: FsrsCardPatch;
   durationMs: number;
   isNew: boolean;
+  expected: {
+    due: string;
+    state: number;
+    reps: number;
+  };
+  previous: QueueCard;
 };
 
 type StudyState = {
@@ -31,11 +37,13 @@ type StudyState = {
   /** Initial queue size for this session. Progress = (total - queue.length) / total. */
   total: number;
   startedAt: number;
+  finishedAt: number;
   cardStartedAt: number;
   settings: UserSettings;
   hydrate: (queue: QueueCard[], settings: UserSettings) => void;
   showAnswer: () => void;
   rate: (rating: Grade) => ReviewPayload | null;
+  restore: (payload: ReviewPayload) => void;
 };
 
 export const useStudyStore = create<StudyState>((set, get) => ({
@@ -44,6 +52,7 @@ export const useStudyStore = create<StudyState>((set, get) => ({
   reviews: 0,
   total: 0,
   startedAt: 0,
+  finishedAt: 0,
   cardStartedAt: 0,
   settings: DEFAULT_SETTINGS,
   hydrate(queue, settings) {
@@ -54,6 +63,7 @@ export const useStudyStore = create<StudyState>((set, get) => ({
       reviews: 0,
       total: queue.length,
       startedAt: Date.now(),
+      finishedAt: 0,
       cardStartedAt: Date.now(),
     });
   },
@@ -77,6 +87,12 @@ export const useStudyStore = create<StudyState>((set, get) => ({
       next,
       durationMs: Date.now() - cardStartedAt,
       isNew: current.state === 0,
+      expected: {
+        due: current.due,
+        state: current.state,
+        reps: current.reps,
+      },
+      previous: current,
     };
     const updated = { ...current, ...next };
     const rest = queue.slice(1);
@@ -87,7 +103,22 @@ export const useStudyStore = create<StudyState>((set, get) => ({
       face: nextQueue.length ? "front" : "done",
       reviews: get().reviews + 1,
       cardStartedAt: Date.now(),
+      finishedAt: nextQueue.length ? 0 : Date.now(),
     });
     return payload;
+  },
+  restore(payload) {
+    set((state) => {
+      const found = state.queue.some((card) => card.id === payload.cardId);
+      return {
+      queue: found
+        ? state.queue.map((card) => (card.id === payload.cardId ? payload.previous : card))
+        : [payload.previous, ...state.queue],
+      face: "front",
+      reviews: Math.max(0, state.reviews - 1),
+      cardStartedAt: Date.now(),
+      finishedAt: 0,
+      };
+    });
   },
 }));

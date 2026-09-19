@@ -2,17 +2,18 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { safeNextPath, siteOrigin } from "@/lib/site-url";
 import { createClient } from "@/lib/supabase/server";
 
 export async function signInWithPassword(formData: FormData) {
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
-  const next = String(formData.get("next") ?? "/today");
+  const next = safeNextPath(formData.get("next"));
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) return { error: error.message };
   revalidatePath("/", "layout");
-  redirect(next || "/today");
+  redirect(next);
 }
 
 export async function signUpWithPassword(formData: FormData) {
@@ -20,8 +21,7 @@ export async function signUpWithPassword(formData: FormData) {
   const password = String(formData.get("password") ?? "");
   const nickname = String(formData.get("nickname") ?? "学习者");
   const supabase = await createClient();
-  const origin =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const origin = siteOrigin();
   const { error } = await supabase.auth.signUp({
     email,
     password,

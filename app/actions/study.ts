@@ -12,47 +12,26 @@ export async function submitReview(input: {
   next: FsrsCardPatch;
   durationMs: number;
   isNew: boolean;
+  expected: {
+    due: string;
+    state: number;
+    reps: number;
+  };
 }) {
   const uid = await getUserId();
   if (!uid) return { error: "请先登录" };
   const supabase = await createClient();
-  const { error: cardError } = await supabase
-    .from("cards")
-    .update(input.next)
-    .eq("id", input.cardId)
-    .eq("owner_id", uid);
-  if (cardError) return { error: cardError.message };
-
-  const { error: logError } = await supabase.from("review_logs").insert({
-    card_id: input.cardId,
-    owner_id: uid,
-    rating: input.rating,
-    state: input.next.state,
-    due: input.next.due,
-    stability: input.next.stability,
-    difficulty: input.next.difficulty,
-    elapsed_days: input.next.elapsed_days,
-    scheduled_days: input.next.scheduled_days,
-    duration_ms: input.durationMs,
+  const { error } = await supabase.rpc("submit_review", {
+    p_card_id: input.cardId,
+    p_rating: input.rating,
+    p_next: input.next,
+    p_duration_ms: input.durationMs,
+    p_date: localDateKey(),
+    p_expected_due: input.expected.due,
+    p_expected_state: input.expected.state,
+    p_expected_reps: input.expected.reps,
   });
-  if (logError) return { error: logError.message };
-
-  const date = localDateKey();
-  const { data: existing } = await supabase
-    .from("daily_stats")
-    .select("reviews, new_cards, study_seconds")
-    .eq("owner_id", uid)
-    .eq("date", date)
-    .maybeSingle();
-
-  const { error: statsError } = await supabase.from("daily_stats").upsert({
-    owner_id: uid,
-    date,
-    reviews: (existing?.reviews ?? 0) + 1,
-    new_cards: (existing?.new_cards ?? 0) + (input.isNew ? 1 : 0),
-    study_seconds: (existing?.study_seconds ?? 0) + Math.round(input.durationMs / 1000),
-  });
-  if (statsError) return { error: statsError.message };
+  if (error) return { error: error.message };
 
   revalidatePath("/today");
   revalidatePath("/decks");

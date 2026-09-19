@@ -5,7 +5,7 @@ export function BackLink({ href, label = "返回" }: { href: string; label?: str
   return (
     <Link
       href={href}
-      className="mb-3 inline-flex items-center gap-0.5 text-sm text-muted-foreground"
+      className="mb-4 inline-flex min-h-8 items-center gap-0.5 self-start rounded-full pr-2 text-sm text-muted-foreground transition-colors hover:bg-primary/8 hover:text-foreground"
     >
       <ChevronLeft className="size-4" />
       {label}

@@ -33,12 +33,12 @@ export default async function DeckDetailPage({
   const mastered = (cards ?? []).filter((card) => card.state === 2 && !card.suspended).length;
 
   return (
-    <div className="flex flex-1 flex-col px-5 pt-6">
+    <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
       <BackLink href="/decks" label="卡片盒" />
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-3xl"><DeckIcon name={deck.icon} className="size-9 text-primary" /></div>
-          <h1 className="mt-2 text-2xl font-semibold">{deck.name}</h1>
+          <h1 className="mt-2 app-page-title">{deck.name}</h1>
           <p className="mt-1 text-xs text-muted-foreground">
             {notes?.length ?? 0} 张笔记 · {mastered} 张进入复习
           </p>

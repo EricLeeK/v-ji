@@ -77,6 +77,8 @@ cp .env.example .env.local
 2. [加入社区卡册](./supabase/migrations/20260914163000_join_book.sql)
 3. [外键索引](./supabase/migrations/20260914164000_fk_indexes.sql)
 4. [AI 制卡与卡片保存](./supabase/migrations/20260915015435_ai_cards.sql)
+5. [全球上线安全与原子写入加固](./supabase/migrations/20260919010000_global_launch_hardening.sql)
+6. [个人卡片图片改为私有存储](./supabase/migrations/20260919011000_private_card_images.sql)
 
 在 Supabase Auth 中配置站点地址，并将 `http://localhost:3000/auth/callback` 加入允许的回调地址。若使用「先随便看看」，还需启用匿名登录。
 

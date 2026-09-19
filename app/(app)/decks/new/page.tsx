@@ -30,9 +30,9 @@ export default function NewDeckPage() {
   }
 
   return (
-    <div className="flex flex-1 flex-col px-5 pt-6">
+    <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
       <BackLink href="/decks" label="卡片盒" />
-      <h1 className="text-2xl font-semibold">新建卡片盒</h1>
+      <h1 className="app-page-title">新建卡片盒</h1>
       <p className="mt-2 text-sm text-muted-foreground">用卡片盒区分科目或考试目标。</p>
       <div className="mt-6 space-y-4">
         <Input placeholder="例如：考研英语" value={name} onChange={(e) => setName(e.target.value)} />

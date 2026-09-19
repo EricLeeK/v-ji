@@ -49,6 +49,7 @@ describe("study store transitions", () => {
       reviews: 0,
       total: 0,
       startedAt: 0,
+      finishedAt: 0,
       cardStartedAt: 0,
       settings: DEFAULT_SETTINGS,
     });
@@ -99,5 +100,20 @@ describe("study store transitions", () => {
     expect(state.total).toBe(3);
     // Progress must stay below 100% while the Again card is still waiting.
     expect(state.total - state.queue.length).toBe(2);
+  });
+
+  it("restores the original card when saving a review fails", () => {
+    const first = fakeCard("c1", "卡 1");
+    useStudyStore.getState().hydrate([first], DEFAULT_SETTINGS);
+    useStudyStore.getState().showAnswer();
+    const payload = useStudyStore.getState().rate(Rating.Again);
+    expect(payload).not.toBeNull();
+
+    useStudyStore.getState().restore(payload!);
+    const state = useStudyStore.getState();
+    expect(state.queue).toHaveLength(1);
+    expect(state.queue[0]).toMatchObject({ id: "c1", reps: 0, state: 0 });
+    expect(state.reviews).toBe(0);
+    expect(state.face).toBe("front");
   });
 });

@@ -19,8 +19,8 @@ export default async function AiJobPage({
   if (!job) notFound();
 
   return (
-    <div className="flex flex-1 flex-col px-5 pt-6">
-      <h1 className="text-2xl font-semibold">生成结果</h1>
+    <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
+      <h1 className="app-page-title">生成结果</h1>
       <p className="mt-1 mb-5 text-sm text-muted-foreground">确认后再加入复习队列。</p>
       <AiJobView initial={{ job, cards: cards ?? [], sources: sources ?? [] }} />
     </div>

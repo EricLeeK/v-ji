@@ -18,8 +18,8 @@ export default async function AiNewPage({
   ]);
 
   return (
-    <div className="flex flex-1 flex-col px-5 pt-6">
-      <h1 className="text-2xl font-semibold">AI 制卡</h1>
+    <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
+      <h1 className="app-page-title">AI 制卡</h1>
       <p className="mt-1 mb-5 text-sm text-muted-foreground">放入资料，生成草稿后再加入卡片盒。</p>
       <AiNewForm
         decks={decks ?? []}

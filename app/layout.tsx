@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_SC, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
+import { PRODUCT_NAME } from "@/lib/brand";
 import "./globals.css";
 
 const sans = Noto_Sans_SC({
@@ -15,11 +16,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  applicationName: "滑记",
-  title: "滑记",
+  applicationName: PRODUCT_NAME,
+  title: PRODUCT_NAME,
   description: "间隔复习 · 记忆卡片 · 学习社区",
   manifest: "/manifest.webmanifest",
-  appleWebApp: { capable: true, title: "滑记", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: PRODUCT_NAME, statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {

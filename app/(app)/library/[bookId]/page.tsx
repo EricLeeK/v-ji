@@ -26,8 +26,8 @@ export default async function BookDetailPage({
   const chapters = [...new Set((notes ?? []).map((note) => note.chapter ?? "未分类"))];
 
   return (
-    <div className="flex flex-1 flex-col px-5 pt-6 pb-8">
-      <div className="rounded-[28px] bg-white p-5">
+    <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
+      <div className="app-card rounded-[30px] p-5">
         <div className="text-4xl"><AppIcon name="library" className="size-10 text-primary" /></div>
         <h1 className="mt-3 text-2xl font-semibold">{book.title}</h1>
         <p className="mt-1 text-sm text-muted-foreground">{book.author}</p>
@@ -43,7 +43,7 @@ export default async function BookDetailPage({
         <h2 className="mb-2 text-sm font-semibold">目录</h2>
         <ul className="space-y-2">
           {(toc as Array<{ title?: string; importance?: string; count?: number }>).map((item, index) => (
-            <li key={index} className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-sm">
+            <li key={index} className="app-card flex items-center justify-between rounded-2xl px-4 py-3 text-sm">
               <span>
                 <span className="mr-2 text-amber-500"><AppIcon name={MARK[item.importance ?? "normal"] ?? "dot"} className="inline size-4" /></span>
                 {item.title}
@@ -53,7 +53,7 @@ export default async function BookDetailPage({
           ))}
           {toc.length === 0
             ? chapters.map((chapter) => (
-                <li key={chapter} className="rounded-2xl bg-white px-4 py-3 text-sm">
+                <li key={chapter} className="app-card rounded-2xl px-4 py-3 text-sm">
                   {chapter}
                 </li>
               ))

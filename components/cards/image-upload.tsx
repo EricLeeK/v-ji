@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { protectCardImageUrl } from "@/lib/card-image-url";
 
 export function ImageUpload({
   value,
@@ -37,8 +38,7 @@ export function ImageUpload({
       toast.error(error.message);
       return;
     }
-    const { data } = supabase.storage.from("card-images").getPublicUrl(path);
-    onChange(data.publicUrl);
+    onChange(`/api/card-images?path=${encodeURIComponent(path)}`);
     setUploading(false);
   }
 
@@ -47,7 +47,7 @@ export function ImageUpload({
       <p className="text-sm font-medium">配图</p>
       {value ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={value} alt="" className="h-32 w-full rounded-2xl object-cover" />
+        <img src={protectCardImageUrl(value)} alt="" className="h-32 w-full rounded-2xl object-cover" />
       ) : null}
       <div className="flex gap-2">
         <label

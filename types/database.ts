@@ -573,6 +573,10 @@ export type Database = {
     Functions: {
       import_ai_cards: { Args: { p_card_ids: string[]; p_job_id: string }; Returns: string };
       join_book: { Args: { p_book_id: string }; Returns: string };
+      move_note: {
+        Args: { p_from_deck_id: string; p_note_id: string; p_to_deck_id: string };
+        Returns: undefined;
+      };
       save_note: {
         Args: {
           p_deck_id: string;
@@ -584,6 +588,19 @@ export type Database = {
           p_type: NoteType;
         };
         Returns: string;
+      };
+      submit_review: {
+        Args: {
+          p_card_id: string;
+          p_date: string;
+          p_duration_ms: number;
+          p_expected_due: string;
+          p_expected_reps: number;
+          p_expected_state: number;
+          p_next: Json;
+          p_rating: number;
+        };
+        Returns: undefined;
       };
     };
     Enums: {

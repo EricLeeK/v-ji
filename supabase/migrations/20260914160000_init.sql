@@ -1,4 +1,4 @@
--- 滑记核心数据模型：卡片盒、卡片、间隔复习、社区卡册、统计
+-- V 记核心数据模型：卡片盒、卡片、间隔复习、社区卡册、统计
 
 create schema if not exists private;
 revoke all on schema private from public;

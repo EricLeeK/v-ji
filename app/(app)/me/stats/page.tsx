@@ -30,8 +30,8 @@ export default async function StatsPage() {
   const heatDays = buildHeatmap(stats ?? [], today);
 
   return (
-    <div className="flex flex-1 flex-col px-5 pt-6 pb-8">
-      <h1 className="text-2xl font-semibold">学习统计</h1>
+    <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
+      <h1 className="app-page-title">学习统计</h1>
       <div className="mt-4 grid grid-cols-3 gap-3">
         <Card label="今日卡片" value={`${todayRow?.reviews ?? 0}`} />
         <Card label="本周复习" value={`${week.reviews}`} />
@@ -53,7 +53,7 @@ export default async function StatsPage() {
 
 function Card({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-3xl bg-white p-4">
+    <div className="app-card rounded-3xl p-4">
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className="mt-2 text-xl font-semibold">{value}</p>
     </div>

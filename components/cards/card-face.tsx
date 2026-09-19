@@ -6,6 +6,7 @@ import type { NoteType } from "@/types/database";
 import type { Json } from "@/types/database";
 import { cn } from "@/lib/utils";
 import type { CardLayout, NoteSource } from "@/lib/ai/schemas";
+import { protectCardImageUrl } from "@/lib/card-image-url";
 
 export function CardFace({
   type,
@@ -29,7 +30,7 @@ export function CardFace({
   onSelectOption?: (key: string) => void;
 }) {
   const data = parseFields(fields);
-  const imageSrc = sourceImageUrl || data.imageUrl;
+  const imageSrc = protectCardImageUrl(sourceImageUrl || data.imageUrl);
   const illustrated = layout === "illustrated" && imageSrc;
   const image = imageSrc ? (
     // eslint-disable-next-line @next/next/no-img-element

@@ -74,18 +74,12 @@ export async function moveNote(noteId: string, fromDeckId: string, toDeckId: str
   const uid = await getUserId();
   if (!uid) return { error: "请先登录" };
   const supabase = await createClient();
-  const { error: noteError } = await supabase
-    .from("notes")
-    .update({ deck_id: toDeckId })
-    .eq("id", noteId)
-    .eq("owner_id", uid);
-  if (noteError) return { error: noteError.message };
-  const { error: cardError } = await supabase
-    .from("cards")
-    .update({ deck_id: toDeckId })
-    .eq("note_id", noteId)
-    .eq("owner_id", uid);
-  if (cardError) return { error: cardError.message };
+  const { error } = await supabase.rpc("move_note", {
+    p_note_id: noteId,
+    p_from_deck_id: fromDeckId,
+    p_to_deck_id: toDeckId,
+  });
+  if (error) return { error: error.message };
   revalidatePath(`/decks/${fromDeckId}`);
   revalidatePath(`/decks/${toDeckId}`);
   revalidatePath("/today");

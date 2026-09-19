@@ -1,6 +1,5 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
-import { defaultCache } from "@serwist/turbopack/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
 import { Serwist } from "serwist";
 
@@ -17,7 +16,10 @@ const serwist = new Serwist({
   skipWaiting: true,
   clientsClaim: true,
   navigationPreload: true,
-  runtimeCaching: defaultCache,
+  // Never cache authenticated HTML/RSC responses. The default Serwist cache
+  // uses NetworkFirst for same-origin navigations, which can replay one user's
+  // private pages after logout or on a shared device.
+  runtimeCaching: [],
   fallbacks: {
     entries: [
       {

@@ -58,9 +58,9 @@ export function NoteList({
   const [filter, setFilter] = useState<FilterKey>("all");
   const [active, setActive] = useState<NoteRow | null>(null);
   const [moveTo, setMoveTo] = useState(otherDecks[0]?.id ?? "");
+  const [now] = useState(() => Date.now());
 
   const items = useMemo(() => {
-    const now = Date.now();
     return notes
       .map((note) => {
         const related = cards.filter((card) => card.note_id === note.id);
@@ -83,7 +83,7 @@ export function NoteList({
         if (filter === "suspended") return item.suspended;
         return true;
       });
-  }, [cards, filter, notes, query]);
+  }, [cards, filter, notes, query, now]);
 
   function armLongPress(note: NoteRow, target: HTMLElement) {
     const timer = window.setTimeout(() => setActive(note), 520);

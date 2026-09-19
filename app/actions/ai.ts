@@ -8,6 +8,7 @@ import { AI_LIMITS, dailyTokenQuota } from "@/lib/ai/limits";
 import { getDeepseekApiKey, MISSING_DEEPSEEK_KEY } from "@/lib/ai/provider";
 import { runGenerateCardsPipeline } from "@/lib/ai/pipeline";
 import { DEFAULT_AI_SETTINGS, type AiGenerateSettings } from "@/lib/ai/schemas";
+import { validateAiJobText, validateAiSourceInput, validateNewDeckName } from "@/lib/ai/input";
 import type { Json } from "@/types/database";
 
 export type AiSourceInput = {
@@ -30,9 +31,26 @@ export async function createAiJob(input: {
   const uid = await getUserId();
   if (!uid) return { error: "请先登录" };
   const supabase = await createClient();
+  if (!input || !Array.isArray(input.sources)) return { error: "资料格式无效" };
   if (!input.sources.length) return { error: "请先放入资料" };
   if (input.sources.length > AI_LIMITS.maxSourceFiles) {
     return { error: `一次最多 ${AI_LIMITS.maxSourceFiles} 份资料` };
+  }
+
+  const instruction = validateAiJobText(input.instruction, "根据资料生成考试复习卡，重点整理概念和易混点。");
+  const sourceValidationError = input.sources
+    .map((source) => validateAiSourceInput(source, uid))
+    .find((error): error is string => Boolean(error));
+  if (sourceValidationError) return { error: sourceValidationError };
+
+  if (input.deckId) {
+    const { data: deck } = await supabase
+      .from("decks")
+      .select("id")
+      .eq("id", input.deckId)
+      .eq("owner_id", uid)
+      .maybeSingle();
+    if (!deck) return { error: "卡片盒不存在" };
   }
 
   const keyError = await assertDeepseekKey(supabase, uid);
@@ -47,8 +65,8 @@ export async function createAiJob(input: {
     .insert({
       owner_id: uid,
       deck_id: input.deckId || null,
-      new_deck_name: input.deckId ? null : input.newDeckName?.trim() || "AI 制卡",
-      instruction: input.instruction.trim(),
+      new_deck_name: input.deckId ? null : validateNewDeckName(input.newDeckName),
+      instruction,
       settings: settings as unknown as Json,
       status: "queued",
       stage: { name: "queued", progress: 0, detail: "等待开始" },
@@ -71,7 +89,12 @@ export async function createAiJob(input: {
     status: "pending" as const,
   }));
   const { error: sourceError } = await supabase.from("ai_sources").insert(rows);
-  if (sourceError) return { error: sourceError.message };
+  if (sourceError) {
+    await supabase.from("ai_jobs").delete().eq("id", job.id).eq("owner_id", uid);
+    const uploadedPaths = rows.map((row) => row.storage_path).filter((path): path is string => Boolean(path));
+    if (uploadedPaths.length) await supabase.storage.from("ai-sources").remove(uploadedPaths);
+    return { error: sourceError.message };
+  }
 
   await cleanupOldJobs(supabase, uid);
   await enqueueJob(job.id, supabase);

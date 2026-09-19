@@ -14,7 +14,7 @@ export function SignOutButton() {
 function Submit() {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="w-full rounded-full py-3 text-sm text-destructive disabled:opacity-60">
+    <button type="submit" disabled={pending} className="w-full rounded-2xl border border-destructive/10 bg-destructive/[0.04] py-3 text-sm text-destructive transition-colors hover:bg-destructive/[0.08] disabled:opacity-60">
       {pending ? "退出中..." : "退出登录"}
     </button>
   );
