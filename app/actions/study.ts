@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { localDateKey } from "@/lib/dates";
+import { isDateKey, localDateKey } from "@/lib/dates";
 import { type Grade, type FsrsCardPatch } from "@/lib/srs/scheduler";
 import { createClient, getUserId } from "@/lib/supabase/server";
 
@@ -12,6 +12,7 @@ export async function submitReview(input: {
   next: FsrsCardPatch;
   durationMs: number;
   isNew: boolean;
+  clientDate?: string;
   expected: {
     due: string;
     state: number;
@@ -26,7 +27,7 @@ export async function submitReview(input: {
     p_rating: input.rating,
     p_next: input.next,
     p_duration_ms: input.durationMs,
-    p_date: localDateKey(),
+    p_date: isDateKey(input.clientDate) ? input.clientDate : localDateKey(),
     p_expected_due: input.expected.due,
     p_expected_state: input.expected.state,
     p_expected_reps: input.expected.reps,

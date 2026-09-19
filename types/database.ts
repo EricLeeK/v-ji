@@ -577,6 +577,16 @@ export type Database = {
         Args: { p_from_deck_id: string; p_note_id: string; p_to_deck_id: string };
         Returns: undefined;
       };
+      record_ai_usage: {
+        Args: {
+          p_cache_hit_tokens: number;
+          p_completion_tokens: number;
+          p_job_id: string;
+          p_model: string;
+          p_prompt_tokens: number;
+        };
+        Returns: undefined;
+      };
       save_note: {
         Args: {
           p_deck_id: string;

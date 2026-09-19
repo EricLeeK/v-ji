@@ -4,6 +4,7 @@ import { createLlmClient, recordUsage, RetryableLlmError, parseSettings, type Ll
 import { getDeepseekApiKey, MISSING_DEEPSEEK_KEY } from "@/lib/ai/provider";
 import { allowedTypes, cardsUserPrompt, outlineUserPrompt, systemPrompt, wrapSourceMaterial } from "@/lib/ai/prompts";
 import { cardsResponseSchema, outlineResponseSchema, type CardCitation, type ValidatedCard } from "@/lib/ai/schemas";
+import { isOwnStoragePath } from "@/lib/ai/input";
 import { dedupeCards, validateCard } from "@/lib/ai/validate";
 import type { AiDb } from "@/lib/supabase/admin";
 import type { Json, NoteType } from "@/types/database";
@@ -73,11 +74,12 @@ export async function runGenerateCardsPipeline(jobId: string, client: AiDb) {
 class FatalPipelineError extends Error {}
 
 async function readSources(client: AiDb, jobId: string, ownerId: string) {
-  const { data: sources } = await client
+  const { data: sources, error: sourceError } = await client
     .from("ai_sources")
     .select("*")
     .eq("job_id", jobId)
     .order("sort_order");
+  if (sourceError) throw new Error(sourceError.message);
   await client.from("ai_chunks").delete().eq("job_id", jobId);
 
   const inserted: Array<{
@@ -95,7 +97,14 @@ async function readSources(client: AiDb, jobId: string, ownerId: string) {
   let ord = 0;
 
   for (const source of sources ?? []) {
-    const file = source.storage_path ? await downloadSource(client, source.storage_path) : undefined;
+    if (source.owner_id !== ownerId) throw new FatalPipelineError("资料归属校验失败");
+    if (source.kind === "text") {
+      if (source.storage_path !== null) throw new FatalPipelineError("文字资料不应包含存储文件");
+    } else if (!source.storage_path || !isOwnStoragePath(source.storage_path, ownerId)) {
+      throw new FatalPipelineError("资料存储路径无效");
+    }
+
+    const file = source.storage_path ? await downloadSource(client, source.storage_path, ownerId) : undefined;
     const extracted = await extractSource(source, file);
     pdfPages += extracted.pageCount ?? 0;
     if (source.kind === "image") imageCount += 1;
@@ -166,7 +175,7 @@ async function organizePoints(
     user: wrapSourceMaterial(outlineUserPrompt(job.instruction, summaries)),
     kind: "outline",
     thinking: true,
-    images: await collectImages(client, chunks),
+    images: await collectImages(client, chunks, job.owner_id),
     schema: outlineResponseSchema,
   });
   await recordUsage(client, job.owner_id, job.id, result.usage);
@@ -205,7 +214,7 @@ async function generateCards(
       ),
       kind: "cards",
       thinking: false,
-      images: await collectImages(client, uniqueChunks),
+      images: await collectImages(client, uniqueChunks, job.owner_id),
       schema: cardsResponseSchema,
     });
     await recordUsage(client, job.owner_id, job.id, result.usage);
@@ -254,18 +263,20 @@ async function completeValidated<T>(
 async function collectImages(
   client: AiDb,
   chunks: Array<{ imagePath?: string | null }>,
+  ownerId: string,
 ) {
   const paths = [...new Set(chunks.map((chunk) => chunk.imagePath).filter(Boolean))] as string[];
   const images: LlmImage[] = [];
   for (const path of paths.slice(0, 8)) {
-    const file = await downloadSource(client, path);
+    const file = await downloadSource(client, path, ownerId);
     if (!file) continue;
     images.push({ mime: mimeFromPath(path), data: Buffer.from(file).toString("base64") });
   }
   return images;
 }
 
-async function downloadSource(client: AiDb, path: string) {
+async function downloadSource(client: AiDb, path: string, ownerId: string) {
+  if (!isOwnStoragePath(path, ownerId)) throw new FatalPipelineError("资料存储路径无效");
   const { data, error } = await client.storage.from("ai-sources").download(path);
   if (error || !data) return undefined;
   return new Uint8Array(await data.arrayBuffer());

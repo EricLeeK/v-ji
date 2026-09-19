@@ -31,14 +31,24 @@ export function createLlmClient(apiKey: string): LlmClient {
 }
 
 export async function recordUsage(client: AiDb, ownerId: string, jobId: string, usage: LlmUsage) {
-  await client.from("ai_usage").insert({
+  const row = {
     owner_id: ownerId,
     job_id: jobId,
     model: usage.model,
     prompt_tokens: usage.promptTokens,
     cache_hit_tokens: usage.cacheHitTokens,
     completion_tokens: usage.completionTokens,
+  };
+  const direct = await client.from("ai_usage").insert(row);
+  if (!direct.error) return;
+  const { error } = await client.rpc("record_ai_usage", {
+    p_job_id: jobId,
+    p_model: usage.model,
+    p_prompt_tokens: usage.promptTokens,
+    p_cache_hit_tokens: usage.cacheHitTokens,
+    p_completion_tokens: usage.completionTokens,
   });
+  if (error) console.error("AI usage recording failed", error);
 }
 
 class DeepSeekLlmClient implements LlmClient {

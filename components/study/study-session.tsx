@@ -37,6 +37,7 @@ import {
   type StudyScope,
 } from "@/lib/study-progress";
 import { cn } from "@/lib/utils";
+import { localDateKey } from "@/lib/dates";
 
 export function StudySession({
   initialQueue,
@@ -101,7 +102,7 @@ export function StudySession({
       flushSync(() => setOutgoing(null));
       if (payload) {
         try {
-          await mutation.mutateAsync(payload);
+          await mutation.mutateAsync({ ...payload, clientDate: localDateKey() });
         } catch (error) {
           useStudyStore.getState().restore(payload);
           toast.error(error instanceof Error ? error.message : "保存复习结果失败，请重试");

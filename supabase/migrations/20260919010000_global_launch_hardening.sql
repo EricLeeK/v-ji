@@ -47,7 +47,10 @@ declare
   safe_duration integer := greatest(0, least(coalesce(p_duration_ms, 0), 86400000));
 begin
   if uid is null then raise exception 'not authenticated'; end if;
-  if p_rating not between 1 and 4 then raise exception 'invalid rating'; end if;
+  if p_rating is null or p_rating not between 1 and 4 then raise exception 'invalid rating'; end if;
+  if p_expected_due is null or p_expected_state is null or p_expected_reps is null then
+    raise exception 'invalid review expectation';
+  end if;
   if p_next is null or jsonb_typeof(p_next) <> 'object' then raise exception 'invalid review payload'; end if;
 
   select * into current_card
@@ -147,10 +150,10 @@ begin
   if not exists (select 1 from public.decks where id = p_to_deck_id and owner_id = uid) then
     raise exception 'target deck not found';
   end if;
-  if not exists (
-    select 1 from public.notes
-    where id = p_note_id and owner_id = uid and deck_id = p_from_deck_id
-  ) then
+  perform 1 from public.notes
+  where id = p_note_id and owner_id = uid and deck_id = p_from_deck_id
+  for update;
+  if not found then
     raise exception 'note not found';
   end if;
 
@@ -181,11 +184,13 @@ begin
   if not exists (select 1 from public.decks where id = new.deck_id and owner_id = new.owner_id) then
     raise exception 'deck owner mismatch';
   end if;
-  if tg_table_name = 'cards' and not exists (
-    select 1 from public.notes
-    where id = new.note_id and owner_id = new.owner_id and deck_id = new.deck_id
-  ) then
-    raise exception 'note deck mismatch';
+  if tg_table_name = 'cards' then
+    if not exists (
+      select 1 from public.notes
+      where id = new.note_id and owner_id = new.owner_id and deck_id = new.deck_id
+    ) then
+      raise exception 'note deck mismatch';
+    end if;
   end if;
   return new;
 end;
@@ -195,6 +200,26 @@ drop trigger if exists enforce_notes_owner_deck on public.notes;
 create trigger enforce_notes_owner_deck
   before insert or update of deck_id, owner_id on public.notes
   for each row execute function private.enforce_note_card_ownership();
+
+create or replace function private.sync_note_card_deck()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  update public.cards
+  set deck_id = new.deck_id
+  where note_id = new.id and owner_id = new.owner_id;
+  return new;
+end;
+$$;
+drop trigger if exists sync_note_cards_deck on public.notes;
+create trigger sync_note_cards_deck
+  after update of deck_id on public.notes
+  for each row when (old.deck_id is distinct from new.deck_id)
+  execute function private.sync_note_card_deck();
+
 drop trigger if exists enforce_cards_owner_deck on public.cards;
 create trigger enforce_cards_owner_deck
   before insert or update of deck_id, owner_id, note_id on public.cards
@@ -210,7 +235,12 @@ declare job_owner uuid;
 begin
   select owner_id into job_owner from public.ai_jobs where id = new.job_id;
   if job_owner is null or new.owner_id <> job_owner then raise exception 'AI source owner mismatch'; end if;
-  if new.storage_path is not null and split_part(new.storage_path, '/', 1) <> new.owner_id::text then
+  if new.storage_path is not null and (
+    split_part(new.storage_path, '/', 1) <> new.owner_id::text
+    or new.storage_path !~ ('^' || new.owner_id::text || '/[^/].*$')
+    or new.storage_path ~ '(^|/)\.\.?(/|$)'
+    or new.storage_path ~ E'\\\\'
+  ) then
     raise exception 'AI source storage owner mismatch';
   end if;
   if new.kind = 'text' and new.storage_path is not null then
@@ -224,7 +254,7 @@ end;
 $$;
 drop trigger if exists enforce_ai_source_owner on public.ai_sources;
 create trigger enforce_ai_source_owner
-  before insert or update of job_id, owner_id on public.ai_sources
+  before insert or update of job_id, owner_id, kind, storage_path on public.ai_sources
   for each row execute function private.enforce_ai_source_job_owner();
 
 create or replace function private.enforce_ai_job_deck_owner()
@@ -257,12 +287,17 @@ declare job_owner uuid;
 begin
   select owner_id into job_owner from public.ai_jobs where id = new.job_id;
   if job_owner is null or new.owner_id <> job_owner then raise exception 'AI card owner mismatch'; end if;
+  if new.note_id is not null and not exists (
+    select 1 from public.notes where id = new.note_id and owner_id = new.owner_id
+  ) then
+    raise exception 'AI card note owner mismatch';
+  end if;
   return new;
 end;
 $$;
 drop trigger if exists enforce_ai_card_owner on public.ai_cards;
 create trigger enforce_ai_card_owner
-  before insert or update of job_id, owner_id on public.ai_cards
+  before insert or update of job_id, owner_id, note_id on public.ai_cards
   for each row execute function private.enforce_ai_card_job_owner();
 
 create or replace function private.enforce_ai_chunk_source_job()

@@ -79,6 +79,8 @@ cp .env.example .env.local
 4. [AI 制卡与卡片保存](./supabase/migrations/20260915015435_ai_cards.sql)
 5. [全球上线安全与原子写入加固](./supabase/migrations/20260919010000_global_launch_hardening.sql)
 6. [个人卡片图片改为私有存储](./supabase/migrations/20260919011000_private_card_images.sql)
+7. [AI 用量记录 RPC](./supabase/migrations/20260919012000_ai_usage_rpc.sql)
+8. [AI 用量表写入权限收紧](./supabase/migrations/20260919013000_ai_usage_write_revoke.sql)
 
 在 Supabase Auth 中配置站点地址，并将 `http://localhost:3000/auth/callback` 加入允许的回调地址。若使用「先随便看看」，还需启用匿名登录。
 
