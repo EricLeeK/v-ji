@@ -81,6 +81,11 @@ cp .env.example .env.local
 6. [个人卡片图片改为私有存储](./supabase/migrations/20260919011000_private_card_images.sql)
 7. [AI 用量记录 RPC](./supabase/migrations/20260919012000_ai_usage_rpc.sql)
 8. [AI 用量表写入权限收紧](./supabase/migrations/20260919013000_ai_usage_write_revoke.sql)
+9. [社区卡册来源、章节与版式](./supabase/migrations/20260925220000_book_note_metadata.sql)
+10. [入党积极分子预设卡组](./supabase/migrations/20260925220100_party-activist.sql)
+11. [湖北省选调预设卡组](./supabase/migrations/20260925220200_hubei-selected-graduates.sql)
+
+两套考试卡组的卡型设计、来源版本和缺损处理见[整理说明](./docs/community-presets.md)。
 
 在 Supabase Auth 中配置站点地址，并将 `http://localhost:3000/auth/callback` 加入允许的回调地址。若使用「先随便看看」，还需启用匿名登录。
 
@@ -95,7 +100,7 @@ npm run dev
 <details>
 <summary>关于演示账号与初始数据</summary>
 
-登录页的「使用演示账号」使用 `demo@huaji.local` / `huaji123456`。这些凭据仅适用于已配置该账号的实例；数据库迁移不会自动创建演示账号，也不包含截图中的学习记录或社区卡册内容。新部署可以直接注册自己的账号开始使用。
+登录页的「使用演示账号」使用 `demo@huaji.local` / `huaji123456`。这些凭据仅适用于已配置该账号的实例；数据库迁移不会自动创建演示账号，也不包含截图中的个人学习记录。执行考试卡组迁移后，社区会提供上述两套预设卡组。新部署可以直接注册自己的账号开始使用。
 
 </details>
 

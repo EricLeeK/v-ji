@@ -230,6 +230,9 @@ export type Database = {
           importance: string;
           sort_order: number;
           type: NoteType;
+          source: Json | null;
+          layout: string;
+          tags: string[];
         };
         Insert: {
           book_id: string;
@@ -239,6 +242,9 @@ export type Database = {
           importance?: string;
           sort_order?: number;
           type: NoteType;
+          source?: Json | null;
+          layout?: string;
+          tags?: string[];
         };
         Update: {
           book_id?: string;
@@ -248,6 +254,9 @@ export type Database = {
           importance?: string;
           sort_order?: number;
           type?: NoteType;
+          source?: Json | null;
+          layout?: string;
+          tags?: string[];
         };
         Relationships: [];
       };
