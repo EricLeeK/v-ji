@@ -1,7 +1,7 @@
 "use client";
 
 import { choiceOptionTone, parseFields } from "@/lib/templates";
-import { clozeParts, stripCloze } from "@/lib/cloze";
+import { clozeParts } from "@/lib/cloze";
 import type { NoteType } from "@/types/database";
 import type { Json } from "@/types/database";
 import { cn } from "@/lib/utils";
@@ -235,11 +235,11 @@ function sourceCaption(source?: Json | NoteSource | null) {
   return bits.length ? `来源：${bits.join(" · ")}` : undefined;
 }
 
-export function spokenText(type: NoteType, fields: Json, revealed: boolean) {
+export function spokenText(type: NoteType, fields: Json, revealed: boolean, ord = 0) {
   const data = parseFields(fields);
   if (type === "vocab") return revealed ? `${data.word}。${data.meaning}` : data.word || "";
   if (type === "poem") return data.original || "";
-  if (type === "cloze") return stripCloze(data.text ?? "");
+  if (type === "cloze") return clozeParts(data.text ?? "", ord).map(part => part.type === "text" ? part.value : revealed ? part.answer : "空白").join("");
   if (type === "choice") return data.stem || "";
   if (type === "note") return `${data.title ?? ""}。${revealed ? data.body ?? "" : ""}`;
   return revealed ? `${data.question}。${data.answer}` : data.question || "";

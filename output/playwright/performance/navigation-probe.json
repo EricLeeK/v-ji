@@ -1,0 +1,598 @@
+{
+  "samples": [
+    {
+      "round": 0,
+      "path": "/decks",
+      "automationMs": 160.76229200000034,
+      "clickToPaintMs": 122.10000002384186,
+      "requests": []
+    },
+    {
+      "round": 0,
+      "path": "/library",
+      "automationMs": 130.2162499999995,
+      "clickToPaintMs": 86.19999998807907,
+      "requests": [
+        {
+          "path": "/decks/new",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677518.912,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.287,
+            "responseStart": 46.309,
+            "responseEnd": 47.244
+          }
+        },
+        {
+          "path": "/decks/new",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677569.391,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.078,
+            "responseStart": 2.561,
+            "responseEnd": 4.505
+          }
+        },
+        {
+          "path": "/decks/18f6a045-7103-4ba5-ba08-0c60e278431e",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677570.6638,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.064,
+            "responseStart": 2.742,
+            "responseEnd": 3.688
+          }
+        },
+        {
+          "path": "/library/33333333-3333-4333-8333-333333333333",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677639.6948,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.06,
+            "responseStart": 8.941,
+            "responseEnd": 11.482
+          }
+        },
+        {
+          "path": "/library/22222222-2222-4222-8222-222222222222",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677639.823,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.046,
+            "responseStart": 9.418,
+            "responseEnd": 11.508
+          }
+        },
+        {
+          "path": "/library",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677639.9229,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.034,
+            "responseStart": 10.475,
+            "responseEnd": 11.689
+          }
+        },
+        {
+          "path": "/library/22222222-2222-4222-8222-222222222222",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677669.236,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.067,
+            "responseStart": 3.099,
+            "responseEnd": 3.701
+          }
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "path": "/me",
+      "automationMs": 97.62241699999959,
+      "clickToPaintMs": 59,
+      "requests": [
+        {
+          "path": "/onboarding",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677759.286,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.031,
+            "responseStart": 3.79,
+            "responseEnd": 4.518000001553446
+          }
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "path": "/today",
+      "automationMs": 78.2552080000005,
+      "clickToPaintMs": 42.200000047683716,
+      "requests": [
+        {
+          "path": "/me/settings",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677771.417,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.059,
+            "responseStart": 3.612,
+            "responseEnd": 7.638
+          }
+        },
+        {
+          "path": "/me/feedback",
+          "prefetch": "1",
+          "timing": {
+            "startTime": 1790344677780.102,
+            "domainLookupStart": -1,
+            "domainLookupEnd": -1,
+            "connectStart": -1,
+            "secureConnectionStart": -1,
+            "connectEnd": -1,
+            "requestStart": 0.101,
+            "responseStart": 2.654,
+            "responseEnd": 3.304
+          }
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "path": "/decks",
+      "automationMs": 97.5200420000001,
+      "clickToPaintMs": 59.30000001192093,
+      "requests": []
+    },
+    {
+      "round": 1,
+      "path": "/library",
+      "automationMs": 97.24691699999948,
+      "clickToPaintMs": 59.5,
+      "requests": []
+    },
+    {
+      "round": 1,
+      "path": "/me",
+      "automationMs": 82.13170799999989,
+      "clickToPaintMs": 41.69999998807907,
+      "requests": []
+    },
+    {
+      "round": 1,
+      "path": "/today",
+      "automationMs": 96.86475000000064,
+      "clickToPaintMs": 55.5,
+      "requests": []
+    },
+    {
+      "round": 2,
+      "path": "/decks",
+      "automationMs": 97.7574169999998,
+      "clickToPaintMs": 60.40000003576279,
+      "requests": []
+    },
+    {
+      "round": 2,
+      "path": "/library",
+      "automationMs": 97.96062500000062,
+      "clickToPaintMs": 59.40000003576279,
+      "requests": []
+    },
+    {
+      "round": 2,
+      "path": "/me",
+      "automationMs": 81.01145899999938,
+      "clickToPaintMs": 44.10000002384186,
+      "requests": []
+    },
+    {
+      "round": 2,
+      "path": "/today",
+      "automationMs": 81.15358300000025,
+      "clickToPaintMs": 44.5,
+      "requests": []
+    },
+    {
+      "round": 3,
+      "path": "/decks",
+      "automationMs": 96.76324999999997,
+      "clickToPaintMs": 60.30000001192093,
+      "requests": []
+    },
+    {
+      "round": 3,
+      "path": "/library",
+      "automationMs": 80.91083299999991,
+      "clickToPaintMs": 42.799999952316284,
+      "requests": []
+    },
+    {
+      "round": 3,
+      "path": "/me",
+      "automationMs": 81.21141699999953,
+      "clickToPaintMs": 43.5,
+      "requests": []
+    },
+    {
+      "round": 3,
+      "path": "/today",
+      "automationMs": 81.41149999999925,
+      "clickToPaintMs": 43.80000001192093,
+      "requests": []
+    },
+    {
+      "round": 4,
+      "path": "/decks",
+      "automationMs": 97.66683300000022,
+      "clickToPaintMs": 60.39999997615814,
+      "requests": []
+    },
+    {
+      "round": 4,
+      "path": "/library",
+      "automationMs": 96.84266699999989,
+      "clickToPaintMs": 60.09999996423721,
+      "requests": []
+    },
+    {
+      "round": 4,
+      "path": "/me",
+      "automationMs": 80.48675000000003,
+      "clickToPaintMs": 43.60000002384186,
+      "requests": []
+    },
+    {
+      "round": 4,
+      "path": "/today",
+      "automationMs": 82.62054199999966,
+      "clickToPaintMs": 44.19999998807907,
+      "requests": []
+    }
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "path": "/today",
+      "timing": {
+        "startTime": 1790344674055.3313,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.121,
+        "responseStart": 5.854,
+        "responseEnd": 564.801
+      }
+    },
+    {
+      "path": "/me/stats",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674679.334,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.12,
+        "responseStart": 7.56,
+        "responseEnd": 9.613
+      }
+    },
+    {
+      "path": "/study",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674689.5718,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.153,
+        "responseStart": 7.357,
+        "responseEnd": 8.651
+      }
+    },
+    {
+      "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674702.755,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.235,
+        "responseStart": 6.495,
+        "responseEnd": 8.019
+      }
+    },
+    {
+      "path": "/me/stats",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674713.773,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.094,
+        "responseStart": 4.518,
+        "responseEnd": 5.353
+      }
+    },
+    {
+      "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674839.57,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.085,
+        "responseStart": 2.52,
+        "responseEnd": 3.109
+      }
+    },
+    {
+      "path": "/decks/4b8e9315-51c3-4134-8892-543841e5a24a",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674844.729,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.069,
+        "responseStart": 2.649,
+        "responseEnd": 3.235
+      }
+    },
+    {
+      "path": "/decks/9f4372a3-d374-49c9-b85d-5f82b2bf7d01",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344674850.146,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.07,
+        "responseStart": 2.787,
+        "responseEnd": 3.453
+      }
+    },
+    {
+      "path": "/study",
+      "timing": {
+        "startTime": 1790344674722.335,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.116,
+        "responseStart": 3.648,
+        "responseEnd": 218.614
+      }
+    },
+    {
+      "path": "/decks/new",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677518.912,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.287,
+        "responseStart": 46.309,
+        "responseEnd": 47.244
+      }
+    },
+    {
+      "path": "/decks/new",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677569.391,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.078,
+        "responseStart": 2.561,
+        "responseEnd": 4.505
+      }
+    },
+    {
+      "path": "/decks/18f6a045-7103-4ba5-ba08-0c60e278431e",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677570.6638,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.064,
+        "responseStart": 2.742,
+        "responseEnd": 3.688
+      }
+    },
+    {
+      "path": "/library/33333333-3333-4333-8333-333333333333",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677639.6948,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.06,
+        "responseStart": 8.941,
+        "responseEnd": 11.482
+      }
+    },
+    {
+      "path": "/library/22222222-2222-4222-8222-222222222222",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677639.823,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.046,
+        "responseStart": 9.418,
+        "responseEnd": 11.508
+      }
+    },
+    {
+      "path": "/library",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677639.9229,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.034,
+        "responseStart": 10.475,
+        "responseEnd": 11.689
+      }
+    },
+    {
+      "path": "/library/22222222-2222-4222-8222-222222222222",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677669.236,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.067,
+        "responseStart": 3.099,
+        "responseEnd": 3.701
+      }
+    },
+    {
+      "path": "/onboarding",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677759.286,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.031,
+        "responseStart": 3.79,
+        "responseEnd": 4.518000001553446
+      }
+    },
+    {
+      "path": "/me/feedback",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677759.126,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.11,
+        "responseStart": 14.132,
+        "responseEnd": 17.647
+      }
+    },
+    {
+      "path": "/me/settings",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677771.417,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.059,
+        "responseStart": 3.612,
+        "responseEnd": 7.638
+      }
+    },
+    {
+      "path": "/me/feedback",
+      "prefetch": "1",
+      "timing": {
+        "startTime": 1790344677780.102,
+        "domainLookupStart": -1,
+        "domainLookupEnd": -1,
+        "connectStart": -1,
+        "secureConnectionStart": -1,
+        "connectEnd": -1,
+        "requestStart": 0.101,
+        "responseStart": 2.654,
+        "responseEnd": 3.304
+      }
+    }
+  ]
+}

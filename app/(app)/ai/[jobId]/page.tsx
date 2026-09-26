@@ -1,3 +1,4 @@
+import { BackLink } from "@/components/back-link";
 import { notFound, redirect } from "next/navigation";
 import { AiJobView } from "@/components/ai/job-view";
 import { createClient, getUserId } from "@/lib/supabase/server";
@@ -20,6 +21,7 @@ export default async function AiJobPage({
 
   return (
     <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
+      <BackLink href="/ai/new" label="AI 制卡" />
       <h1 className="app-page-title">生成结果</h1>
       <p className="mt-1 mb-5 text-sm text-muted-foreground">确认后再加入复习队列。</p>
       <AiJobView initial={{ job, cards: cards ?? [], sources: sources ?? [] }} />

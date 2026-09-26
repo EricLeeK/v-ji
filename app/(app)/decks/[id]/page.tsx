@@ -16,19 +16,13 @@ export default async function DeckDetailPage({
   const uid = await getUserId();
   if (!uid) redirect("/login");
   const supabase = await createClient();
-  const { data: deck } = await supabase
-    .from("decks")
-    .select("*")
-    .eq("id", id)
-    .eq("owner_id", uid)
-    .maybeSingle();
-  if (!deck) notFound();
-
-  const [{ data: notes }, { data: cards }, { data: otherDecks }] = await Promise.all([
-    supabase.from("notes").select("*").eq("deck_id", id).order("created_at", { ascending: false }),
-    supabase.from("cards").select("id, note_id, state, suspended, starred, due").eq("deck_id", id),
+  const [{ data: deck }, { data: notes }, { data: cards }, { data: otherDecks }] = await Promise.all([
+    supabase.from("decks").select("id, name, icon").eq("id", id).eq("owner_id", uid).maybeSingle(),
+    supabase.from("notes").select("id, type, fields").eq("deck_id", id).eq("owner_id", uid).order("created_at", { ascending: false }),
+    supabase.from("cards").select("note_id, state, suspended, starred, due").eq("deck_id", id).eq("owner_id", uid),
     supabase.from("decks").select("id, name").eq("owner_id", uid).neq("id", id),
   ]);
+  if (!deck) notFound();
 
   const mastered = (cards ?? []).filter((card) => card.state === 2 && !card.suspended).length;
 
@@ -36,15 +30,15 @@ export default async function DeckDetailPage({
     <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
       <BackLink href="/decks" label="卡片盒" />
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <div className="text-3xl"><DeckIcon name={deck.icon} className="size-9 text-primary" /></div>
           <h1 className="mt-2 app-page-title">{deck.name}</h1>
           <p className="mt-1 text-xs text-muted-foreground">
             {notes?.length ?? 0} 张笔记 · {mastered} 张进入复习
           </p>
         </div>
-        <Button asChild className="rounded-full">
-          <Link href={`/study?deckId=${deck.id}`}>学习</Link>
+        <Button asChild className="shrink-0 rounded-full">
+          <Link href={`/study?deckId=${deck.id}`} prefetch={true}>学习</Link>
         </Button>
       </div>
 

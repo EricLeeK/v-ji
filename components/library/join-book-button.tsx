@@ -1,35 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useAction } from "@/lib/hooks/use-action";
 import { useRouter } from "next/navigation";
 import { joinBook } from "@/app/actions/library";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
-export function JoinBookButton({ bookId, already }: { bookId: string; already: boolean }) {
+export function JoinBookButton({ bookId, deckId }: { bookId: string; deckId?: string | null }) {
   const router = useRouter();
-  const [pending, setPending] = useState(false);
+  const { pending, run } = useAction();
 
   async function onClick() {
-    if (already) {
-      router.push("/decks");
+    if (deckId) {
+      router.push(`/decks/${deckId}`);
       return;
     }
-    setPending(true);
-    const result = await joinBook(bookId);
-    setPending(false);
-    if (result.error) {
-      toast.error(result.error);
-      return;
-    }
-    toast.success("已加入你的卡片盒");
-    if (result.deckId) router.push(`/decks/${result.deckId}`);
-    else router.push("/decks");
+    await run(() => joinBook(bookId), result => {
+      toast.success("已加入你的卡片盒");
+      router.push(result.deckId ? `/decks/${result.deckId}` : "/decks");
+    });
   }
 
   return (
     <Button className="h-12 w-full rounded-full" disabled={pending} onClick={onClick}>
-      {already ? "前往卡片盒" : pending ? "加入中..." : "免费加入"}
+      {deckId ? "前往卡片盒" : pending ? "加入中..." : "免费加入"}
     </Button>
   );
 }

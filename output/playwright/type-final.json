@@ -1,0 +1,77 @@
+{
+  "results": [
+    {
+      "route": "decks",
+      "width": 320,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 360,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 393,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 430,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 1280,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 320,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 360,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 393,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 430,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 1280,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    }
+  ],
+  "errors": [],
+  "goalLabelHeight": 16.5,
+  "deckMenuAndSearch": true
+}

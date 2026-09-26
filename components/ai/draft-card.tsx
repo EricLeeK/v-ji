@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { useState } from "react";
 import { CardFace } from "@/components/cards/card-face";
 import { Badge } from "@/components/ui/badge";
@@ -29,10 +30,11 @@ export function DraftCard({
   };
   selected: boolean;
   onSelect: (selected: boolean) => void;
-  onReject: () => void;
+  onReject: () => Promise<void>;
   onSave: (patch: { type: NoteType; fields: Json; layout: string }) => Promise<void>;
   sourceImageUrl?: string;
 }) {
+  const [removing, setRemoving] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [editing, setEditing] = useState(false);
   const label = TEMPLATES.find((item) => item.type === card.type)?.label ?? card.type;
@@ -72,8 +74,14 @@ export function DraftCard({
           编辑
         </Button>
         {card.status !== "imported" ? (
-          <Button type="button" size="sm" variant="ghost" className="rounded-full" onClick={onReject}>
-            删除
+          <Button type="button" size="sm" variant="ghost" className="rounded-full" disabled={removing} onClick={async () => {
+            if (removing) return;
+            setRemoving(true);
+            try { await onReject(); toast.success("已删除草稿"); }
+            catch (error) { toast.error(error instanceof Error ? error.message : "删除失败，请重试"); }
+            finally { setRemoving(false); }
+          }}>
+            {removing ? "删除中…" : "删除"}
           </Button>
         ) : null}
       </div>

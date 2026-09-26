@@ -1,3 +1,4 @@
+import { BackLink } from "@/components/back-link";
 import { redirect } from "next/navigation";
 import { Heatmap } from "@/components/stats/heatmap";
 import { StatsCharts } from "@/components/stats/stats-charts";
@@ -31,6 +32,7 @@ export default async function StatsPage() {
 
   return (
     <div className="app-page flex flex-1 flex-col px-5 pt-7 pb-28">
+      <BackLink href="/me" label="我的" />
       <h1 className="app-page-title">学习统计</h1>
       <div className="mt-4 grid grid-cols-3 gap-3">
         <Card label="今日卡片" value={`${todayRow?.reviews ?? 0}`} />

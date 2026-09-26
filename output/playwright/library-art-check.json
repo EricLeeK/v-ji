@@ -1,0 +1,37 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "artWithinHero": true,
+      "textGap": 4,
+      "outsideShapes": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 393,
+      "artWithinHero": true,
+      "textGap": 4,
+      "outsideShapes": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 430,
+      "artWithinHero": true,
+      "textGap": 4,
+      "outsideShapes": 0,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "artWithinHero": true,
+      "textGap": 4,
+      "outsideShapes": 0,
+      "horizontalOverflow": false
+    }
+  ],
+  "interactive": {
+    "discoverWorks": true,
+    "categoryWorks": true,
+    "consoleErrors": []
+  }
+}

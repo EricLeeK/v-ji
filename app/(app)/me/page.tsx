@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Bell, ChevronRight, Crown, Flag, HelpCircle, LineChart, Settings } from "lucide-react";
-import { getProfile } from "@/lib/data";
+import { Bell, ChevronRight, SlidersHorizontal, Flag, HelpCircle, LineChart, Settings } from "lucide-react";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { createClient, getUserId } from "@/lib/supabase/server";
 import { localDateKey } from "@/lib/dates";
@@ -10,21 +9,18 @@ import { AvatarPicker } from "@/components/profile/avatar-picker";
 export default async function MePage() {
   const uid = await getUserId();
   if (!uid) redirect("/login");
-  const profile = await getProfile();
   const supabase = await createClient();
   const today = localDateKey();
-  const { data: todayStats } = await supabase
-    .from("daily_stats")
-    .select("*")
-    .eq("owner_id", uid)
-    .eq("date", today)
-    .maybeSingle();
+  const [{ data: profile }, { data: todayStats }] = await Promise.all([
+    supabase.from("profiles").select("nickname, avatar_url").eq("id", uid).maybeSingle(),
+    supabase.from("daily_stats").select("reviews, study_seconds").eq("owner_id", uid).eq("date", today).maybeSingle(),
+  ]);
 
   const items = [
     { href: "/me/stats", label: "学习统计", icon: LineChart },
     { href: "/me/settings", label: "设置", icon: Settings },
     { href: "/me/feedback", label: "问题与建议", icon: Flag },
-    { href: "/onboarding", label: "使用指北", icon: HelpCircle },
+    { href: "/onboarding?returnTo=/me", label: "使用指北", icon: HelpCircle },
   ];
 
   return (
@@ -39,7 +35,7 @@ export default async function MePage() {
               <p className="mt-1 text-xs text-muted-foreground">ID {uid.slice(0, 8)}</p>
             </div>
           </div>
-          <div className="flex gap-2"><button type="button" aria-label="通知" className="flex size-9 items-center justify-center rounded-full bg-white/80 text-muted-foreground shadow-sm"><Bell className="size-4" /></button><Link href="/me/settings" aria-label="设置" className="flex size-9 items-center justify-center rounded-full bg-white/80 text-muted-foreground shadow-sm"><Settings className="size-4" /></Link></div>
+          <div className="flex gap-2"><Link href="/me/settings#reminder" aria-label="通知" className="flex size-9 items-center justify-center rounded-full bg-white/80 text-muted-foreground shadow-sm"><Bell className="size-4" /></Link><Link href="/me/settings" aria-label="设置" className="flex size-9 items-center justify-center rounded-full bg-white/80 text-muted-foreground shadow-sm"><Settings className="size-4" /></Link></div>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-3 text-center">
           <div className="app-stat rounded-2xl py-3">
@@ -54,9 +50,9 @@ export default async function MePage() {
       </div>
 
       <Link href="/me/settings" className="mt-4 flex items-center gap-3 rounded-[24px] bg-[#164c45] px-5 py-4 text-white shadow-[0_14px_30px_rgba(22,76,69,0.2)] transition-transform active:scale-[0.99]">
-        <span className="flex size-10 items-center justify-center rounded-full bg-amber-200/20 text-amber-200"><Crown className="size-6 fill-current" /></span>
-        <span className="min-w-0 flex-1"><span className="block text-base font-semibold">卡片会员</span><span className="mt-0.5 block text-xs text-white/65">解锁更多功能，助力高效学习</span></span>
-        <span className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-2 text-sm font-medium">去开通 <ChevronRight className="size-4" /></span>
+        <span className="flex size-10 items-center justify-center rounded-full bg-amber-200/20 text-amber-200"><SlidersHorizontal className="size-6" /></span>
+        <span className="min-w-0 flex-1"><span className="block text-base font-semibold">学习偏好</span><span className="mt-0.5 block text-xs text-white/65">设置学习节奏、手势与朗读</span></span>
+        <span className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-2 text-sm font-medium">去调整 <ChevronRight className="size-4" /></span>
       </Link>
 
       <ul className="app-card mt-4 overflow-hidden rounded-[26px]">

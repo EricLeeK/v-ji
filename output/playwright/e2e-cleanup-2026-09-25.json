@@ -1,0 +1,426 @@
+{
+  "capturedAt": "2026-09-25T14:06:17.070Z",
+  "targets": [
+    {
+      "id": "902a6416-c41d-4389-a779-a13e5d61fa76",
+      "name": "E2E 1789735681741",
+      "created_at": "2026-09-18T12:48:07.507067+00:00",
+      "notes": [
+        {
+          "id": "c10d93da-5bc5-48d9-b108-ebbb85e5f6c5",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "baf6f5b1-7e99-4072-9412-ec1cc0f35205",
+          "reps": 1,
+          "state": 1,
+          "note_id": "c10d93da-5bc5-48d9-b108-ebbb85e5f6c5"
+        }
+      ]
+    },
+    {
+      "id": "19ccf667-8ef4-4d68-8ca8-c2ed4e20ead0",
+      "name": "E2E 1789735787047",
+      "created_at": "2026-09-18T12:49:49.659601+00:00",
+      "notes": [
+        {
+          "id": "9e297dbe-211c-4b90-b2d9-7f93fcc7eca5",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "240c0d3c-f28a-4bc2-83a4-3a12c34594d6",
+          "reps": 1,
+          "state": 1,
+          "note_id": "9e297dbe-211c-4b90-b2d9-7f93fcc7eca5"
+        }
+      ]
+    },
+    {
+      "id": "1d373d1b-42ba-4df0-be5f-3551062462aa",
+      "name": "E2E 1789735952745",
+      "created_at": "2026-09-18T12:52:35.34532+00:00",
+      "notes": [
+        {
+          "id": "39e9d1d9-67be-44f2-8fdc-21ced2d3ba2f",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "0593a673-06d5-4385-83f9-1605de8cab85",
+          "reps": 1,
+          "state": 1,
+          "note_id": "39e9d1d9-67be-44f2-8fdc-21ced2d3ba2f"
+        }
+      ]
+    },
+    {
+      "id": "3f93881b-9c67-4477-87a7-95d9fe31aefb",
+      "name": "E2E 1789738677804",
+      "created_at": "2026-09-18T13:38:00.078946+00:00",
+      "notes": [
+        {
+          "id": "dd688ecf-743d-47f0-8ca5-5302be7943ad",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "20abad4d-39ca-4ea6-990d-30cf3e04fa4f",
+          "reps": 1,
+          "state": 1,
+          "note_id": "dd688ecf-743d-47f0-8ca5-5302be7943ad"
+        }
+      ]
+    },
+    {
+      "id": "18f6a045-7103-4ba5-ba08-0c60e278431e",
+      "name": "E2E 1789739787283",
+      "created_at": "2026-09-18T13:56:29.572239+00:00",
+      "notes": [
+        {
+          "id": "a956e689-8ccf-4fdc-a308-e6157f28c97b",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "5d8cea00-77b1-4e06-882e-d7c3e120e0eb",
+          "reps": 1,
+          "state": 1,
+          "note_id": "a956e689-8ccf-4fdc-a308-e6157f28c97b"
+        }
+      ]
+    },
+    {
+      "id": "febc4904-a529-480b-9b14-ecbe3f764b62",
+      "name": "E2E 1789740527346",
+      "created_at": "2026-09-18T14:08:49.781802+00:00",
+      "notes": [
+        {
+          "id": "330001af-cb1a-4adb-9356-82a6f641942e",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "e22d5e92-2513-415e-9294-5b122f2219f7",
+          "reps": 1,
+          "state": 1,
+          "note_id": "330001af-cb1a-4adb-9356-82a6f641942e"
+        }
+      ]
+    },
+    {
+      "id": "d360d1ce-36f1-43bf-a938-df8fcc71c746",
+      "name": "E2E 1789747919965",
+      "created_at": "2026-09-18T16:12:00.493934+00:00",
+      "notes": [
+        {
+          "id": "f9d312a5-d45e-4e23-9f3e-00d17129783a",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "a4658d17-d1a5-4181-b388-bd6393a8e99d",
+          "reps": 1,
+          "state": 1,
+          "note_id": "f9d312a5-d45e-4e23-9f3e-00d17129783a"
+        }
+      ]
+    },
+    {
+      "id": "5843b80c-1c7a-4426-b09c-e75f92594531",
+      "name": "E2E 1789747975112",
+      "created_at": "2026-09-18T16:12:55.497448+00:00",
+      "notes": [
+        {
+          "id": "b188047a-cf44-467c-aa40-f58dcb96220b",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "c120735b-a059-42bd-a636-08855b459d18",
+          "reps": 1,
+          "state": 1,
+          "note_id": "b188047a-cf44-467c-aa40-f58dcb96220b"
+        }
+      ]
+    },
+    {
+      "id": "d7fc406b-87f9-45ac-9cfe-b1fe782b62d7",
+      "name": "E2E 1789750126202",
+      "created_at": "2026-09-18T16:48:46.582178+00:00",
+      "notes": [
+        {
+          "id": "7d653dfb-6516-42d9-8930-9bfcfb161a06",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "9ef6f4e4-7379-4c5c-a3e7-2ff7433ddaa3",
+          "reps": 0,
+          "state": 0,
+          "note_id": "7d653dfb-6516-42d9-8930-9bfcfb161a06"
+        }
+      ]
+    },
+    {
+      "id": "9f4372a3-d374-49c9-b85d-5f82b2bf7d01",
+      "name": "E2E 1789750173194",
+      "created_at": "2026-09-18T16:49:33.609956+00:00",
+      "notes": [
+        {
+          "id": "20ee6466-c76d-4655-969f-8e2229604ca3",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "542495b4-7415-48ad-84a1-54dc06cc87d5",
+          "reps": 0,
+          "state": 0,
+          "note_id": "20ee6466-c76d-4655-969f-8e2229604ca3"
+        }
+      ]
+    },
+    {
+      "id": "4b8e9315-51c3-4134-8892-543841e5a24a",
+      "name": "E2E 1789783585952",
+      "created_at": "2026-09-19T02:06:26.267441+00:00",
+      "notes": [
+        {
+          "id": "bd38fcfb-344e-4c6e-944c-4f3b01e5cb1c",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "526ab6fa-593d-4e7d-a7fc-325ac028648b",
+          "reps": 1,
+          "state": 1,
+          "note_id": "bd38fcfb-344e-4c6e-944c-4f3b01e5cb1c"
+        }
+      ]
+    },
+    {
+      "id": "e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+      "name": "E2E 1789783826308",
+      "created_at": "2026-09-19T02:10:26.618419+00:00",
+      "notes": [
+        {
+          "id": "332a3bc2-bb0a-456d-be20-35e0370f7b11",
+          "type": "qa",
+          "fields": {
+            "answer": "4",
+            "question": "2+2 等于多少？"
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": "41181267-2f4a-454b-a6d1-01aa3fa35601",
+          "reps": 1,
+          "state": 1,
+          "note_id": "332a3bc2-bb0a-456d-be20-35e0370f7b11"
+        }
+      ]
+    }
+  ],
+  "reviewLogs": [
+    {
+      "id": "f030b071-fe8b-49ee-a631-4efdf68ff09c",
+      "card_id": "baf6f5b1-7e99-4072-9412-ec1cc0f35205",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T12:58:22.354+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T12:48:24.921396+00:00",
+      "duration_ms": 1735
+    },
+    {
+      "id": "50cca97d-e35e-45e0-b435-29074d1493d4",
+      "card_id": "240c0d3c-f28a-4bc2-83a4-3a12c34594d6",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T12:59:54.826+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T12:49:57.318258+00:00",
+      "duration_ms": 773
+    },
+    {
+      "id": "a6c97b2d-d5c2-4d00-bf09-af374369a1a9",
+      "card_id": "0593a673-06d5-4385-83f9-1605de8cab85",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T13:02:40.717+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T12:52:43.752164+00:00",
+      "duration_ms": 542
+    },
+    {
+      "id": "f2a79d04-92ba-4083-88e8-9c8e60570944",
+      "card_id": "20abad4d-39ca-4ea6-990d-30cf3e04fa4f",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T13:48:01.598+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T13:38:03.925273+00:00",
+      "duration_ms": 568
+    },
+    {
+      "id": "65a986db-63cf-4b06-a0c7-80c63323f271",
+      "card_id": "5d8cea00-77b1-4e06-882e-d7c3e120e0eb",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T14:06:30.554+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T13:56:32.992362+00:00",
+      "duration_ms": 454
+    },
+    {
+      "id": "22e8c5b1-9e71-4d2a-8076-40af5611b974",
+      "card_id": "e22d5e92-2513-415e-9294-5b122f2219f7",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T14:18:56.042+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T14:08:58.700737+00:00",
+      "duration_ms": 568
+    },
+    {
+      "id": "60025930-48b6-4d5b-b637-15456c2faee8",
+      "card_id": "a4658d17-d1a5-4181-b388-bd6393a8e99d",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T16:22:04.438+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T16:12:04.917943+00:00",
+      "duration_ms": 454
+    },
+    {
+      "id": "f88c9500-eefe-47b3-b2e4-f65911a15be5",
+      "card_id": "c120735b-a059-42bd-a636-08855b459d18",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-18T16:22:58.944+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-18T16:12:59.306447+00:00",
+      "duration_ms": 559
+    },
+    {
+      "id": "5f020a75-433b-4283-b986-35e8f405df2c",
+      "card_id": "526ab6fa-593d-4e7d-a7fc-325ac028648b",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-19T02:16:29.531+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-19T02:06:29.66891+00:00",
+      "duration_ms": 529
+    },
+    {
+      "id": "3b9d5ee8-ef2d-4f08-be43-f62be18411fd",
+      "card_id": "41181267-2f4a-454b-a6d1-01aa3fa35601",
+      "owner_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "rating": 3,
+      "state": 1,
+      "due": "2026-09-19T02:20:30.598+00:00",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "elapsed_days": 0,
+      "scheduled_days": 0,
+      "review_at": "2026-09-19T02:10:30.761404+00:00",
+      "duration_ms": 484
+    }
+  ],
+  "preservedDeckIds": [
+    "b6031604-8fbb-4b94-a71a-d3e017a0a8e7"
+  ]
+}

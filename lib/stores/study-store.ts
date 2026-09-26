@@ -27,9 +27,13 @@ export type ReviewPayload = {
     reps: number;
   };
   previous: QueueCard;
+  /** Local rollback only. Never serialize the queue into a server action. */
+  checkpoint: { queue: QueueCard[]; reviews: number; sessionId: number };
+
 };
 
 type StudyState = {
+  sessionId: number;
   queue: QueueCard[];
   face: StudyFace;
   /** Ratings submitted this session (includes Again). Used for the done screen. */
@@ -42,11 +46,14 @@ type StudyState = {
   settings: UserSettings;
   hydrate: (queue: QueueCard[], settings: UserSettings) => void;
   showAnswer: () => void;
+  postpone: () => boolean;
+  removeCard: (cardId: string) => void;
   rate: (rating: Grade) => ReviewPayload | null;
   restore: (payload: ReviewPayload) => void;
 };
 
 export const useStudyStore = create<StudyState>((set, get) => ({
+  sessionId: 0,
   queue: [],
   face: "front",
   reviews: 0,
@@ -57,6 +64,7 @@ export const useStudyStore = create<StudyState>((set, get) => ({
   settings: DEFAULT_SETTINGS,
   hydrate(queue, settings) {
     set({
+      sessionId: get().sessionId + 1,
       queue,
       settings,
       face: queue.length ? "front" : "done",
@@ -69,6 +77,17 @@ export const useStudyStore = create<StudyState>((set, get) => ({
   },
   showAnswer() {
     if (get().face === "front") set({ face: "back" });
+  },
+  postpone() {
+    const { queue } = get();
+    if (queue.length < 2) return false;
+    set({ queue: [...queue.slice(1), queue[0]], face: "front", cardStartedAt: Date.now() });
+    return true;
+  },
+  removeCard(cardId) {
+    const { queue, total } = get();
+    const next = queue.filter(card => card.id !== cardId);
+    set({ queue: next, total: total - (queue.length - next.length), face: next.length ? "front" : "done", cardStartedAt: Date.now(), finishedAt: next.length ? 0 : Date.now() });
   },
   rate(rating) {
     const { queue, face, cardStartedAt, settings } = get();
@@ -93,6 +112,7 @@ export const useStudyStore = create<StudyState>((set, get) => ({
         reps: current.reps,
       },
       previous: current,
+      checkpoint: { queue, reviews: get().reviews, sessionId: get().sessionId },
     };
     const updated = { ...current, ...next };
     const rest = queue.slice(1);
@@ -108,17 +128,13 @@ export const useStudyStore = create<StudyState>((set, get) => ({
     return payload;
   },
   restore(payload) {
-    set((state) => {
-      const found = state.queue.some((card) => card.id === payload.cardId);
-      return {
-      queue: found
-        ? state.queue.map((card) => (card.id === payload.cardId ? payload.previous : card))
-        : [payload.previous, ...state.queue],
+    if (get().sessionId !== payload.checkpoint.sessionId) return;
+    set({
+      queue: payload.checkpoint.queue,
+      reviews: payload.checkpoint.reviews,
       face: "front",
-      reviews: Math.max(0, state.reviews - 1),
       cardStartedAt: Date.now(),
       finishedAt: 0,
-      };
     });
   },
 }));

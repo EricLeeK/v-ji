@@ -17,29 +17,23 @@ export function ImageUpload({
   const [uploading, setUploading] = useState(false);
 
   async function onFile(file: File | undefined) {
-    if (!file) return;
+    if (!file || uploading) return;
+    if (!file.type.startsWith("image/")) { toast.error("请选择图片文件"); return; }
+    if (file.size > 10 * 1024 * 1024) { toast.error("图片请控制在 10 MB 以内"); return; }
     setUploading(true);
-    const supabase = createClient();
-    const { data: claims } = await supabase.auth.getClaims();
-    const uid = claims?.claims?.sub;
-    if (!uid || typeof uid !== "string") {
-      setUploading(false);
-      toast.error("请先登录");
-      return;
-    }
-    const ext = file.name.split(".").pop() || "jpg";
-    const path = `${uid}/${crypto.randomUUID()}.${ext}`;
-    const { error } = await supabase.storage.from("card-images").upload(path, file, {
-      upsert: false,
-      contentType: file.type,
-    });
-    if (error) {
-      setUploading(false);
-      toast.error(error.message);
-      return;
-    }
-    onChange(`/api/card-images?path=${encodeURIComponent(path)}`);
-    setUploading(false);
+    try {
+      const supabase = createClient();
+      const { data: claims } = await supabase.auth.getClaims();
+      const uid = claims?.claims?.sub;
+      if (!uid || typeof uid !== "string") { toast.error("请先登录"); return; }
+      const ext = file.name.split(".").pop() || "jpg";
+      const path = `${uid}/${crypto.randomUUID()}.${ext}`;
+      const { error } = await supabase.storage.from("card-images").upload(path, file, { upsert: false, contentType: file.type });
+      if (error) { toast.error(error.message); return; }
+      onChange(`/api/card-images?path=${encodeURIComponent(path)}`);
+      toast.success("图片已上传");
+    } catch { toast.error("上传失败，请检查网络后重试"); }
+    finally { setUploading(false); }
   }
 
   return (
@@ -70,7 +64,7 @@ export function ImageUpload({
           />
         </label>
         {value ? (
-          <Button type="button" variant="ghost" size="sm" onClick={() => onChange(undefined)}>
+          <Button type="button" variant="ghost" size="sm" disabled={uploading} onClick={() => onChange(undefined)}>
             移除
           </Button>
         ) : null}

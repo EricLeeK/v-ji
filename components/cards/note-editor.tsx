@@ -1,18 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { cloneElement, isValidElement, useId, useState } from "react";
 import { emptyFields, parseFields, sanitizeChoiceFields, TEMPLATES, validateNoteFields, type NoteFields } from "@/lib/templates";
+import { useAction } from "@/lib/hooks/use-action";
 import { saveNote } from "@/app/actions/notes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ChoiceEditor } from "@/components/cards/choice-editor";
-import { ClozeEditor } from "@/components/cards/cloze-editor";
+import dynamic from "next/dynamic";
 import { ImageUpload } from "@/components/cards/image-upload";
 import type { Json, NoteType } from "@/types/database";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+
+const loadClozeEditor = () => import("@/components/cards/cloze-editor");
+const ClozeEditor = dynamic(() => loadClozeEditor().then((module) => module.ClozeEditor), {
+  loading: () => <div role="status" className="flex min-h-40 items-center justify-center rounded-xl border border-input text-sm text-muted-foreground">正在加载挖空编辑器…</div>,
+});
 
 export function NoteEditor({
   deckId,
@@ -30,9 +35,10 @@ export function NoteEditor({
   const [fields, setFields] = useState<NoteFields>(
     initialFields ? parseFields(initialFields) : emptyFields(initialType ?? "qa"),
   );
-  const [saving, setSaving] = useState(false);
+  const { pending: saving, run } = useAction();
 
   function changeType(next: NoteType) {
+    if (next === type) return;
     setType(next);
     setFields(emptyFields(next));
   }
@@ -52,30 +58,23 @@ export function NoteEditor({
       const sanitized = sanitizeChoiceFields(fields);
       if (sanitized) fieldsToSave = { ...fields, ...sanitized };
     }
-    setSaving(true);
-    const result = await saveNote({
-      noteId,
-      deckId,
-      type,
-      fields: fieldsToSave as Json,
+    await run(() => saveNote({ noteId, deckId, type, fields: fieldsToSave as Json }), () => {
+      toast.success("卡片已保存");
+      router.push(`/decks/${deckId}`);
+      router.refresh();
     });
-    setSaving(false);
-    if (result.error) {
-      toast.error(result.error);
-      return;
-    }
-    toast.success("卡片已保存");
-    router.push(`/decks/${deckId}`);
-    router.refresh();
   }
 
   return (
-    <div className="space-y-5">
+    <fieldset disabled={saving} aria-busy={saving} className="space-y-5">
       <div className="grid grid-cols-2 gap-2">
         {TEMPLATES.map((item) => (
           <button
             key={item.type}
             type="button"
+            onPointerEnter={() => { if (item.type === "cloze") void loadClozeEditor(); }}
+            onFocus={() => { if (item.type === "cloze") void loadClozeEditor(); }}
+            aria-pressed={type === item.type}
             onClick={() => changeType(item.type)}
             className={`rounded-2xl border px-3 py-2.5 text-left ${
               type === item.type ? "border-primary bg-primary/10" : "border-border"
@@ -93,7 +92,7 @@ export function NoteEditor({
       <Button className="h-11 w-full rounded-full" onClick={onSave} disabled={saving}>
         {saving ? "保存中..." : "保存卡片"}
       </Button>
-    </div>
+    </fieldset>
   );
 }
 
@@ -173,10 +172,11 @@ export function TemplateFields({
 }
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  const id = useId();
   return (
-    <label className="block space-y-1.5">
-      <Label>{label}</Label>
-      {children}
+    <label htmlFor={id} className="block space-y-1.5">
+      <span className="text-sm font-medium">{label}</span>
+      {isValidElement<{ id?: string; "aria-label"?: string }>(children) ? cloneElement(children, { id, "aria-label": label }) : children}
     </label>
   );
 }

@@ -1,8 +1,9 @@
 "use client";
 
+import { toast } from "sonner";
 import { useState } from "react";
 import { TemplateFields } from "@/components/cards/note-editor";
-import { emptyFields, parseFields, sanitizeChoiceFields, type NoteFields } from "@/lib/templates";
+import { emptyFields, parseFields, sanitizeChoiceFields, validateNoteFields, type NoteFields } from "@/lib/templates";
 import { Button } from "@/components/ui/button";
 import type { Json, NoteType } from "@/types/database";
 
@@ -35,6 +36,9 @@ export function DraftEditor({
           className="flex-1 rounded-full"
           disabled={saving}
           onClick={async () => {
+            if (saving) return;
+            const invalid = validateNoteFields(nextType, nextFields);
+            if (invalid) { toast.error(invalid); return; }
             let fieldsToSave = nextFields;
             if (nextType === "choice") {
               const sanitized = sanitizeChoiceFields(nextFields);
@@ -42,13 +46,14 @@ export function DraftEditor({
               fieldsToSave = { ...nextFields, ...sanitized };
             }
             setSaving(true);
-            await onSave({ type: nextType, fields: fieldsToSave as Json, layout });
-            setSaving(false);
+            try { await onSave({ type: nextType, fields: fieldsToSave as Json, layout }); toast.success("草稿已保存"); }
+            catch (error) { toast.error(error instanceof Error ? error.message : "保存失败，请重试"); }
+            finally { setSaving(false); }
           }}
         >
-          保存修改
+          {saving ? "保存中…" : "保存修改"}
         </Button>
-        <Button variant="ghost" className="rounded-full" onClick={onCancel}>
+        <Button disabled={saving} variant="ghost" className="rounded-full" onClick={onCancel}>
           取消
         </Button>
       </div>

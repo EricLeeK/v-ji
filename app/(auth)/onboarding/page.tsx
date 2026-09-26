@@ -31,32 +31,37 @@ const SLIDES = [
 export default function OnboardingPage() {
   const [index, setIndex] = useState(0);
   const router = useRouter();
+  const finish = () => router.push(new URLSearchParams(window.location.search).get("returnTo") === "/me" ? "/me" : "/login");
   const last = index === SLIDES.length - 1;
   const slide = SLIDES[index];
 
   return (
     <div className="min-h-dvh bg-[#d7e4df]">
       <div className="mx-auto flex min-h-dvh w-full max-w-[430px] flex-col bg-background px-6 py-10">
-        <div className="flex-1 pt-16 text-center">
+        <div key={index} className="study-card-content flex-1 pt-16 text-center">
           <div className="mx-auto mb-8 flex size-28 items-center justify-center rounded-[32px] bg-primary/10 text-primary"><AppIcon name={slide.icon} className="size-14" /></div>
           <h1 className="text-2xl font-semibold">{slide.title}</h1>
           <p className="mt-4 text-sm leading-7 text-muted-foreground">{slide.body}</p>
         </div>
         <div className="flex justify-center gap-1.5 pb-6">
           {SLIDES.map((_, i) => (
-            <span
+            <button
+              type="button"
+              aria-label={`第 ${i + 1} 步：${SLIDES[i].title}`}
+              aria-current={i === index ? "step" : undefined}
+              onClick={() => setIndex(i)}
               key={i}
-              className={`h-1.5 rounded-full ${i === index ? "w-6 bg-primary" : "w-1.5 bg-muted"}`}
+              className={`relative h-1.5 rounded-full after:absolute after:-inset-y-3 after:-inset-x-1 transition-all ${i === index ? "w-6 bg-primary" : "w-1.5 bg-muted"}`}
             />
           ))}
         </div>
         <div className="flex gap-3 pb-4">
-          <Button variant="ghost" className="flex-1 rounded-full" onClick={() => router.push("/login")}>
+          <Button variant="ghost" className="flex-1 rounded-full" onClick={finish}>
             跳过
           </Button>
           <Button
             className="flex-1 rounded-full"
-            onClick={() => (last ? router.push("/login") : setIndex((n) => n + 1))}
+            onClick={() => (last ? finish() : setIndex((n) => n + 1))}
           >
             {last ? "开始使用" : "下一步"}
           </Button>

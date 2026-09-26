@@ -117,3 +117,48 @@ describe("study store transitions", () => {
     expect(state.face).toBe("front");
   });
 });
+
+it('rolls back all unsaved dependent ratings including repeated Again on the same card', () => {
+  const original = [fakeCard('a', 'A'), fakeCard('b', 'B')];
+  useStudyStore.getState().hydrate(original, DEFAULT_SETTINGS);
+  useStudyStore.getState().showAnswer();
+  const failed = useStudyStore.getState().rate(Rating.Again)!;
+  useStudyStore.getState().showAnswer();
+  useStudyStore.getState().rate(Rating.Good);
+  useStudyStore.getState().showAnswer();
+  useStudyStore.getState().rate(Rating.Good);
+  useStudyStore.getState().restore(failed);
+  expect(useStudyStore.getState().queue).toEqual(original);
+  expect(useStudyStore.getState().reviews).toBe(0);
+  expect(useStudyStore.getState().face).toBe('front');
+});
+
+it('does not restore a failed old session over a freshly opened session', () => {
+  useStudyStore.getState().hydrate([fakeCard('a', 'A')], DEFAULT_SETTINGS);
+  useStudyStore.getState().showAnswer();
+  const old = useStudyStore.getState().rate(Rating.Good)!;
+  const nextSession = [fakeCard('b', 'B')];
+  useStudyStore.getState().hydrate(nextSession, DEFAULT_SETTINGS);
+  useStudyStore.getState().restore(old);
+  expect(useStudyStore.getState().queue).toEqual(nextSession);
+});
+
+it('postpones the current card without grading it or changing progress', () => {
+  const cards = [fakeCard('a', 'A'), fakeCard('b', 'B')];
+  useStudyStore.getState().hydrate(cards, DEFAULT_SETTINGS);
+  useStudyStore.getState().showAnswer();
+  expect(useStudyStore.getState().postpone()).toBe(true);
+  expect(useStudyStore.getState()).toMatchObject({ queue: [cards[1], cards[0]], reviews: 0, total: 2, face: 'front' });
+  useStudyStore.getState().hydrate([cards[0]], DEFAULT_SETTINGS);
+  expect(useStudyStore.getState().postpone()).toBe(false);
+  expect(useStudyStore.getState().queue).toEqual([cards[0]]);
+});
+
+it('removes a suspended card without recording a review', () => {
+  const cards = [fakeCard('a', 'A'), fakeCard('b', 'B')];
+  useStudyStore.getState().hydrate(cards, DEFAULT_SETTINGS);
+  useStudyStore.getState().removeCard('a');
+  expect(useStudyStore.getState()).toMatchObject({ queue: [cards[1]], reviews: 0, total: 1, face: 'front' });
+  useStudyStore.getState().removeCard('b');
+  expect(useStudyStore.getState()).toMatchObject({ queue: [], reviews: 0, total: 0, face: 'done' });
+});

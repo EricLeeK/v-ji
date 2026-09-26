@@ -41,7 +41,7 @@ export function GenerateSettingsSheet({
   const selected = settings.types === "auto" ? [] : settings.types;
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto rounded-t-3xl">
+      <SheetContent side="bottom" className="mx-auto max-w-[430px] max-h-[85dvh] overflow-y-auto rounded-t-3xl">
         <SheetHeader>
           <SheetTitle>生成设置</SheetTitle>
         </SheetHeader>
@@ -92,6 +92,7 @@ export function GenerateSettingsSheet({
                 自动决定
               </Chip>
               <Input
+                aria-label="生成数量上限"
                 type="number"
                 min={1}
                 max={100}
@@ -161,6 +162,8 @@ export function GenerateSettingsSheet({
               </Chip>
               {!deckId ? (
                 <Input
+                  aria-label="新卡片盒名称"
+                  maxLength={80}
                   placeholder="新卡片盒名称"
                   value={newDeckName}
                   onChange={(event) => onNewDeckName(event.target.value)}
@@ -188,6 +191,7 @@ function Chip({
 }) {
   return (
     <button
+      aria-pressed={active}
       type="button"
       onClick={onClick}
       className={cn(

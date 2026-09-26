@@ -23,6 +23,8 @@
 /public/swe-worker*.js
 /test-results
 /playwright-report
+/.playwright-cli/
+/supabase/.temp/
 
 # misc
 .DS_Store

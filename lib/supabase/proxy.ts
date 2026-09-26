@@ -51,7 +51,8 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (user && (path === "/login" || path === "/onboarding")) {
+  // The guide is also linked from the signed-in profile page.
+  if (user && path === "/login") {
     const url = request.nextUrl.clone();
     url.pathname = "/today";
     return NextResponse.redirect(url);

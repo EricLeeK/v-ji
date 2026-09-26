@@ -1,6 +1,6 @@
 "use client";
 
-import { GripVertical, Trash2 } from "lucide-react";
+import { FileText, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import type { PendingSource } from "@/components/ai/source-input";
 
@@ -19,9 +19,9 @@ export function SourceList({
       {sources.map((source, index) => (
         <li key={source.id} className="rounded-2xl border border-border bg-card px-3 py-2.5">
           <div className="flex items-start gap-2">
-            <GripVertical className="mt-1 size-4 text-muted-foreground" />
+            <FileText className="mt-1 size-4 text-muted-foreground" />
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium">
+              <p className="text-sm font-medium [overflow-wrap:anywhere]">
                 {index + 1}. {source.name}
               </p>
               <p className="text-[11px] text-muted-foreground">
@@ -32,6 +32,7 @@ export function SourceList({
                 <div className="mt-2 flex items-center gap-2 text-xs">
                   <span className="text-muted-foreground">页码</span>
                   <Input
+                    aria-label={`${source.name} 页码`}
                     type="number"
                     min={1}
                     className="h-8 w-16"
@@ -45,6 +46,7 @@ export function SourceList({
                   />
                   <span>-</span>
                   <Input
+                    aria-label={`${source.name} 页码`}
                     type="number"
                     min={1}
                     className="h-8 w-16"
@@ -59,7 +61,7 @@ export function SourceList({
                 </div>
               ) : null}
             </div>
-            <button type="button" onClick={() => onRemove(source.id)} aria-label="删除资料">
+            <button className="flex size-10 shrink-0 items-center justify-center rounded-xl hover:bg-muted" type="button" onClick={() => onRemove(source.id)} aria-label="删除资料">
               <Trash2 className="size-4 text-muted-foreground" />
             </button>
           </div>

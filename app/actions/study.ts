@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { isDateKey, localDateKey } from "@/lib/dates";
 import { type Grade, type FsrsCardPatch } from "@/lib/srs/scheduler";
 import { createClient, getUserId } from "@/lib/supabase/server";
+import { safeNextPath } from "@/lib/site-url";
 
 export async function submitReview(input: {
   cardId: string;
@@ -41,8 +42,8 @@ export async function submitReview(input: {
   return {};
 }
 
-export async function exitStudy(next: "/today" | "/me/stats" | "/decks" = "/today") {
+export async function exitStudy(next = "/today") {
   revalidatePath("/today");
   revalidatePath("/me/stats");
-  redirect(next);
+  redirect(safeNextPath(next));
 }

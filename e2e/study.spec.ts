@@ -1,13 +1,12 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
-test("demo user can create a card and rate it in a study session", async ({ page }) => {
+test("demo user can create a card and rate it in a study session", async ({ page, testDeck }) => {
   await page.goto("/login");
   await page.getByRole("button", { name: "使用演示账号" }).click();
   await page.waitForURL("**/today", { timeout: 25_000 });
 
-  const name = `E2E ${Date.now()}`;
   await page.goto("/decks/new");
-  await page.getByPlaceholder("例如：考研英语").fill(name);
+  await page.getByPlaceholder("例如：考研英语").fill(testDeck.name);
   await page.getByRole("button", { name: "创建" }).click();
   await page.waitForURL(/\/decks\/[0-9a-f-]+$/);
 
@@ -22,7 +21,8 @@ test("demo user can create a card and rate it in a study session", async ({ page
   await page.getByRole("button", { name: "显示答案" }).click();
   await expect(page.getByText("4", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "记得" }).click();
-  await expect(page.getByText(/还剩 0|今日已完成|本轮已完成/)).toBeVisible();
+  // Wait for the background save before fixture teardown deletes the test card.
+  await expect(page.getByRole("heading", { name: "本轮已完成", exact: true })).toBeVisible();
 });
 
 test("study swipe surface keeps the viewport fixed during a horizontal gesture", async ({ page }) => {

@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "unsupported speech reports the limitation instead of silently failing",
+    "page-open reminder triggers at the configured time",
+    "reminder is deduplicated per owner/day",
+    "reminder action opens study",
+    "search icon focuses the input",
+    "book chapter expands a preview",
+    "joined book opens its exact deck",
+    "new deck form creates and navigates to persisted deck",
+    "deck deletion confirms and removes only the disposable deck",
+    "signed-in guide also works in production build",
+    "login failure retains input and enables retry",
+    "demo login works after a failed attempt",
+    "sign out returns to login",
+    "production routes have no unhandled client errors"
+  ],
+  "errors": [],
+  "cleanup": true
+}

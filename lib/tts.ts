@@ -1,7 +1,7 @@
 "use client";
 
-export function speak(text: string, options?: { lang?: string; rate?: number; voice?: string }) {
-  if (typeof window === "undefined" || !window.speechSynthesis) return;
+export function speak(text: string, options?: { lang?: string; rate?: number; voice?: string }, events?: { onEnd: () => void; onError: (error: string) => void }) {
+  if (typeof window === "undefined" || !window.speechSynthesis || !window.SpeechSynthesisUtterance) return false;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = options?.lang || "zh-CN";
   utterance.rate = options?.rate ?? 1;
@@ -12,7 +12,13 @@ export function speak(text: string, options?: { lang?: string; rate?: number; vo
     if (voice) utterance.voice = voice;
   }
   window.speechSynthesis.cancel();
+  utterance.onend = () => events?.onEnd();
+  utterance.onerror = event => {
+    if (event.error === "interrupted" || event.error === "canceled") events?.onEnd();
+    else events?.onError("朗读未能启动，请检查设备音量或在设置中更换音色");
+  };
   window.speechSynthesis.speak(utterance);
+  return true;
 }
 
 export function listVoices() {

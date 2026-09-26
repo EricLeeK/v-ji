@@ -1,0 +1,258 @@
+[
+  {
+    "name": "today 320 fits",
+    "ok": true,
+    "data": {
+      "width": 320,
+      "scroll": 320,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Real week 320",
+    "ok": true
+  },
+  {
+    "name": "Removed mock plan 320",
+    "ok": true
+  },
+  {
+    "name": "decks 320 fits",
+    "ok": true,
+    "data": {
+      "width": 320,
+      "scroll": 320,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Stable colors when filtering 320",
+    "ok": true
+  },
+  {
+    "name": "Deck colors 320",
+    "ok": true,
+    "data": [
+      "apricot",
+      "apricot"
+    ]
+  },
+  {
+    "name": "library 320 fits",
+    "ok": true,
+    "data": {
+      "width": 320,
+      "scroll": 320,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Hide zero in list 320",
+    "ok": true
+  },
+  {
+    "name": "Hide zero second batch",
+    "ok": true
+  },
+  {
+    "name": "Hide zero detail 11111111-1111-4111-8111-111111111111",
+    "ok": true
+  },
+  {
+    "name": "Hide zero detail 22222222-2222-4222-8222-222222222222",
+    "ok": true
+  },
+  {
+    "name": "Actual chapter count",
+    "ok": true
+  },
+  {
+    "name": "Hide zero detail 44444444-4444-4444-8444-444444444444",
+    "ok": true
+  },
+  {
+    "name": "Supporting color contrast 320",
+    "ok": true,
+    "data": [
+      {
+        "tone": "sky",
+        "ratio": 6.752166475751351
+      },
+      {
+        "tone": "mint",
+        "ratio": 6.935088253540472
+      },
+      {
+        "tone": "apricot",
+        "ratio": 6.584848006957621
+      },
+      {
+        "tone": "apricot",
+        "ratio": 6.584848006957621
+      },
+      {
+        "tone": "sky",
+        "ratio": 6.752166475751351
+      }
+    ]
+  },
+  {
+    "name": "today 390 fits",
+    "ok": true,
+    "data": {
+      "width": 390,
+      "scroll": 390,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Real week 390",
+    "ok": true
+  },
+  {
+    "name": "Removed mock plan 390",
+    "ok": true
+  },
+  {
+    "name": "decks 390 fits",
+    "ok": true,
+    "data": {
+      "width": 390,
+      "scroll": 390,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Stable colors when filtering 390",
+    "ok": true
+  },
+  {
+    "name": "Deck colors 390",
+    "ok": true,
+    "data": [
+      "apricot",
+      "apricot"
+    ]
+  },
+  {
+    "name": "library 390 fits",
+    "ok": true,
+    "data": {
+      "width": 390,
+      "scroll": 390,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Hide zero in list 390",
+    "ok": true
+  },
+  {
+    "name": "Supporting color contrast 390",
+    "ok": true,
+    "data": [
+      {
+        "tone": "sky",
+        "ratio": 6.752166475751351
+      },
+      {
+        "tone": "mint",
+        "ratio": 6.935088253540472
+      },
+      {
+        "tone": "apricot",
+        "ratio": 6.584848006957621
+      },
+      {
+        "tone": "apricot",
+        "ratio": 6.584848006957621
+      },
+      {
+        "tone": "sky",
+        "ratio": 6.752166475751351
+      }
+    ]
+  },
+  {
+    "name": "today 1280 fits",
+    "ok": true,
+    "data": {
+      "width": 1280,
+      "scroll": 1280,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Real week 1280",
+    "ok": true
+  },
+  {
+    "name": "Removed mock plan 1280",
+    "ok": true
+  },
+  {
+    "name": "decks 1280 fits",
+    "ok": true,
+    "data": {
+      "width": 1280,
+      "scroll": 1280,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Stable colors when filtering 1280",
+    "ok": true
+  },
+  {
+    "name": "Deck colors 1280",
+    "ok": true,
+    "data": [
+      "apricot",
+      "apricot"
+    ]
+  },
+  {
+    "name": "library 1280 fits",
+    "ok": true,
+    "data": {
+      "width": 1280,
+      "scroll": 1280,
+      "ellipses": 0
+    }
+  },
+  {
+    "name": "Hide zero in list 1280",
+    "ok": true
+  },
+  {
+    "name": "Supporting color contrast 1280",
+    "ok": true,
+    "data": [
+      {
+        "tone": "sky",
+        "ratio": 6.752166475751351
+      },
+      {
+        "tone": "mint",
+        "ratio": 6.935088253540472
+      },
+      {
+        "tone": "apricot",
+        "ratio": 6.584848006957621
+      },
+      {
+        "tone": "apricot",
+        "ratio": 6.584848006957621
+      },
+      {
+        "tone": "sky",
+        "ratio": 6.752166475751351
+      }
+    ]
+  },
+  {
+    "name": "No browser exceptions",
+    "ok": true,
+    "data": []
+  }
+]

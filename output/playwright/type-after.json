@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "route": "library",
+      "width": 320,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "library",
+      "width": 360,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "library",
+      "width": 393,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "library",
+      "width": 430,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "library",
+      "width": 1280,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 320,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 360,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 393,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 430,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "decks",
+      "width": 1280,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 320,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 360,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 393,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 430,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "today",
+      "width": 1280,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "library-long-text-150-percent",
+      "width": 320,
+      "pageHeading": "36px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "book-detail",
+      "width": 320,
+      "pageHeading": "20px",
+      "overflow": false,
+      "clipped": []
+    },
+    {
+      "route": "deck-detail",
+      "width": 320,
+      "pageHeading": "24px",
+      "overflow": false,
+      "clipped": []
+    }
+  ],
+  "errors": []
+}

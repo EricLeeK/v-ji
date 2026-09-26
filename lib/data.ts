@@ -1,4 +1,5 @@
 import { createClient, getUserId } from "@/lib/supabase/server";
+import { cache } from "react";
 import { localDateKey } from "@/lib/dates";
 import { parseSettings } from "@/lib/settings";
 import type { QueueCard } from "@/lib/srs/queue";
@@ -9,13 +10,13 @@ type CardRow = Tables<"cards"> & {
   decks: { name: string } | null;
 };
 
-export async function getProfile() {
+export const getProfile = cache(async function getProfile() {
   const uid = await getUserId();
   if (!uid) return null;
   const supabase = await createClient();
   const { data } = await supabase.from("profiles").select("*").eq("id", uid).maybeSingle();
   return data;
-}
+});
 
 export async function getStudyQueue(deckId?: string): Promise<{
   queue: QueueCard[];

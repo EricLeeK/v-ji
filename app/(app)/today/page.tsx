@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { CalendarDays, ChevronRight, Play, Sparkles } from "lucide-react";
+import { CalendarDays, Check, ChevronRight, Flame, Play, Target } from "lucide-react";
 import { countStreak, formatDateLabel, greeting, localDateKey } from "@/lib/dates";
+import { deckTone } from "@/lib/deck-tone";
 import { parseSettings } from "@/lib/settings";
 import { buildTodayQueue } from "@/lib/srs/queue";
 import { createClient, getUserId } from "@/lib/supabase/server";
@@ -36,28 +37,34 @@ export default async function TodayPage() {
     (stats ?? []).filter((row) => row.reviews > 0).map((row) => row.date),
     today,
   );
-  const doneToday = todayNew + todayReviews;
+  // reviews already includes first-time reviews of new cards.
+  const doneToday = todayReviews;
   const todayProgress = Math.min(
     100,
     (doneToday / Math.max(doneToday + summary.queue.length, 1)) * 100,
   );
   const goalPercent = Math.min(100, Math.round((todayNew / Math.max(settings.newCardsPerDay, 1)) * 100));
-  const deckRows = (decks ?? []).map((deck) => {
-    const count = (cardRows ?? []).filter((card) => card.deck_id === deck.id).length;
-    const due = (cardRows ?? []).filter((card) => card.deck_id === deck.id && (card.state === 0 || new Date(card.due).getTime() <= Date.now())).length;
-    return { ...deck, count, due };
+  const activeDates = new Set((stats ?? []).filter(row => row.reviews > 0).map(row => row.date));
+  const recentDays = Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(`${today}T12:00:00`);
+    date.setDate(date.getDate() - 6 + index);
+    const key = localDateKey(date);
+    return { key, label: "日一二三四五六"[date.getDay()], studied: activeDates.has(key) };
   });
-  const planRows = deckRows
-    .filter((deck) => deck.due > 0)
-    .slice(0, 2)
-    .map((deck, index) => ({ ...deck, time: index === 0 ? "18:00" : "20:00" }));
+  const queuedIds = new Set(summary.queue.map(card => card.id));
+  const deckRows = (decks ?? []).map((deck) => {
+    const cards = (cardRows ?? []).filter(card => card.deck_id === deck.id);
+    const queued = cards.filter(card => queuedIds.has(card.id));
+    return { ...deck, count: cards.length, due: queued.length, newCount: queued.filter(card => card.state === 0).length };
+  });
+  const planRows = deckRows.filter(deck => deck.due > 0).slice(0, 2);
 
   return (
     <div className="app-page flex flex-1 flex-col pb-28">
-      <header className="flex items-start justify-between px-5 pt-7 pb-3">
-        <div>
+      <header className="flex items-start justify-between gap-3 px-5 pt-7 pb-3">
+        <div className="min-w-0">
           <p className="text-xs font-medium tracking-wide text-muted-foreground">{formatDateLabel()}</p>
-          <h1 className="mt-1 text-[28px] font-semibold leading-tight tracking-[-0.045em]">
+          <h1 className="app-page-title mt-1">
             {greeting()}，{profile?.nickname ?? "同学"}
           </h1>
         </div>
@@ -70,7 +77,7 @@ export default async function TodayPage() {
         <div className="app-card rounded-[30px] p-5 shadow-[0_18px_44px_rgba(30,80,60,0.1)]">
           {summary.queue.length === 0 ? (
             <div>
-              <p className="text-lg font-semibold">今日任务完成</p>
+              <p className="text-lg font-semibold">{todayReviews > 0 ? "今日任务完成" : "今日暂无待学任务"}</p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 可以去社区加一本卡册，或继续复习某个卡片盒。
               </p>
@@ -93,12 +100,12 @@ export default async function TodayPage() {
               </div>
               <p className="mt-1 text-4xl font-semibold tracking-tight">
                 {summary.queue.length}
-                <span className="ml-1 text-base font-medium tracking-normal text-muted-foreground">张卡片待复习</span>
+                <span className="ml-1 text-base font-medium tracking-normal text-muted-foreground">张卡片待学习</span>
               </p>
               <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                <Stat label="复习" value={summary.reviews.length} />
-                <Stat label="新卡" value={summary.news.length} />
-                <Stat label="约" value={`${Math.max(1, Math.ceil(summary.queue.length * 0.3))} 分`} />
+                <Stat label="复习" value={summary.reviews.length} tone="sky" />
+                <Stat label="新卡" value={summary.news.length} tone="mint" />
+                <Stat label="约" value={`${Math.max(1, Math.ceil(summary.queue.length * 0.3))} 分`} tone="apricot" />
               </div>
               <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-primary/10">
                 <div
@@ -107,8 +114,8 @@ export default async function TodayPage() {
                 />
               </div>
               <div className="mt-5 flex gap-3">
-                <Button asChild className="h-12 flex-1 rounded-full text-base active:scale-[0.98]"><Link href="/study">开始学习</Link></Button>
-                <Link href="/study" aria-label="直接开始学习" className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/15 active:scale-95"><Play className="ml-0.5 size-5 fill-current" /></Link>
+                <Button asChild className="h-12 flex-1 rounded-full text-base active:scale-[0.98]"><Link href="/study" prefetch={true}>开始学习</Link></Button>
+                <Link href="/study" prefetch={true} aria-label="直接开始学习" className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors hover:bg-primary/15 active:scale-95"><Play className="ml-0.5 size-5 fill-current" /></Link>
               </div>
             </>
           )}
@@ -116,26 +123,52 @@ export default async function TodayPage() {
       </section>
 
       <section className="grid grid-cols-2 gap-3 px-5 py-5">
-        <Link href="/me/stats" className="app-card app-card-interactive rounded-[26px] p-4 active:scale-[0.98]">
-          <div className="flex items-center justify-between"><p className="text-xs font-medium text-muted-foreground">连续打卡</p><Sparkles className="size-4 text-primary/60" /></div>
-          <p className="mt-2 text-[26px] font-semibold tracking-tight">{streak} 天</p>
-          <p className="mt-1 text-xs text-muted-foreground">继续加油！</p>
-          <div className="mt-3 flex h-7 items-end gap-1.5" aria-hidden>{[35, 38, 30, 44, 36, 54, 70].map((height, index) => <span key={index} className="flex-1 rounded-full bg-primary/20" style={{ height: `${height}%` }}><span className="block h-full rounded-full bg-primary/55" /></span>)}</div>
+        <Link href="/me/stats" data-tone="apricot" className="app-card app-card-interactive tinted-stat rounded-[26px] p-4 active:scale-[0.98]">
+          <div className="flex items-center justify-between gap-1"><p className="text-xs font-medium">连续打卡</p><Flame className="size-4 shrink-0" /></div>
+          <p className="mt-2 text-2xl font-semibold tracking-tight">{streak} 天</p>
+          <p className="mt-1 text-xs">最近 7 天</p>
+          <div className="mt-3 grid grid-cols-7 gap-1" role="list" aria-label="最近七天打卡记录">
+            {recentDays.map(day => <span key={day.key} role="listitem" aria-label={`${day.key} ${day.studied ? "已学习" : "未学习"}`} title={`${day.key} ${day.studied ? "已学习" : "未学习"}`} className="flex min-w-0 flex-col items-center gap-1">
+              <span className={`flex size-3.5 items-center justify-center rounded-full ${day.studied ? "bg-[var(--tone-ink)] text-[var(--tone-surface)]" : "border border-[var(--tone-border)]"}`}>
+                {day.studied ? <Check aria-hidden="true" className="size-2.5" strokeWidth={3} /> : null}
+              </span>
+              <span aria-hidden="true" className="text-[9px]">{day.label}</span>
+            </span>)}
+          </div>
         </Link>
-        <Link href="/decks" className="app-card app-card-interactive rounded-[26px] p-4 active:scale-[0.98]">
-          <p className="text-xs font-medium text-muted-foreground">学习目标</p>
-          <div className="mt-2 flex items-center justify-between gap-2"><div><p className="text-[26px] font-semibold tracking-tight">{settings.newCardsPerDay} <span className="text-sm font-medium">新卡</span></p><p className="mt-1 text-xs text-muted-foreground">本月目标</p></div><div className="flex size-16 items-center justify-center rounded-full" style={{ background: `conic-gradient(var(--primary) ${goalPercent * 3.6}deg, color-mix(in oklab, var(--primary) 12%, white) 0deg)` }}><div className="flex size-12 items-center justify-center rounded-full bg-card text-xs font-medium text-muted-foreground">{goalPercent}%</div></div></div>
+        <Link href="/me/settings#plan" data-tone="sky" className="app-card app-card-interactive tinted-stat rounded-[26px] p-4 active:scale-[0.98]">
+          <div className="flex items-center justify-between gap-1"><p className="text-xs font-medium">今日新卡目标</p><Target className="size-4 shrink-0" /></div>
+          <p className="mt-2 text-2xl font-semibold tracking-tight">{settings.newCardsPerDay} <span className="text-[0.8125rem] font-medium">张</span></p>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+            <p className="text-[0.6875rem]">已学 {todayNew} 张</p>
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-full" style={{ background: `conic-gradient(var(--tone-ink) ${goalPercent * 3.6}deg, var(--tone-border) 0deg)` }}>
+              <div className="flex size-8 items-center justify-center rounded-full bg-[var(--tone-surface)] text-[0.6875rem] font-medium">{goalPercent}%</div>
+            </div>
+          </div>
         </Link>
       </section>
 
       {deckRows.length > 0 ? <section className="px-5">
-        <div className="mb-3 flex items-center justify-between"><h2 className="text-lg font-semibold tracking-tight">近期卡盒</h2><Link href="/decks" className="flex items-center gap-1 text-xs text-muted-foreground">查看全部 <ChevronRight className="size-3.5" /></Link></div>
-        <div className="grid grid-cols-3 gap-2.5">
-          {deckRows.map((deck, index) => <Link key={deck.id} href={`/decks/${deck.id}`} className="app-card app-card-interactive min-w-0 rounded-[22px] p-3 active:scale-[0.98]"><span className={`flex size-9 items-center justify-center rounded-xl ${index === 1 ? "bg-blue-50 text-blue-400" : index === 2 ? "bg-amber-50 text-amber-400" : "bg-primary/10 text-primary"}`}><DeckIcon name={deck.icon} className="size-5" /></span><p className="mt-3 line-clamp-2 min-h-10 text-xs font-medium leading-5">{deck.name}</p><p className="mt-2 text-[11px] text-muted-foreground">{deck.count} 张卡片</p><div className="mt-2 h-1 overflow-hidden rounded-full bg-primary/10"><span className="block h-full w-1/3 rounded-full bg-primary" /></div></Link>)}
+        <div className="mb-3 flex items-center justify-between"><h2 className="text-base font-semibold tracking-tight">近期卡盒</h2><Link href="/decks" className="flex items-center gap-1 text-xs text-muted-foreground">查看全部 <ChevronRight className="size-3.5" /></Link></div>
+        <div className="grid grid-cols-2 gap-2.5">
+          {deckRows.map(deck => <Link key={deck.id} href={`/decks/${deck.id}`} data-tone={deckTone(deck.id)} className="app-card app-card-interactive deck-tile min-w-0 rounded-[22px] p-3 active:scale-[0.98]">
+            <span className="tone-icon flex size-9 items-center justify-center rounded-xl"><DeckIcon name={deck.icon} className="size-5" /></span>
+            <p className="mt-3 text-[0.8125rem] font-medium leading-5 text-balance [overflow-wrap:anywhere]">{deck.name}</p>
+            <p className="mt-2 text-[11px] text-muted-foreground">{deck.count} 张卡片</p>
+          </Link>)}
         </div>
       </section> : null}
 
-      {planRows.length > 0 ? <section className="px-5 pt-5"><div className="app-card rounded-[26px] p-4"><div className="mb-3 flex items-center justify-between"><h2 className="text-lg font-semibold tracking-tight">今日计划</h2><Link href="/decks" className="flex items-center gap-1 text-xs text-muted-foreground">调整计划 <ChevronRight className="size-3.5" /></Link></div><div className="space-y-3">{planRows.map((item) => <Link key={item.id} href={`/study?deckId=${item.id}`} className="flex items-center gap-3 text-sm"><span className="w-12 text-muted-foreground">{item.time}</span><span className="size-2.5 rounded-full bg-primary" /><span className="min-w-0 flex-1 truncate">{item.name}</span><span className="text-xs text-muted-foreground">待复习 {item.due} 张</span></Link>)}</div></div></section> : null}
+      {planRows.length > 0 ? <section className="px-5 pt-5">
+        <div className="app-card rounded-[26px] p-4">
+          <div className="mb-3 flex items-center justify-between"><h2 className="text-base font-semibold tracking-tight">待学卡片盒</h2><Link href="/decks" className="flex items-center gap-1 text-xs text-muted-foreground">查看全部 <ChevronRight className="size-3.5" /></Link></div>
+          <div className="space-y-3">{planRows.map(item => <Link key={item.id} href={`/study?deckId=${item.id}`} data-tone={deckTone(item.id)} className="flex items-center gap-3 text-[0.8125rem] leading-5">
+            <span className="tone-icon flex size-9 shrink-0 items-center justify-center rounded-xl"><DeckIcon name={item.icon} className="size-4" /></span>
+            <span className="min-w-0 flex-1"><span className="block [overflow-wrap:anywhere]">{item.name}</span><span className="block text-[0.6875rem] text-muted-foreground">新卡 {item.newCount} 张 · 复习 {item.due - item.newCount} 张</span></span>
+            <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+          </Link>)}</div>
+        </div>
+      </section> : null}
 
       {(cardRows ?? []).length === 0 ? (
         <EmptyState
@@ -149,11 +182,11 @@ export default async function TodayPage() {
   );
 }
 
-function Stat({ label, value }: { label: string; value: string | number }) {
+function Stat({ label, value, tone }: { label: string; value: string | number; tone: string }) {
   return (
-    <div className="app-stat rounded-2xl py-3">
+    <div data-tone={tone} className="tinted-stat rounded-2xl py-3">
       <div className="text-lg font-semibold">{value}</div>
-      <div className="text-[11px] text-muted-foreground">{label}</div>
+      <div className="text-[11px]">{label}</div>
     </div>
   );
 }

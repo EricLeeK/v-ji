@@ -1,0 +1,31 @@
+import { test, expect } from './fixtures';
+import { appendFile, mkdir } from 'node:fs/promises';
+
+for (const outcome of ['success', 'failure', 'timeout'] as const) {
+  test(`cleanup probe: ${outcome}`, async ({ testDeck }) => {
+    const { db, ownerId, name } = testDeck;
+    const { data, error } = await db.from('decks').insert({ owner_id: ownerId, name, icon: 'book' }).select('id').single();
+    if (error) throw error;
+    const { data: note, error: noteError } = await db.from('notes').insert({ owner_id: ownerId, deck_id: data!.id, type: 'qa', fields: { question: 'E2E cleanup probe', answer: 'temporary' } }).select('id').single();
+    if (noteError) throw noteError;
+    const { error: cardError } = await db.from('cards').insert({ owner_id: ownerId, deck_id: data!.id, note_id: note!.id, ord: 0 });
+    if (cardError) throw cardError;
+    await mkdir('output/playwright', { recursive: true });
+    await appendFile('output/playwright/cleanup-probe-created.jsonl', JSON.stringify({ outcome, name, id: data!.id }) + '\n');
+    if (outcome === 'failure') throw new Error('INTENTIONAL_CLEANUP_PROBE_FAILURE');
+    if (outcome === 'timeout') {
+      test.setTimeout(2000);
+      await new Promise(() => {});
+    }
+  });
+}
+
+test('deck list has no E2E leftovers after all cleanup outcomes', async ({ page }) => {
+  await page.goto('/login');
+  await page.getByRole('button', { name: '使用演示账号' }).click();
+  await page.waitForURL('**/today', { timeout: 25000 });
+  await page.goto('/decks');
+  await expect(page.getByRole('heading', { name: '卡片盒', exact: true })).toBeVisible();
+  await expect(page.getByText(/^E2E /)).toHaveCount(0);
+  await page.screenshot({ path: 'output/playwright/e2e-cleaned-2026-09-25.png', fullPage: true });
+});

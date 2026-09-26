@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
@@ -35,7 +35,9 @@ export function AiNewForm({
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState(false);
 
+  const lock = useRef(false);
   async function submit() {
+    if (lock.current) return;
     if (!configured) {
       toast.error(MISSING_DEEPSEEK_KEY);
       return;
@@ -44,6 +46,9 @@ export function AiNewForm({
       toast.error("请先放入资料");
       return;
     }
+    if (!deckId && !newDeckName.trim()) { toast.error("请填写新卡片盒名称"); return; }
+    if (settings.cardLimit !== "auto" && (!Number.isInteger(settings.cardLimit) || settings.cardLimit < 1 || settings.cardLimit > 100)) { toast.error("生成数量请填写 1–100 的整数"); setOpen(true); return; }
+    lock.current = true;
     setPending(true);
     try {
       const prepared = await Promise.all(sources.map((source) => prepareSource(source)));
@@ -70,12 +75,13 @@ export function AiNewForm({
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "上传失败");
     } finally {
+      lock.current = false;
       setPending(false);
     }
   }
 
   return (
-    <div className="space-y-5 pb-8">
+    <fieldset disabled={pending} aria-busy={pending} className="space-y-5 pb-8">
       {configured ? null : (
         <div
           data-testid="ai-missing-key"
@@ -126,7 +132,7 @@ export function AiNewForm({
         onDeckId={setDeckId}
         onNewDeckName={setNewDeckName}
       />
-    </div>
+    </fieldset>
   );
 }
 

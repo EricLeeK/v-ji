@@ -1,0 +1,11 @@
+{
+  "cpuSlowdown": 4,
+  "gestureCycles": 4,
+  "frameCount": 243,
+  "medianFrameMs": 16.699999999999818,
+  "p95FrameMs": 16.799999999999727,
+  "maxFrameMs": 16.800000000000182,
+  "framesOver34ms": 0,
+  "scrollY": 0,
+  "accidentalRatings": 0
+}

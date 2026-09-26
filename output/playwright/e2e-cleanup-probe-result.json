@@ -1,0 +1,12 @@
+{
+  "outcomesTested": [
+    "success",
+    "failure",
+    "timeout"
+  ],
+  "remainingProbeDecks": 0,
+  "remainingProbeNotes": 0,
+  "remainingProbeCards": 0,
+  "remainingE2EDecks": 0,
+  "originalDecksPreserved": true
+}

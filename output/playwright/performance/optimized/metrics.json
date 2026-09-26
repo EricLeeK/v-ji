@@ -1,0 +1,3182 @@
+{
+  "label": "optimized",
+  "baseURL": "http://localhost:3100",
+  "at": "2026-09-25T13:39:45.597Z",
+  "fixture": {
+    "notes": 800,
+    "account": "demo account; isolated disposable fixture deck; review writes aborted"
+  },
+  "runs": [
+    {
+      "mode": "desktop",
+      "pages": [
+        {
+          "path": "/today",
+          "readyMs": 1644.4240419999996,
+          "events": [],
+          "longTasks": [],
+          "lcp": 1052,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 13.099999964237213,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 10.600000023841858,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 12,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 16,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 17,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 23.099999964237213,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 23.30000001192093,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 25.399999976158142,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 26.30000001192093,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 26.899999976158142,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 28,
+              "type": "script"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 36.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 36.89999997615814,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 37.09999996423721,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 1014,
+              "duration": 37.700000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 180,
+              "duration": 27.19999998807907,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 43.09999996423721,
+              "type": "other"
+            },
+            {
+              "path": "/study",
+              "bytes": 179,
+              "duration": 12,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 224,
+              "duration": 12.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 1017,
+              "duration": 9.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1361,
+              "duration": 6.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 1059,
+              "duration": 7.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+              "bytes": 1060,
+              "duration": 5.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/4b8e9315-51c3-4134-8892-543841e5a24a",
+              "bytes": 1058,
+              "duration": 4.800000011920929,
+              "type": "fetch"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/today",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 1391,
+            "navigationId": 3784,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.3999999761581421,
+            "domainLookupStart": 0.3999999761581421,
+            "domainLookupEnd": 0.3999999761581421,
+            "connectStart": 0.3999999761581421,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.3999999761581421,
+            "requestStart": 1.699999988079071,
+            "responseStart": 716.3000000119209,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 716.3000000119209,
+            "responseEnd": 1388.800000011921,
+            "transferSize": 11183,
+            "encodedBodySize": 10883,
+            "decodedBodySize": 44382,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 0,
+            "unloadEventEnd": 0,
+            "domInteractive": 1389.3999999761581,
+            "domContentLoadedEventStart": 1389.3999999761581,
+            "domContentLoadedEventEnd": 1389.5999999642372,
+            "domComplete": 1390.800000011921,
+            "loadEventStart": 1390.800000011921,
+            "loadEventEnd": 1391,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "low"
+            }
+          },
+          "domNodes": 202
+        },
+        {
+          "path": "/decks",
+          "readyMs": 1591.8704160000007,
+          "events": [],
+          "longTasks": [],
+          "lcp": 1044,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 12.099999964237213,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 12.300000011920929,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 17.69999998807907,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 19.200000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 19.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 1014,
+              "duration": 32,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 12.699999988079071,
+              "type": "other"
+            },
+            {
+              "path": "/today",
+              "bytes": 5351,
+              "duration": 901.8999999761581,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6998,
+              "duration": 199.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 3709,
+              "duration": 349.80000001192093,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 179,
+              "duration": 12.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/new",
+              "bytes": 231,
+              "duration": 23.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 224,
+              "duration": 5.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 219,
+              "duration": 11.200000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 218,
+              "duration": 15.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 1016,
+              "duration": 9.900000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/new",
+              "bytes": 2221,
+              "duration": 15.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 15.599999964237213,
+              "type": "script"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 1060,
+              "duration": 21,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1458,
+              "duration": 24.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/0c7p9njkj7iah.js",
+              "bytes": 6325,
+              "duration": 8.899999976158142,
+              "type": "script"
+            },
+            {
+              "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+              "bytes": 1059,
+              "duration": 16.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1074,
+              "duration": 12.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/4b8e9315-51c3-4134-8892-543841e5a24a",
+              "bytes": 1060,
+              "duration": 16.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/9f4372a3-d374-49c9-b85d-5f82b2bf7d01",
+              "bytes": 1060,
+              "duration": 15.200000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/d7fc406b-87f9-45ac-9cfe-b1fe782b62d7",
+              "bytes": 1059,
+              "duration": 11.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/5843b80c-1c7a-4426-b09c-e75f92594531",
+              "bytes": 1061,
+              "duration": 16.399999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/d360d1ce-36f1-43bf-a938-df8fcc71c746",
+              "bytes": 1060,
+              "duration": 13.900000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/febc4904-a529-480b-9b14-ecbe3f764b62",
+              "bytes": 1061,
+              "duration": 12.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/18f6a045-7103-4ba5-ba08-0c60e278431e",
+              "bytes": 1058,
+              "duration": 8.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 179,
+              "duration": 8.100000023841858,
+              "type": "fetch"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/decks",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 580.5999999642372,
+            "navigationId": 9886,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.30000001192092896,
+            "domainLookupStart": 0.30000001192092896,
+            "domainLookupEnd": 0.30000001192092896,
+            "connectStart": 0.30000001192092896,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.30000001192092896,
+            "requestStart": 0.699999988079071,
+            "responseStart": 11.599999964237213,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 11.599999964237213,
+            "responseEnd": 247.89999997615814,
+            "transferSize": 9227,
+            "encodedBodySize": 8927,
+            "decodedBodySize": 57441,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 16.30000001192093,
+            "unloadEventEnd": 16.30000001192093,
+            "domInteractive": 579.5,
+            "domContentLoadedEventStart": 579.5,
+            "domContentLoadedEventEnd": 579.5999999642372,
+            "domComplete": 580.5,
+            "loadEventStart": 580.5,
+            "loadEventEnd": 580.5999999642372,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "low"
+            }
+          },
+          "domNodes": 377
+        },
+        {
+          "path": "/library",
+          "readyMs": 608.086874999999,
+          "events": [],
+          "longTasks": [],
+          "lcp": 480,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 13.700000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 13.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 13.799999952316284,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 1016,
+              "duration": 14,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5351,
+              "duration": 430.39999997615814,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 3707,
+              "duration": 204.89999997615814,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 2.599999964237213,
+              "type": "other"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/library/11111111-1111-4111-8111-111111111111",
+              "bytes": 206,
+              "duration": 13.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/library/33333333-3333-4333-8333-333333333333",
+              "bytes": 205,
+              "duration": 13.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 1072,
+              "duration": 6.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 1073,
+              "duration": 6.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/library/11111111-1111-4111-8111-111111111111",
+              "bytes": 1049,
+              "duration": 5.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/library/33333333-3333-4333-8333-333333333333",
+              "bytes": 1050,
+              "duration": 5.200000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/library/22222222-2222-4222-8222-222222222222",
+              "bytes": 1046,
+              "duration": 2.900000035762787,
+              "type": "fetch"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/library",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 207.0999999642372,
+            "navigationId": 7870,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.30000001192092896,
+            "domainLookupStart": 0.30000001192092896,
+            "domainLookupEnd": 0.30000001192092896,
+            "connectStart": 0.30000001192092896,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.30000001192092896,
+            "requestStart": 0.800000011920929,
+            "responseStart": 10.399999976158142,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 10.399999976158142,
+            "responseEnd": 206.0999999642372,
+            "transferSize": 14359,
+            "encodedBodySize": 14059,
+            "decodedBodySize": 47408,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 15,
+            "unloadEventEnd": 15,
+            "domInteractive": 206.30000001192093,
+            "domContentLoadedEventStart": 206.30000001192093,
+            "domContentLoadedEventEnd": 206.39999997615814,
+            "domComplete": 206.89999997615814,
+            "loadEventStart": 206.89999997615814,
+            "loadEventEnd": 207.0999999642372,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "low"
+            }
+          },
+          "domNodes": 191
+        },
+        {
+          "path": "/me",
+          "readyMs": 622.2851249999985,
+          "events": [],
+          "longTasks": [],
+          "lcp": 360,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 8.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 8.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 8.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 1011,
+              "duration": 8.399999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6998,
+              "duration": 474.80000001192093,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 2.100000023841858,
+              "type": "other"
+            },
+            {
+              "path": "/me/settings",
+              "bytes": 183,
+              "duration": 3.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 180,
+              "duration": 2.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/feedback",
+              "bytes": 231,
+              "duration": 4.700000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/onboarding",
+              "bytes": 178,
+              "duration": 7.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/settings",
+              "bytes": 1020,
+              "duration": 2.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 1016,
+              "duration": 2.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/feedback",
+              "bytes": 2224,
+              "duration": 2.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/2v6-6ygzv6toc.js",
+              "bytes": 4064,
+              "duration": 1.699999988079071,
+              "type": "script"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/me",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 227,
+            "navigationId": 4977,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.30000001192092896,
+            "domainLookupStart": 0.30000001192092896,
+            "domainLookupEnd": 0.30000001192092896,
+            "connectStart": 0.30000001192092896,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.30000001192092896,
+            "requestStart": 0.6000000238418579,
+            "responseStart": 7.800000011920929,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 7.800000011920929,
+            "responseEnd": 225.80000001192093,
+            "transferSize": 9635,
+            "encodedBodySize": 9335,
+            "decodedBodySize": 35688,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 10.900000035762787,
+            "unloadEventEnd": 10.900000035762787,
+            "domInteractive": 226.4000000357628,
+            "domContentLoadedEventStart": 226.4000000357628,
+            "domContentLoadedEventEnd": 226.60000002384186,
+            "domComplete": 226.9000000357628,
+            "loadEventStart": 226.9000000357628,
+            "loadEventEnd": 227,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 156
+        },
+        {
+          "path": "/decks/:deckId",
+          "readyMs": 884.8262080000004,
+          "events": [],
+          "longTasks": [],
+          "lcp": 688,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2mye2ill29dey.js",
+              "bytes": 13378,
+              "duration": 3.300000011920929,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 7.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 8.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 12.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 15.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5351,
+              "duration": 683.4000000357628,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 7000,
+              "duration": 373.69999998807907,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 3708,
+              "duration": 817.5999999642372,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 6.300000011920929,
+              "type": "other"
+            },
+            {
+              "path": "/study",
+              "bytes": 219,
+              "duration": 7.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/new",
+              "bytes": 233,
+              "duration": 4,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 219,
+              "duration": 3.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/dc4581d9-4216-4fb7-9dad-a5d7ff8cf2f2",
+              "bytes": 263,
+              "duration": 3.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1458,
+              "duration": 3.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/new",
+              "bytes": 1070,
+              "duration": 2.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 1073,
+              "duration": 3.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/dc4581d9-4216-4fb7-9dad-a5d7ff8cf2f2",
+              "bytes": 1101,
+              "duration": 3.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/6e320083-6895-4ad3-afa9-f830e5aa53ef",
+              "bytes": 1099,
+              "duration": 3.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/3f857bc4-69b4-4783-857c-d375059d9e50",
+              "bytes": 1101,
+              "duration": 3.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/7d08fa15-7f8f-41dd-81f1-094850e643bc",
+              "bytes": 1102,
+              "duration": 4.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/79df33d9-59f2-4a0e-9f18-f787144e6512",
+              "bytes": 1101,
+              "duration": 4.700000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/aa93c030-1cd2-4bad-b0b3-fbe67514c70d",
+              "bytes": 1099,
+              "duration": 4.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/5bac2378-19d3-425b-9305-fa4c5c8d55ae",
+              "bytes": 1101,
+              "duration": 4,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/8625d9ee-c8fd-42e0-a84e-fdcc6a7b0513",
+              "bytes": 1098,
+              "duration": 4.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/3a4f649d-8a9a-4123-8fe8-13e8fe2da9d6",
+              "bytes": 1100,
+              "duration": 4,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/1aef5274-4359-4751-be4d-1cc810916b4a",
+              "bytes": 1101,
+              "duration": 5.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/d7c949d9-968b-4f85-a1b1-6b5f7db59573",
+              "bytes": 1100,
+              "duration": 5.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/44197bf7-8478-435d-9d97-9e21aca09d93",
+              "bytes": 1100,
+              "duration": 4.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 179,
+              "duration": 3.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 179,
+              "duration": 1.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 649.2999999523163,
+            "navigationId": 6187,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.19999998807907104,
+            "domainLookupStart": 0.19999998807907104,
+            "domainLookupEnd": 0.19999998807907104,
+            "connectStart": 0.19999998807907104,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.19999998807907104,
+            "requestStart": 0.699999988079071,
+            "responseStart": 9,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 9,
+            "responseEnd": 645.3999999761581,
+            "transferSize": 50891,
+            "encodedBodySize": 50591,
+            "decodedBodySize": 315739,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 12.099999964237213,
+            "unloadEventEnd": 12.099999964237213,
+            "domInteractive": 648.5,
+            "domContentLoadedEventStart": 648.5,
+            "domContentLoadedEventEnd": 648.5999999642372,
+            "domComplete": 649.0999999642372,
+            "loadEventStart": 649.0999999642372,
+            "loadEventEnd": 649.2999999523163,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 372
+        },
+        {
+          "path": "/me/stats",
+          "readyMs": 627.2034999999996,
+          "events": [],
+          "longTasks": [],
+          "lcp": 344,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1ei69l-tb45y4.js",
+              "bytes": 953,
+              "duration": 2.800000011920929,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/23eovncimxhth.js",
+              "bytes": 105036,
+              "duration": 11.699999988079071,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 12.299999952316284,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 12.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 12.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 12.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5352,
+              "duration": 426.80000001192093,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6998,
+              "duration": 198.39999997615814,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 2155,
+              "duration": 333.0999999642372,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 1.699999988079071,
+              "type": "other"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 0,
+              "type": "script"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/me/stats",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 232,
+            "navigationId": 9313,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.3999999761581421,
+            "domainLookupStart": 0.3999999761581421,
+            "domainLookupEnd": 0.3999999761581421,
+            "connectStart": 0.3999999761581421,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.3999999761581421,
+            "requestStart": 0.800000011920929,
+            "responseStart": 7.399999976158142,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 7.399999976158142,
+            "responseEnd": 231.19999998807907,
+            "transferSize": 8193,
+            "encodedBodySize": 7893,
+            "decodedBodySize": 47745,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 9.100000023841858,
+            "unloadEventEnd": 9.100000023841858,
+            "domInteractive": 231.39999997615814,
+            "domContentLoadedEventStart": 231.39999997615814,
+            "domContentLoadedEventEnd": 231.5,
+            "domComplete": 231.80000001192093,
+            "loadEventStart": 231.80000001192093,
+            "loadEventEnd": 232,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 418
+        }
+      ],
+      "interactions": {
+        "noteSearchMs": [
+          34.250583000000915,
+          33.255042000000685,
+          33.99379100000078,
+          33.41020799999933,
+          33.692417000000205
+        ],
+        "noteSearchEvents": [
+          {
+            "name": "keydown",
+            "duration": 16
+          },
+          {
+            "name": "keyup",
+            "duration": 16
+          },
+          {
+            "name": "keydown",
+            "duration": 16
+          },
+          {
+            "name": "keyup",
+            "duration": 16
+          }
+        ],
+        "noteListNodes": 64,
+        "tabs": [
+          {
+            "name": "卡片",
+            "ms": 139.4823750000014
+          },
+          {
+            "name": "社区",
+            "ms": 83.46283399999993
+          },
+          {
+            "name": "我的",
+            "ms": 66.88820900000064
+          },
+          {
+            "name": "今日",
+            "ms": 70.45829099999901
+          }
+        ],
+        "deckFilterMs": 60.234833000000435,
+        "nextCardReadyWith1500msSaveDelay": 41.059290999999575,
+        "saveRequests": 1
+      },
+      "errors": [
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')"
+      ]
+    },
+    {
+      "mode": "mobile-4x",
+      "pages": [
+        {
+          "path": "/today",
+          "readyMs": 791.3572500000009,
+          "events": [],
+          "longTasks": [
+            57
+          ],
+          "lcp": 592,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 8.699999988079071,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 4,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 8.299999952316284,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 8.899999976158142,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 10.099999964237213,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 11.599999964237213,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 14.899999976158142,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 11.199999988079071,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 10.900000035762787,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 12,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 13.100000023841858,
+              "type": "script"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 7.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 7.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 7.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 1013,
+              "duration": 7.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6999,
+              "duration": 562.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 1.5,
+              "type": "other"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 180,
+              "duration": 5.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 179,
+              "duration": 2.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 224,
+              "duration": 2,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 1017,
+              "duration": 3.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1364,
+              "duration": 2.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 1059,
+              "duration": 2.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+              "bytes": 1061,
+              "duration": 2.399999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/4b8e9315-51c3-4134-8892-543841e5a24a",
+              "bytes": 1059,
+              "duration": 3.399999976158142,
+              "type": "fetch"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/today",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 515.3000000119209,
+            "navigationId": 8844,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.20000004768371582,
+            "domainLookupStart": 0.20000004768371582,
+            "domainLookupEnd": 0.20000004768371582,
+            "connectStart": 0.20000004768371582,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.20000004768371582,
+            "requestStart": 0.40000003576278687,
+            "responseStart": 11.600000023841858,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 11.600000023841858,
+            "responseEnd": 509.2000000476837,
+            "transferSize": 11183,
+            "encodedBodySize": 10883,
+            "decodedBodySize": 44382,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 0,
+            "unloadEventEnd": 0,
+            "domInteractive": 513.1000000238419,
+            "domContentLoadedEventStart": 513.1000000238419,
+            "domContentLoadedEventEnd": 513.7000000476837,
+            "domComplete": 514.2000000476837,
+            "loadEventStart": 514.2000000476837,
+            "loadEventEnd": 515.3000000119209,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 202
+        },
+        {
+          "path": "/decks",
+          "readyMs": 701.2055420000033,
+          "events": [],
+          "longTasks": [],
+          "lcp": 468,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 2,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 2.099999964237213,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 5.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 6,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 6.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 1014,
+              "duration": 6.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5353,
+              "duration": 322.7000000476837,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6999,
+              "duration": 208.89999997615814,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 3707,
+              "duration": 349.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 1.2999999523162842,
+              "type": "other"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 179,
+              "duration": 6,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/new",
+              "bytes": 231,
+              "duration": 6.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 224,
+              "duration": 5.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 219,
+              "duration": 5.299999952316284,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+              "bytes": 222,
+              "duration": 3.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 218,
+              "duration": 6.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 220,
+              "duration": 7,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 1016,
+              "duration": 6.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/new",
+              "bytes": 2221,
+              "duration": 4.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+              "bytes": 1060,
+              "duration": 9.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1458,
+              "duration": 8.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/e7c3e6ec-6054-4c34-bf26-cc9cf1be8b2f",
+              "bytes": 1056,
+              "duration": 7.399999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/0c7p9njkj7iah.js",
+              "bytes": 6325,
+              "duration": 5.900000035762787,
+              "type": "script"
+            },
+            {
+              "path": "/study",
+              "bytes": 1073,
+              "duration": 4,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/4b8e9315-51c3-4134-8892-543841e5a24a",
+              "bytes": 1061,
+              "duration": 7.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1074,
+              "duration": 6.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/9f4372a3-d374-49c9-b85d-5f82b2bf7d01",
+              "bytes": 1061,
+              "duration": 5.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/d7fc406b-87f9-45ac-9cfe-b1fe782b62d7",
+              "bytes": 1061,
+              "duration": 5.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/5843b80c-1c7a-4426-b09c-e75f92594531",
+              "bytes": 1060,
+              "duration": 7.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/d360d1ce-36f1-43bf-a938-df8fcc71c746",
+              "bytes": 1059,
+              "duration": 7,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/febc4904-a529-480b-9b14-ecbe3f764b62",
+              "bytes": 1063,
+              "duration": 6,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 179,
+              "duration": 4.899999976158142,
+              "type": "fetch"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/decks",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 424.5,
+            "navigationId": 2350,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.19999998807907104,
+            "domainLookupStart": 0.19999998807907104,
+            "domainLookupEnd": 0.19999998807907104,
+            "connectStart": 0.19999998807907104,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.19999998807907104,
+            "requestStart": 0.3999999761581421,
+            "responseStart": 6.899999976158142,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 6.899999976158142,
+            "responseEnd": 417.89999997615814,
+            "transferSize": 9227,
+            "encodedBodySize": 8927,
+            "decodedBodySize": 57441,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 14.899999976158142,
+            "unloadEventEnd": 14.899999976158142,
+            "domInteractive": 421.7999999523163,
+            "domContentLoadedEventStart": 421.7999999523163,
+            "domContentLoadedEventEnd": 421.89999997615814,
+            "domComplete": 424.39999997615814,
+            "loadEventStart": 424.39999997615814,
+            "loadEventEnd": 424.5,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 377
+        },
+        {
+          "path": "/library",
+          "readyMs": 634.9855419999985,
+          "events": [],
+          "longTasks": [],
+          "lcp": 384,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 6.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 6.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 5.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 1016,
+              "duration": 5.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 2154,
+              "duration": 306.30000001192093,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 3707,
+              "duration": 344.30000001192093,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 1.5,
+              "type": "other"
+            },
+            {
+              "path": "/library/11111111-1111-4111-8111-111111111111",
+              "bytes": 206,
+              "duration": 2.900000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 1071,
+              "duration": 3.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/library/11111111-1111-4111-8111-111111111111",
+              "bytes": 1048,
+              "duration": 4.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/library/33333333-3333-4333-8333-333333333333",
+              "bytes": 1049,
+              "duration": 9.700000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/library/22222222-2222-4222-8222-222222222222",
+              "bytes": 1048,
+              "duration": 8.199999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/library",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 220.30000001192093,
+            "navigationId": 931,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.20000004768371582,
+            "domainLookupStart": 0.20000004768371582,
+            "domainLookupEnd": 0.20000004768371582,
+            "connectStart": 0.20000004768371582,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.20000004768371582,
+            "requestStart": 0.6000000238418579,
+            "responseStart": 7,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 7,
+            "responseEnd": 212.70000004768372,
+            "transferSize": 14359,
+            "encodedBodySize": 14059,
+            "decodedBodySize": 47408,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 23.80000001192093,
+            "unloadEventEnd": 23.80000001192093,
+            "domInteractive": 217.70000004768372,
+            "domContentLoadedEventStart": 217.70000004768372,
+            "domContentLoadedEventEnd": 218.30000001192093,
+            "domComplete": 219.60000002384186,
+            "loadEventStart": 219.60000002384186,
+            "loadEventEnd": 220.30000001192093,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 193
+        },
+        {
+          "path": "/me",
+          "readyMs": 627.7934999999998,
+          "events": [],
+          "longTasks": [],
+          "lcp": 372,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 6.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 6.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 6.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 1012,
+              "duration": 6.200000047683716,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5351,
+              "duration": 325.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 2155,
+              "duration": 513.0999999642372,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6999,
+              "duration": 216,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 1.600000023841858,
+              "type": "other"
+            },
+            {
+              "path": "/me/settings",
+              "bytes": 183,
+              "duration": 3.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 180,
+              "duration": 4,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/feedback",
+              "bytes": 231,
+              "duration": 3.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/onboarding",
+              "bytes": 178,
+              "duration": 9,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/settings",
+              "bytes": 1021,
+              "duration": 5.100000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/stats",
+              "bytes": 1018,
+              "duration": 3.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me/feedback",
+              "bytes": 2224,
+              "duration": 2.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/2v6-6ygzv6toc.js",
+              "bytes": 4064,
+              "duration": 1.100000023841858,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 0,
+              "type": "script"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/me",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 214.60000002384186,
+            "navigationId": 8325,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.30000001192092896,
+            "domainLookupStart": 0.30000001192092896,
+            "domainLookupEnd": 0.30000001192092896,
+            "connectStart": 0.30000001192092896,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.30000001192092896,
+            "requestStart": 0.6000000238418579,
+            "responseStart": 7.100000023841858,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 7.100000023841858,
+            "responseEnd": 209.4000000357628,
+            "transferSize": 9635,
+            "encodedBodySize": 9335,
+            "decodedBodySize": 35688,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 22.30000001192093,
+            "unloadEventEnd": 22.30000001192093,
+            "domInteractive": 213.10000002384186,
+            "domContentLoadedEventStart": 213.10000002384186,
+            "domContentLoadedEventEnd": 213.19999998807907,
+            "domComplete": 214.19999998807907,
+            "loadEventStart": 214.19999998807907,
+            "loadEventEnd": 214.60000002384186,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 158
+        },
+        {
+          "path": "/decks/:deckId",
+          "readyMs": 971.7848750000012,
+          "events": [],
+          "longTasks": [],
+          "lcp": 652,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2mye2ill29dey.js",
+              "bytes": 13378,
+              "duration": 2,
+              "type": "script"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 7.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 7.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 7.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 7.399999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 2023,
+              "duration": 308.4000000357628,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6999,
+              "duration": 177.9000000357628,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5352,
+              "duration": 558.8999999761581,
+              "type": "fetch"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 2.600000023841858,
+              "type": "other"
+            },
+            {
+              "path": "/study",
+              "bytes": 219,
+              "duration": 7.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/new",
+              "bytes": 233,
+              "duration": 7.600000023841858,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 219,
+              "duration": 4.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/dc4581d9-4216-4fb7-9dad-a5d7ff8cf2f2",
+              "bytes": 263,
+              "duration": 3.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/6e320083-6895-4ad3-afa9-f830e5aa53ef",
+              "bytes": 263,
+              "duration": 4.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 1458,
+              "duration": 4.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/new",
+              "bytes": 1071,
+              "duration": 6.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 1072,
+              "duration": 4.900000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/dc4581d9-4216-4fb7-9dad-a5d7ff8cf2f2",
+              "bytes": 1099,
+              "duration": 6.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/6e320083-6895-4ad3-afa9-f830e5aa53ef",
+              "bytes": 1099,
+              "duration": 5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/3f857bc4-69b4-4783-857c-d375059d9e50",
+              "bytes": 1099,
+              "duration": 4.899999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/7d08fa15-7f8f-41dd-81f1-094850e643bc",
+              "bytes": 1103,
+              "duration": 3.799999952316284,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/79df33d9-59f2-4a0e-9f18-f787144e6512",
+              "bytes": 1102,
+              "duration": 6.399999976158142,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/aa93c030-1cd2-4bad-b0b3-fbe67514c70d",
+              "bytes": 1100,
+              "duration": 4.799999952316284,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/5bac2378-19d3-425b-9305-fa4c5c8d55ae",
+              "bytes": 1099,
+              "duration": 4.099999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/8625d9ee-c8fd-42e0-a84e-fdcc6a7b0513",
+              "bytes": 1098,
+              "duration": 3.400000035762787,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/3a4f649d-8a9a-4123-8fe8-13e8fe2da9d6",
+              "bytes": 1099,
+              "duration": 9.800000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236/cards/1aef5274-4359-4751-be4d-1cc810916b4a",
+              "bytes": 1102,
+              "duration": 9,
+              "type": "fetch"
+            },
+            {
+              "path": "/study",
+              "bytes": 179,
+              "duration": 3.300000011920929,
+              "type": "fetch"
+            },
+            {
+              "path": "/ai/new",
+              "bytes": 179,
+              "duration": 2.700000047683716,
+              "type": "fetch"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/decks/8c0967f6-d7ac-404e-84e7-7d9b4c2f1236",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 619.6999999880791,
+            "navigationId": 8043,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.19999998807907104,
+            "domainLookupStart": 0.19999998807907104,
+            "domainLookupEnd": 0.19999998807907104,
+            "connectStart": 0.19999998807907104,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.19999998807907104,
+            "requestStart": 0.3999999761581421,
+            "responseStart": 5.799999952316284,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 5.799999952316284,
+            "responseEnd": 607.5,
+            "transferSize": 50891,
+            "encodedBodySize": 50591,
+            "decodedBodySize": 315739,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 10.099999964237213,
+            "unloadEventEnd": 10.099999964237213,
+            "domInteractive": 617,
+            "domContentLoadedEventStart": 617,
+            "domContentLoadedEventEnd": 617.6999999880791,
+            "domComplete": 619.1999999880791,
+            "loadEventStart": 619.5,
+            "loadEventEnd": 619.6999999880791,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 372
+        },
+        {
+          "path": "/me/stats",
+          "readyMs": 713.1295829999981,
+          "events": [],
+          "longTasks": [
+            101
+          ],
+          "lcp": 360,
+          "cls": 0,
+          "resources": [
+            {
+              "path": "/_next/static/chunks/15vzmi4p9tmv8.css",
+              "bytes": 16725,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/1edfvwc5_eck-.js",
+              "bytes": 3635,
+              "duration": 0,
+              "type": "link"
+            },
+            {
+              "path": "/_next/static/chunks/0if-vqkhyn-zc.js",
+              "bytes": 8379,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3-cgqtdjpbipb.js",
+              "bytes": 34883,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/3bvdabbo3ut63.js",
+              "bytes": 71643,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2-urkx3cuhmdn.js",
+              "bytes": 8472,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/turbopack-0svq8rc-2otm1.js",
+              "bytes": 3863,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/2xnoy81ntna7x.js",
+              "bytes": 10906,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1d-7mts5gbw4h.js",
+              "bytes": 7124,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/00uejr67tzmft.js",
+              "bytes": 1354,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/40sz0yzz8bpfq.js",
+              "bytes": 13774,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1ei69l-tb45y4.js",
+              "bytes": 953,
+              "duration": 4.299999952316284,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/23eovncimxhth.js",
+              "bytes": 105036,
+              "duration": 10.199999988079071,
+              "type": "script"
+            },
+            {
+              "path": "/today",
+              "bytes": 178,
+              "duration": 11,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 177,
+              "duration": 10.599999964237213,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 179,
+              "duration": 10.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 175,
+              "duration": 10.699999988079071,
+              "type": "fetch"
+            },
+            {
+              "path": "/today",
+              "bytes": 5350,
+              "duration": 556.5,
+              "type": "fetch"
+            },
+            {
+              "path": "/decks",
+              "bytes": 2153,
+              "duration": 559.3999999761581,
+              "type": "fetch"
+            },
+            {
+              "path": "/library",
+              "bytes": 6999,
+              "duration": 283.19999998807907,
+              "type": "fetch"
+            },
+            {
+              "path": "/me",
+              "bytes": 3575,
+              "duration": 522.8000000119209,
+              "type": "fetch"
+            },
+            {
+              "path": "/icon.png",
+              "bytes": 1938,
+              "duration": 1.199999988079071,
+              "type": "other"
+            },
+            {
+              "path": "/_next/static/chunks/1ag-d7lh65iy1.js",
+              "bytes": 759,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1qc-4m7emij41.js",
+              "bytes": 10038,
+              "duration": 0,
+              "type": "script"
+            },
+            {
+              "path": "/_next/static/chunks/1dxo6_kqbh_eq.js",
+              "bytes": 14258,
+              "duration": 0,
+              "type": "script"
+            }
+          ],
+          "navigation": {
+            "name": "http://localhost:3100/me/stats",
+            "entryType": "navigation",
+            "startTime": 0,
+            "duration": 202.60000002384186,
+            "navigationId": 2724,
+            "initiatorType": "navigation",
+            "deliveryType": "",
+            "nextHopProtocol": "http/1.1",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/html",
+            "contentEncoding": "gzip",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 0.19999998807907104,
+            "domainLookupStart": 0.19999998807907104,
+            "domainLookupEnd": 0.19999998807907104,
+            "connectStart": 0.19999998807907104,
+            "secureConnectionStart": 0,
+            "connectEnd": 0.19999998807907104,
+            "requestStart": 0.699999988079071,
+            "responseStart": 9.600000023841858,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 9.600000023841858,
+            "responseEnd": 196.60000002384186,
+            "transferSize": 8193,
+            "encodedBodySize": 7893,
+            "decodedBodySize": 47745,
+            "responseStatus": 200,
+            "serverTiming": [],
+            "unloadEventStart": 15.800000011920929,
+            "unloadEventEnd": 15.800000011920929,
+            "domInteractive": 200,
+            "domContentLoadedEventStart": 200,
+            "domContentLoadedEventEnd": 200.80000001192093,
+            "domComplete": 202.10000002384186,
+            "loadEventStart": 202.10000002384186,
+            "loadEventEnd": 202.60000002384186,
+            "type": "navigate",
+            "redirectCount": 0,
+            "activationStart": 0,
+            "criticalCHRestart": 0,
+            "notRestoredReasons": null,
+            "confidence": {
+              "randomizedTriggerRate": 0.4994798,
+              "value": "high"
+            }
+          },
+          "domNodes": 419
+        }
+      ],
+      "interactions": {
+        "noteSearchMs": [
+          131.33916600000157,
+          32.474874999999884,
+          33.38183299999946,
+          33.50262500000099,
+          33.691249999999854
+        ],
+        "noteSearchEvents": [
+          {
+            "name": "keydown",
+            "duration": 24
+          },
+          {
+            "name": "keyup",
+            "duration": 24
+          },
+          {
+            "name": "keydown",
+            "duration": 32
+          },
+          {
+            "name": "keyup",
+            "duration": 24
+          }
+        ],
+        "noteListNodes": 64,
+        "tabs": [
+          {
+            "name": "卡片",
+            "ms": 397.2534169999999
+          },
+          {
+            "name": "社区",
+            "ms": 168.3989999999976
+          },
+          {
+            "name": "我的",
+            "ms": 146.59574999999677
+          },
+          {
+            "name": "今日",
+            "ms": 250.31408299999748
+          }
+        ],
+        "deckFilterMs": 124.24262499999895,
+        "nextCardReadyWith1500msSaveDelay": 75.5560000000005,
+        "saveRequests": 1
+      },
+      "errors": [
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')",
+        "Cannot read properties of undefined (reading 'waiting')"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "mode": "desktop",
+      "name": "next card usable within 200ms despite slow save",
+      "pass": true
+    },
+    {
+      "mode": "mobile-4x",
+      "name": "next card usable within 200ms despite slow save",
+      "pass": true
+    }
+  ],
+  "cleanup": true
+}

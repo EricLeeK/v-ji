@@ -11,6 +11,7 @@ export async function joinBook(bookId: string) {
   if (error) return { error: error.message };
   revalidatePath("/decks");
   revalidatePath("/library");
+  revalidatePath(`/library/${bookId}`);
   revalidatePath("/today");
   return { deckId: data };
 }

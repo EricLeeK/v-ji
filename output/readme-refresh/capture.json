@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-26",
+  "build": "local development workspace, production build",
+  "browser": "headless bundled Chromium",
+  "results": [
+    {
+      "name": "today",
+      "url": "/today",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "name": "decks",
+      "url": "/decks",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "name": "library",
+      "url": "/library",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "name": "me",
+      "url": "/me",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "name": "avatars",
+      "url": "/me",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "name": "study",
+      "url": "/study",
+      "width": 430,
+      "height": 932
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "unchangedDemoData": true
+}
