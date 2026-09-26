@@ -1,0 +1,369 @@
+{
+  "generatedAt": "2026-09-26T02:27:02.126Z",
+  "provider": "built-in image_gen",
+  "constraintMode": "main-prompt constraints",
+  "count": 18,
+  "totalBytes": 54950,
+  "assets": [
+    {
+      "id": "rat",
+      "label": "Z01",
+      "name": "团团鼠",
+      "category": "zodiac",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/rat.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1142867,
+      "originalSha256": "d51534f0e1e3857c841f5bdd63add1fe6ab75234541e1b82b7da5ff7140c2eb4",
+      "src": "/avatars/v1/rat.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3272
+    },
+    {
+      "id": "ox",
+      "label": "Z02",
+      "name": "憨憨牛",
+      "category": "zodiac",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/ox.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1192925,
+      "originalSha256": "4d56e4e73d78aae48bfe2be176576bfe7f6452ff71d57a00aa4fa890f52b5401",
+      "src": "/avatars/v1/ox.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3842
+    },
+    {
+      "id": "tiger",
+      "label": "Z03",
+      "name": "小橘虎",
+      "category": "zodiac",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/tiger.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1150022,
+      "originalSha256": "8867439c1a52bd911b31c34220feff359707b88325d2685fdbbcb2ed330d73ef",
+      "src": "/avatars/v1/tiger.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3780
+    },
+    {
+      "id": "rabbit",
+      "label": "Z04",
+      "name": "糯糯兔",
+      "category": "zodiac",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/rabbit.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1045368,
+      "originalSha256": "eb3fc82ec792a6cc710821f52ffc3c5d26b3d806620dbc14a140ed5fde1a17c3",
+      "src": "/avatars/v1/rabbit.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2268
+    },
+    {
+      "id": "dragon",
+      "label": "Z05",
+      "name": "团子龙",
+      "category": "zodiac",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/dragon.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1128285,
+      "originalSha256": "ee56381172797e8b41a3a8a15249d61adb35dc3ed4a95590419d381428b60fbc",
+      "src": "/avatars/v1/dragon.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3468
+    },
+    {
+      "id": "snake",
+      "label": "Z06",
+      "name": "弯弯蛇",
+      "category": "zodiac",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/snake.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1093226,
+      "originalSha256": "40976e73c8dc11512828f6adb6a5fbf800cffc00afeea1d94f26f42dbf17762d",
+      "src": "/avatars/v1/snake.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3298
+    },
+    {
+      "id": "horse",
+      "label": "Z07",
+      "name": "栗栗马",
+      "category": "zodiac",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/horse.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1107066,
+      "originalSha256": "eb6c2762b7223fb3a1de98aa949eccc3de3c6fed3b6ed0a8c63f1aa0c804a216",
+      "src": "/avatars/v1/horse.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3216
+    },
+    {
+      "id": "goat",
+      "label": "Z08",
+      "name": "绵绵羊",
+      "category": "zodiac",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/goat.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1156418,
+      "originalSha256": "1d6dfd69d370ba500fec62b8b511a7048331262cb54d5ed0e27fabbfdf9623d5",
+      "src": "/avatars/v1/goat.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2858
+    },
+    {
+      "id": "monkey",
+      "label": "Z09",
+      "name": "桃桃猴",
+      "category": "zodiac",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/monkey.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1124143,
+      "originalSha256": "cd58c72ef8aeb38e7b479ac75f66554f834e1406616d177b598f6fd0c731fa30",
+      "src": "/avatars/v1/monkey.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3208
+    },
+    {
+      "id": "rooster",
+      "label": "Z10",
+      "name": "啾啾鸡",
+      "category": "zodiac",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/rooster.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1116802,
+      "originalSha256": "1b6d11cdc9b29417d947623bf61ad37361d8ce3505487f05f1dd682abea4b79d",
+      "src": "/avatars/v1/rooster.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3292
+    },
+    {
+      "id": "dog",
+      "label": "Z11",
+      "name": "旺旺狗",
+      "category": "zodiac",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/dog.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1159945,
+      "originalSha256": "db26c7a6262909a563fb9f4f51e3380a1025cf3d462750f9b487029aa178e423",
+      "src": "/avatars/v1/dog.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3760
+    },
+    {
+      "id": "pig",
+      "label": "Z12",
+      "name": "呼噜猪",
+      "category": "zodiac",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/pig.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1155078,
+      "originalSha256": "b5b12e244a43d9683bbe704944a0d29bddf432924e7237765dde21a26898ed86",
+      "src": "/avatars/v1/pig.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2748
+    },
+    {
+      "id": "bao",
+      "label": "F01",
+      "name": "软软包",
+      "category": "food",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/bao.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1103642,
+      "originalSha256": "dd0a2c67bfc10295e6e058dfa9eb5a77bdee4e3587dd29c8cbdcac38dedb5e53",
+      "src": "/avatars/v1/bao.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 1862
+    },
+    {
+      "id": "dumpling",
+      "label": "F02",
+      "name": "弯弯饺",
+      "category": "food",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/dumpling.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1109759,
+      "originalSha256": "3284bac8dfa85f9f5398a649075802052156e207cf29cfd1292ed390bb810fa1",
+      "src": "/avatars/v1/dumpling.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 3104
+    },
+    {
+      "id": "zongzi",
+      "label": "F03",
+      "name": "青青粽",
+      "category": "food",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/zongzi.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1231646,
+      "originalSha256": "2e12ceba8a0a05273737bf968a5636239f8e785dd0c9a48be407b6f90de87a09",
+      "src": "/avatars/v1/zongzi.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2968
+    },
+    {
+      "id": "tangyuan",
+      "label": "F04",
+      "name": "圆圆汤",
+      "category": "food",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/tangyuan.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1176113,
+      "originalSha256": "1b022fe600466ca94e945731864db2a2f54647de7e1cd640049a06612e678a68",
+      "src": "/avatars/v1/tangyuan.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2730
+    },
+    {
+      "id": "youtiao",
+      "label": "F05",
+      "name": "金金条",
+      "category": "food",
+      "corner": "lower-left",
+      "originalPath": "output/avatar-presets/originals/youtiao.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1164274,
+      "originalSha256": "3495047af0f62623bfc1169344f10dff04c990061a3f8989b7b96929199c7189",
+      "src": "/avatars/v1/youtiao.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2512
+    },
+    {
+      "id": "mooncake",
+      "label": "F06",
+      "name": "甜甜饼",
+      "category": "food",
+      "corner": "lower-right",
+      "originalPath": "output/avatar-presets/originals/mooncake.png",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalBytes": 1250049,
+      "originalSha256": "285e047d66a0ff9514f39511ad17e533367eef1ed211cf4a823224f762ec7e88",
+      "src": "/avatars/v1/mooncake.webp",
+      "dimensions": [
+        256,
+        256
+      ],
+      "bytes": 2764
+    }
+  ]
+}

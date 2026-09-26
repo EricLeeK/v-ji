@@ -1,0 +1,40 @@
+- button "更换头像"
+- heading "演示学员" [level=1]
+- paragraph: ID aaaaaaaa
+- link "通知":
+  - /url: /me/settings#reminder
+- link "设置":
+  - /url: /me/settings
+- text: 5 今日复习 0 今日分钟
+- link "学习偏好 设置学习节奏、手势与朗读 去调整":
+  - /url: /me/settings
+- list:
+  - listitem:
+    - link "学习统计":
+      - /url: /me/stats
+  - listitem:
+    - link "设置":
+      - /url: /me/settings
+  - listitem:
+    - link "问题与建议":
+      - /url: /me/feedback
+  - listitem:
+    - link "使用指北":
+      - /url: /onboarding?returnTo=/me
+- button "退出登录"
+- navigation "主导航":
+  - list:
+    - listitem:
+      - link "今日":
+        - /url: /today
+    - listitem:
+      - link "卡片":
+        - /url: /decks
+    - listitem:
+      - link "社区":
+        - /url: /library
+    - listitem:
+      - link "我的":
+        - /url: /me
+- region "Notifications alt+T"
+- alert

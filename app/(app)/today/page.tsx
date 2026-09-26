@@ -8,6 +8,7 @@ import { createClient, getUserId } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/empty-state";
 import { DeckIcon } from "@/components/app-icon";
+import { ProfileAvatar } from "@/components/profile/profile-avatar";
 
 export default async function TodayPage() {
   const uid = await getUserId();
@@ -60,8 +61,8 @@ export default async function TodayPage() {
             {greeting()}，{profile?.nickname ?? "同学"}
           </h1>
         </div>
-        <Link href="/me" aria-label="查看个人资料" className="mt-1 flex size-12 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-primary/10 text-lg font-semibold text-primary shadow-[0_8px_20px_rgba(30,80,60,0.12)] transition-transform active:scale-95">
-          {profile?.avatar_url ? <img src={profile.avatar_url} alt="" className="size-full object-cover" /> : (profile?.nickname ?? "学").slice(0, 1)}
+        <Link href="/me" aria-label="查看个人资料" className="mt-1 flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border-2 border-white bg-primary/10 text-lg font-semibold text-primary shadow-[0_8px_20px_rgba(30,80,60,0.12)] transition-transform active:scale-95">
+          <ProfileAvatar src={profile?.avatar_url} nickname={profile?.nickname ?? "学"} />
         </Link>
       </header>
 

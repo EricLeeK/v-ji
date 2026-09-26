@@ -1,0 +1,128 @@
+[
+  {
+    "label": "F01",
+    "id": "bao",
+    "name": "软软包",
+    "category": "food",
+    "subject": "personified Chinese steamed bao bun character",
+    "feature": "one short plump gathered top knot on a big round bun, no fine pleats",
+    "colors": "warm steamed-bun ivory #FBE5BB and sesame brown #715442",
+    "background": "muted dusty rose #BF8C98",
+    "corner": "lower-left",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted dusty rose #BF8C98. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing personified Chinese steamed bao bun character, reduced to one soft rounded continuous silhouette and one defining feature: one short plump gathered top knot on a big round bun, no fine pleats. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: warm steamed-bun ivory #FBE5BB and sesame brown #715442. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-left, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/bao.png",
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db85-02c1-71e2-8814-0e44c5340b46/exec-15e5aad5-8c19-421a-9d45-2035900b6958.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation."
+  },
+  {
+    "label": "F02",
+    "id": "dumpling",
+    "name": "弯弯饺",
+    "category": "food",
+    "subject": "personified Chinese jiaozi dumpling character",
+    "feature": "one plump crescent silhouette with three broad rounded edge folds, no fine crimping",
+    "colors": "warm dumpling cream #F9EBC9 and deep teal #3E6865",
+    "background": "muted cornflower blue #89A6C1",
+    "corner": "lower-right",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted cornflower blue #89A6C1. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing personified Chinese jiaozi dumpling character, reduced to one soft rounded continuous silhouette and one defining feature: one plump crescent silhouette with three broad rounded edge folds, no fine crimping. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: warm dumpling cream #F9EBC9 and deep teal #3E6865. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-right, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/dumpling.png",
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db85-02c1-71e2-8814-0e44c5340b46/exec-360ac010-f104-42ac-926f-3aea4c6117ee.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation."
+  },
+  {
+    "label": "F03",
+    "id": "zongzi",
+    "name": "青青粽",
+    "category": "food",
+    "subject": "personified Chinese zongzi rice dumpling character",
+    "feature": "a broad rounded triangle leaf-wrapped silhouette with one large rice-colored face window, no thin string",
+    "colors": "bamboo leaf green #527E55 and rice cream #F5DEAA",
+    "background": "muted warm apricot #D7A077",
+    "corner": "lower-left",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted warm apricot #D7A077. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing personified Chinese zongzi rice dumpling character, reduced to one soft rounded continuous silhouette and one defining feature: a broad rounded triangle leaf-wrapped silhouette with one large rice-colored face window, no thin string. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: bamboo leaf green #527E55 and rice cream #F5DEAA. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-left, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/zongzi.png",
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db85-02c1-71e2-8814-0e44c5340b46/exec-dd646da0-5a42-4fa1-924b-b64f6e6c3b4d.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation."
+  },
+  {
+    "label": "F04",
+    "id": "tangyuan",
+    "name": "圆圆汤",
+    "category": "food",
+    "subject": "personified Chinese black-sesame tangyuan rice ball character",
+    "feature": "one big plump round rice ball with a single broad charcoal sesame crescent at the bottom, no bowl or spoon",
+    "colors": "rice ivory #F7EDDA and sesame charcoal #494849",
+    "background": "muted rose red #BF7F79",
+    "corner": "lower-right",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted rose red #BF7F79. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing personified Chinese black-sesame tangyuan rice ball character, reduced to one soft rounded continuous silhouette and one defining feature: one big plump round rice ball with a single broad charcoal sesame crescent at the bottom, no bowl or spoon. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: rice ivory #F7EDDA and sesame charcoal #494849. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-right, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/tangyuan.png",
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db85-02c1-71e2-8814-0e44c5340b46/exec-fab5c2fe-9d8f-4e67-a36e-d31ac0037a75.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation."
+  },
+  {
+    "label": "F05",
+    "id": "youtiao",
+    "name": "金金条",
+    "category": "food",
+    "subject": "personified Chinese youtiao fried dough character",
+    "feature": "two thick soft pill-shaped lobes fused into one short chubby upright body with a broad darker seam, one face only",
+    "colors": "golden ochre #E6AF57 and toasted brown #845231",
+    "background": "muted jade teal #72A79A",
+    "corner": "lower-left",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted jade teal #72A79A. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing personified Chinese youtiao fried dough character, reduced to one soft rounded continuous silhouette and one defining feature: two thick soft pill-shaped lobes fused into one short chubby upright body with a broad darker seam, one face only. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: golden ochre #E6AF57 and toasted brown #845231. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-left, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/youtiao.png",
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db85-02c1-71e2-8814-0e44c5340b46/exec-17c6d0f0-8b1d-4345-8b56-b50d96fe6557.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation."
+  },
+  {
+    "label": "F06",
+    "id": "mooncake",
+    "name": "甜甜饼",
+    "category": "food",
+    "subject": "personified Chinese mooncake character",
+    "feature": "a thick round scalloped silhouette with six broad soft lobes and one broad darker baked rim, no stamped pattern",
+    "colors": "baked golden tan #DCAD62 and chestnut brown #815139",
+    "background": "muted indigo blue #8191B6",
+    "corner": "lower-right",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted indigo blue #8191B6. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing personified Chinese mooncake character, reduced to one soft rounded continuous silhouette and one defining feature: a thick round scalloped silhouette with six broad soft lobes and one broad darker baked rim, no stamped pattern. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: baked golden tan #DCAD62 and chestnut brown #815139. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-right, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/mooncake.png",
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db85-02c1-71e2-8814-0e44c5340b46/exec-f9690f9c-6c49-4b94-98dc-de13f3f48142.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation."
+  }
+]

@@ -5,6 +5,7 @@ import { getProfile } from "@/lib/data";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { createClient, getUserId } from "@/lib/supabase/server";
 import { localDateKey } from "@/lib/dates";
+import { AvatarPicker } from "@/components/profile/avatar-picker";
 
 export default async function MePage() {
   const uid = await getUserId();
@@ -32,9 +33,7 @@ export default async function MePage() {
         <div className="pointer-events-none absolute -right-5 bottom-0 size-36 rounded-full bg-primary/5 blur-2xl" />
         <div className="relative flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="flex size-16 items-center justify-center overflow-hidden rounded-full bg-primary/15 text-xl font-semibold text-primary ring-8 ring-primary/5">
-              {profile?.avatar_url ? <img src={profile.avatar_url} alt="" className="size-full object-cover" /> : (profile?.nickname ?? "学").slice(0, 1)}
-            </div>
+            <AvatarPicker avatarUrl={profile?.avatar_url} nickname={profile?.nickname ?? "学习者"} />
             <div>
               <h1 className="text-[22px] font-semibold tracking-[-0.03em]">{profile?.nickname ?? "学习者"}</h1>
               <p className="mt-1 text-xs text-muted-foreground">ID {uid.slice(0, 8)}</p>

@@ -9,5 +9,7 @@ const revision =
 export const { dynamic, dynamicParams, revalidate, generateStaticParams, GET } = createSerwistRoute({
   additionalPrecacheEntries: [{ url: "/offline", revision }],
   swSrc: "app/sw.ts",
+  // Load the avatar library only when opened, including for installed PWAs.
+  globIgnores: ["**/node_modules/**/*", "public/avatars/**"],
   useNativeEsbuild: true,
 });

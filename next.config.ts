@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   allowedDevOrigins: ["192.168.0.110"],
   devIndicators: false,
+  async headers() {
+    return [{
+      source: "/avatars/v1/:path*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+    }];
+  },
   experimental: {
     serverActions: {
       allowedOrigins: ["192.168.0.110:3000"],

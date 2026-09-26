@@ -9,21 +9,30 @@ import {
 } from "@/lib/ai/provider";
 import type { UserSettings } from "@/lib/settings";
 import { createClient, getUserId } from "@/lib/supabase/server";
+import { getAvatarPreset } from "@/lib/avatar-presets";
 
-export async function updateProfile(patch: { nickname?: string; settings?: UserSettings }) {
+export async function updateProfile(patch: { nickname?: string; settings?: UserSettings; avatarId?: string | null }) {
   const uid = await getUserId();
   if (!uid) return { error: "请先登录" };
   const supabase = await createClient();
-  const next: { nickname?: string; settings?: ReturnType<typeof overlayUserSettings> } = {};
-  if (patch.nickname !== undefined) next.nickname = patch.nickname;
-  if (patch.settings) {
-    const { data } = await supabase.from("profiles").select("settings").eq("id", uid).maybeSingle();
-    next.settings = overlayUserSettings(data?.settings, patch.settings);
+  const next: { nickname?: string; settings?: ReturnType<typeof overlayUserSettings>; avatar_url?: string | null } = {};
+  if (patch.avatarId !== undefined) {
+    const preset = getAvatarPreset(patch.avatarId);
+    if (patch.avatarId !== null && !preset) return { error: "请选择预设头像" };
+    next.avatar_url = preset?.src ?? null;
   }
-  const { error } = await supabase.from("profiles").update(next).eq("id", uid);
+  if (patch.nickname !== undefined) next.nickname = patch.nickname;
+  const { data: profile, error: readError } = await supabase.from("profiles").select("settings, updated_at").eq("id", uid).single();
+  if (readError) return { error: "无法读取当前设置，请重试" };
+  if (patch.settings) {
+    next.settings = overlayUserSettings(profile.settings, patch.settings);
+  }
+  const { data, error } = await supabase.from("profiles").update(next).eq("id", uid).eq("updated_at", profile.updated_at).select("id").maybeSingle();
   if (error) return { error: error.message };
+  if (!data) return { error: "设置刚刚在另一处更新，请刷新后再保存" };
   revalidatePath("/me");
   revalidatePath("/me/settings");
+  revalidatePath("/today");
   return {};
 }
 

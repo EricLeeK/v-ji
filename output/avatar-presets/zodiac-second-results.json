@@ -1,0 +1,140 @@
+[
+  {
+    "label": "Z07",
+    "id": "horse",
+    "name": "栗栗马",
+    "category": "zodiac",
+    "subject": "baby horse character with long rounded snout and two blunt ears",
+    "feature": "one broad cocoa mane region across the top and side",
+    "colors": "caramel #D79861 and deep cocoa #51382F",
+    "background": "muted periwinkle #B1BBDD",
+    "corner": "lower-left",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted periwinkle #B1BBDD. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing baby horse character with long rounded snout and two blunt ears, reduced to one soft rounded continuous silhouette and one defining feature: one broad cocoa mane region across the top and side. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: caramel #D79861 and deep cocoa #51382F. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-left, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/horse.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db84-e11f-7532-a615-bb52a547fd68/exec-4c1a5fdf-ecad-4272-a63b-93c5a11241cd.png",
+    "sha256": "eb6c2762b7223fb3a1de98aa949eccc3de3c6fed3b6ed0a8c63f1aa0c804a216",
+    "bytes": 1107066
+  },
+  {
+    "label": "Z08",
+    "id": "goat",
+    "name": "绵绵羊",
+    "category": "zodiac",
+    "subject": "baby sheep character",
+    "feature": "a single broad cloud-shaped wool silhouette made of a few large rounded lobes",
+    "colors": "warm cream #F8EAC8 and olive brown #756243",
+    "background": "muted sky blue #88A9BF",
+    "corner": "lower-right",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted sky blue #88A9BF. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing baby sheep character, reduced to one soft rounded continuous silhouette and one defining feature: a single broad cloud-shaped wool silhouette made of a few large rounded lobes. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: warm cream #F8EAC8 and olive brown #756243. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-right, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/goat.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db84-e11f-7532-a615-bb52a547fd68/exec-55038b00-dcc6-4c7b-b979-e7dc1de7bce7.png",
+    "sha256": "1d6dfd69d370ba500fec62b8b511a7048331262cb54d5ed0e27fabbfdf9623d5",
+    "bytes": 1156418
+  },
+  {
+    "label": "Z09",
+    "id": "monkey",
+    "name": "桃桃猴",
+    "category": "zodiac",
+    "subject": "baby monkey character with two round ears",
+    "feature": "one broad butter-colored face mask",
+    "colors": "warm chestnut #95624B and butter cream #F6D79A",
+    "background": "muted dusty rose #C4A0B0",
+    "corner": "lower-left",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted dusty rose #C4A0B0. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing baby monkey character with two round ears, reduced to one soft rounded continuous silhouette and one defining feature: one broad butter-colored face mask. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: warm chestnut #95624B and butter cream #F6D79A. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-left, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/monkey.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db84-e11f-7532-a615-bb52a547fd68/exec-59b6fef8-0144-4960-a134-5a9a9b0fe501.png",
+    "sha256": "cd58c72ef8aeb38e7b479ac75f66554f834e1406616d177b598f6fd0c731fa30",
+    "bytes": 1124143
+  },
+  {
+    "label": "Z10",
+    "id": "rooster",
+    "name": "啾啾鸡",
+    "category": "zodiac",
+    "subject": "baby Chinese zodiac rooster chick character",
+    "feature": "one broad rounded three-lobed comb integrated with the silhouette, tiny broad blunt beak only if needed",
+    "colors": "butter yellow #FFE09A and terracotta #AE5945",
+    "background": "muted cornflower blue #809BBA",
+    "corner": "lower-right",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted cornflower blue #809BBA. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing baby Chinese zodiac rooster chick character, reduced to one soft rounded continuous silhouette and one defining feature: one broad rounded three-lobed comb integrated with the silhouette, tiny broad blunt beak only if needed. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: butter yellow #FFE09A and terracotta #AE5945. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-right, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/rooster.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db84-e11f-7532-a615-bb52a547fd68/exec-2c8d57c3-7e60-4572-a780-06fbea4af8e5.png",
+    "sha256": "1b6d11cdc9b29417d947623bf61ad37361d8ce3505487f05f1dd682abea4b79d",
+    "bytes": 1116802
+  },
+  {
+    "label": "Z11",
+    "id": "dog",
+    "name": "旺旺狗",
+    "category": "zodiac",
+    "subject": "baby puppy dog character",
+    "feature": "a pair of big rounded floppy cocoa ears",
+    "colors": "warm golden cream #F5D285 and chocolate #68483C",
+    "background": "muted blue lavender #929FC5",
+    "corner": "lower-left",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted blue lavender #929FC5. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing baby puppy dog character, reduced to one soft rounded continuous silhouette and one defining feature: a pair of big rounded floppy cocoa ears. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: warm golden cream #F5D285 and chocolate #68483C. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-left, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/dog.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db84-e11f-7532-a615-bb52a547fd68/exec-2e4582d2-1885-420e-8ed5-1770a579013e.png",
+    "sha256": "db26c7a6262909a563fb9f4f51e3380a1025cf3d462750f9b487029aa178e423",
+    "bytes": 1159945
+  },
+  {
+    "label": "Z12",
+    "id": "pig",
+    "name": "呼噜猪",
+    "category": "zodiac",
+    "subject": "baby piglet character with two soft blunt rounded ears",
+    "feature": "one large soft oval snout region",
+    "colors": "peach pink #F1B1A8 and deep dusty rose #955761",
+    "background": "muted mint jade #91B5A5",
+    "corner": "lower-right",
+    "prompt": "Create one complete full-bleed 1:1 square image, approximately 1536 x 1536. Background: fill the entire square with solid muted mint jade #91B5A5. Keep it visible in every open area and corners not occupied by the character; the assigned emergence corner must be occupied by the character. Subject: one extremely simplified, cute, endearing baby piglet character with two soft blunt rounded ears, reduced to one soft rounded continuous silhouette and one defining feature: one large soft oval snout region. Complexity: use only 4–7 large basic shapes and at most two broad internal color regions. Use two simple eyes and one tiny mouth only if useful. Remove every nonessential line, outline, anatomical detail, texture, and decoration. Readable at 32 x 32. Color behavior: exactly three semantic colors, the named background plus exactly two character colors: peach pink #F1B1A8 and deep dusty rose #955761. Organize these two colors into broad purposeful masses, reusing the darker color for facial marks. Composition: upright and emerging from the lower-right, filling about 85–95% of the square. Cropping at the bottom or assigned side is welcome. Preserve both paired identifying features. Never center or bottom-center. Style: simplification, cuteness, lovable baby-like appeal, large soft forms, compact proportions, thick rounded contours, ultra-clean graphic treatment. Add an extremely, extremely subtle, almost imperceptible sense of depth through a barely-there neo-skeuomorphic treatment. Finish: only the character on the full-canvas background, normal square outer corners. Constraints: Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "provider": "built-in image_gen",
+    "constraintMode": "main-prompt constraints",
+    "constraintText": "Use no text or watermark. Add no borders, frames, cards, or presentation masks. Include one character only, with no extra subjects or scenery. Use no fragile lines, sharp tips, unnecessary outlines, tiny details, or decorative marks. Add no photorealistic material, dramatic bevel, glossy hotspot, deep occlusion, extrusion, strong three-dimensional rendering, or external cast shadow. Keep the background solid and uniform, with no texture, vignette, or lighting variation.",
+    "originalPath": "/Users/chrisv/Projects/V-记/output/avatar-presets/originals/pig.png",
+    "dimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "toolOutputPath": "/Users/chrisv/.codex/generated_images/01a0db84-e11f-7532-a615-bb52a547fd68/exec-f7758682-487c-4664-9f84-3851ed8ae347.png",
+    "sha256": "b5b12e244a43d9683bbe704944a0d29bddf432924e7237765dde21a26898ed86",
+    "bytes": 1155078
+  }
+]
