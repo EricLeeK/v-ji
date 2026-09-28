@@ -1,7 +1,7 @@
 "use client";
 
 import { AppIcon } from "@/components/app-icon";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from "motion/react";
 import { ArrowLeft, ArrowRightLeft, Hand, LoaderCircle, MoreHorizontal, Star, Volume2, Square, Pencil, Pause, Settings, HelpCircle } from "lucide-react";
@@ -31,6 +31,7 @@ import type { QueueCard } from "@/lib/srs/queue";
 import { useStudyStore, type ReviewPayload } from "@/lib/stores/study-store";
 import { createReviewQueue } from "@/lib/study-review-queue";
 import { useSpeech } from "@/lib/hooks/use-speech";
+import { resolveStudyShortcut } from "@/lib/study-shortcuts";
 import { resolveSwipeGesture, swipeExitX, type SwipeExit } from "@/lib/study-transition";
 import {
   studyDoneTitle,
@@ -200,6 +201,34 @@ export function StudySession({
     }
   }
 
+  function rateSwipe(swipe: SwipeExit) {
+    void commitRate(
+      gestureToRating(
+        swipe === "left" ? storedSettings.gesture.left : storedSettings.gesture.right,
+      ),
+      swipe,
+    );
+  }
+
+  const onStudyKeyDown = useEffectEvent((event: KeyboardEvent) => {
+    const action = resolveStudyShortcut(event, {
+      blocked: optionsOpen || leaveOpen || leaving,
+    });
+    if (!action) return;
+    event.preventDefault();
+    if (action === "flip") {
+      if (exiting || suspending || face !== "front") return;
+      showAnswer();
+      return;
+    }
+    rateSwipe(action);
+  });
+
+  useEffect(() => {
+    window.addEventListener("keydown", onStudyKeyDown);
+    return () => window.removeEventListener("keydown", onStudyKeyDown);
+  }, []);
+
   if (face === "done" || !current) {
     const empty = studySessionPhase(total, queue.length) === "empty";
     const duration = Math.max(0, finishedAt - startedAt);
@@ -237,6 +266,9 @@ export function StudySession({
   }
 
   if (!display) return null;
+
+  const leftSwipeLabel = RATING_LABELS[gestureToRating(storedSettings.gesture.left)].label;
+  const rightSwipeLabel = RATING_LABELS[gestureToRating(storedSettings.gesture.right)].label;
 
   return (
     <div
@@ -281,14 +313,14 @@ export function StudySession({
             style={{ opacity: leftHint }}
             className="pointer-events-none absolute top-8 left-8 z-10 rounded-full bg-rose-500 px-3 py-1 text-xs font-semibold text-white"
           >
-            {RATING_LABELS[gestureToRating(storedSettings.gesture.left)].label}
+            {leftSwipeLabel}
           </motion.div>
           <motion.div
             aria-hidden
             style={{ opacity: rightHint }}
             className="pointer-events-none absolute top-8 right-8 z-10 rounded-full bg-emerald-500 px-3 py-1 text-xs font-semibold text-white"
           >
-            {RATING_LABELS[gestureToRating(storedSettings.gesture.right)].label}
+            {rightSwipeLabel}
           </motion.div>
           <motion.div
             drag={face === "back" && !exiting ? "x" : false}
@@ -302,12 +334,7 @@ export function StudySession({
                 void animate(x, 0, { type: "spring", stiffness: 420, damping: 32 });
                 return;
               }
-              void commitRate(
-                gestureToRating(
-                  swipe === "left" ? storedSettings.gesture.left : storedSettings.gesture.right,
-                ),
-                swipe,
-              );
+              rateSwipe(swipe);
             }}
             onClick={() => {
               if (exiting || face === "back") return;
@@ -376,6 +403,14 @@ export function StudySession({
               })}
             </div>
           )}
+          <p
+            data-testid="study-shortcuts"
+            className="mt-3 hidden flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs leading-5 text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:flex"
+          >
+            <span>空格翻面</span>
+            <span>Q 左滑「{leftSwipeLabel}」</span>
+            <span>E 右滑「{rightSwipeLabel}」</span>
+          </p>
         </div>
       </div>
 
@@ -389,7 +424,7 @@ export function StudySession({
             <Button variant="outline" disabled={leaving || suspending} className="h-11 w-full justify-start" onClick={() => void leave(`/decks/${current.deck_id}/cards/${current.note_id}`)}><Pencil />编辑这张卡片</Button>
             <Button variant="outline" disabled={leaving || suspending} className="h-11 w-full justify-start" onClick={() => void pauseCard()}>{suspending ? <LoaderCircle className="animate-spin" /> : <Pause />}{suspending ? "正在暂停…" : "暂停这张卡片"}</Button>
             <Button variant="outline" disabled={leaving || suspending} className="h-11 w-full justify-start" onClick={() => void leave(`/me/settings?returnTo=${encodeURIComponent(scope === "deck" ? `/study?deckId=${current.deck_id}` : "/study")}`)}><Settings />学习设置</Button>
-            <div className="rounded-2xl bg-muted p-3 text-xs leading-6 text-muted-foreground"><p className="flex items-center gap-1 font-medium text-foreground"><HelpCircle className="size-4" />操作提示</p>轻点卡片查看答案；看过答案后，左滑表示「{RATING_LABELS[gestureToRating(storedSettings.gesture.left)].label}」，右滑表示「{RATING_LABELS[gestureToRating(storedSettings.gesture.right)].label}」。切换卡片会将本张放到本轮最后，不计入复习。</div>
+            <div className="rounded-2xl bg-muted p-3 text-xs leading-6 text-muted-foreground"><p className="flex items-center gap-1 font-medium text-foreground"><HelpCircle className="size-4" />操作提示</p>轻点卡片或按空格查看答案；看过答案后，左滑或按 Q 表示「{leftSwipeLabel}」，右滑或按 E 表示「{rightSwipeLabel}」。空格只翻面，不会评分。切换卡片会将本张放到本轮最后，不计入复习。</div>
           </div>
         </SheetContent>
       </Sheet>
