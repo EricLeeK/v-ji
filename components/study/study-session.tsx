@@ -405,7 +405,7 @@ export function StudySession({
           )}
           <p
             data-testid="study-shortcuts"
-            className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs leading-5 text-muted-foreground"
+            className="mt-3 hidden flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs leading-5 text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:flex"
           >
             <span>空格翻面</span>
             <span>Q 左滑「{leftSwipeLabel}」</span>
