@@ -142,6 +142,31 @@ npm run dev
 
 </details>
 
+## 给 Agent 用的卡片接口
+
+登录后在「我的 → 设置 → Agent 接入」创建个人访问令牌。令牌只代表当前账号，原文只显示一次。外部 Agent 无法使用浏览器登录态，所以需要这个令牌；已经登录的浏览器也可以直接用会话调用。
+
+| | |
+| --- | --- |
+| 基础地址 | `https://<你的站点>`，本地是 `http://localhost:3000` |
+| 鉴权 | `Authorization: Bearer vji_...` |
+| 列出 / 新建 | `GET`、`POST /api/v1/cards` |
+| 读取 / 更新 | `GET`、`PATCH /api/v1/cards/<卡片 ID>` |
+| MCP | `POST /api/mcp`，工具 `list_cards`、`get_card`、`create_card`、`update_card` |
+
+卡片 ID 就是现有笔记 ID。创建和更新走同一套题型、字段和卡片盒归属校验；不能读或改别人的卡片，也不能通过这个接口改复习进度。需要先执行迁移 `supabase/migrations/20260928040000_agent_card_api.sql`。
+
+```json
+{
+  "mcpServers": {
+    "v-ji": {
+      "url": "http://localhost:3000/api/mcp",
+      "headers": { "Authorization": "Bearer <个人访问令牌>" }
+    }
+  }
+}
+```
+
 ## 当前边界
 
 - <strong>AI 与资料格式：</strong>当前接入 DeepSeek，具体模型见 [provider.ts](./lib/ai/provider.ts)。PDF 使用文字层提取，扫描件没有完整 OCR 流程；图片解析依赖所接模型的视觉能力。Office 文档、网页链接、音频和视频尚无导入入口。

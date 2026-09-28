@@ -221,6 +221,39 @@ export type Database = {
         };
         Relationships: [];
       };
+      api_tokens: {
+        Row: {
+          created_at: string;
+          id: string;
+          last_used_at: string | null;
+          name: string;
+          owner_id: string;
+          revoked_at: string | null;
+          token_hash: string;
+          token_prefix: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          last_used_at?: string | null;
+          name: string;
+          owner_id: string;
+          revoked_at?: string | null;
+          token_hash: string;
+          token_prefix: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          last_used_at?: string | null;
+          name?: string;
+          owner_id?: string;
+          revoked_at?: string | null;
+          token_hash?: string;
+          token_prefix?: string;
+        };
+        Relationships: [];
+      };
       book_notes: {
         Row: {
           book_id: string;
@@ -580,8 +613,43 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      agent_get_card: { Args: { p_note_id: string; p_token_hash: string }; Returns: Json };
+      agent_list_cards: {
+        Args: {
+          p_cursor_id?: string | null;
+          p_cursor_updated?: string | null;
+          p_deck_id?: string | null;
+          p_limit?: number;
+          p_token_hash: string;
+        };
+        Returns: Json;
+      };
+      agent_save_card: {
+        Args: {
+          p_deck_id: string;
+          p_fields: Json;
+          p_layout?: string | null;
+          p_note_id: string | null;
+          p_source?: Json | null;
+          p_tags?: string[];
+          p_token_hash: string;
+          p_type: NoteType;
+        };
+        Returns: Json;
+      };
+      agent_token_owner: { Args: { p_token_hash: string }; Returns: string };
+      get_own_card: { Args: { p_note_id: string }; Returns: Json };
       import_ai_cards: { Args: { p_card_ids: string[]; p_job_id: string }; Returns: string };
       join_book: { Args: { p_book_id: string }; Returns: string };
+      list_own_cards: {
+        Args: {
+          p_cursor_id?: string | null;
+          p_cursor_updated?: string | null;
+          p_deck_id?: string | null;
+          p_limit?: number;
+        };
+        Returns: Json;
+      };
       move_note: {
         Args: { p_from_deck_id: string; p_note_id: string; p_to_deck_id: string };
         Returns: undefined;
@@ -595,6 +663,18 @@ export type Database = {
           p_prompt_tokens: number;
         };
         Returns: undefined;
+      };
+      save_own_card: {
+        Args: {
+          p_deck_id: string;
+          p_fields: Json;
+          p_layout?: string | null;
+          p_note_id: string | null;
+          p_source?: Json | null;
+          p_tags?: string[];
+          p_type: NoteType;
+        };
+        Returns: Json;
       };
       save_note: {
         Args: {
