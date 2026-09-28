@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { isAgentApiPath } from "@/lib/agent/paths";
 import type { Database } from "@/types/database";
 
 const PUBLIC_PREFIXES = [
@@ -44,7 +45,8 @@ export async function updateSession(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isPublic = PUBLIC_PREFIXES.some((prefix) => path.startsWith(prefix));
 
-  if (!user && !isPublic && path !== "/") {
+  // Agent clients authenticate with a bearer token and need a JSON 401, not an HTML login redirect.
+  if (!user && !isPublic && !isAgentApiPath(path) && path !== "/") {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("next", path);
