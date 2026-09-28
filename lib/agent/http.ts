@@ -6,6 +6,7 @@ import {
   type CardStore,
   type CardCommandResult,
 } from "@/lib/agent/cards";
+import { AgentUnavailableError } from "@/lib/agent/errors";
 
 export type AgentRuntime = {
   authenticate(request: Request): Promise<CardStore | null>;
@@ -28,12 +29,19 @@ export function agentOptions(allow: string) {
   return new Response(null, { status: 204, headers: response.headers });
 }
 
+export function agentErrorResponse(error: unknown, logLabel: string) {
+  if (error instanceof AgentUnavailableError) {
+    return agentJson({ error: { code: "unavailable", message: error.message } }, 503);
+  }
+  console.error(logLabel, error instanceof Error ? error.message : "error");
+  return agentJson({ error: { code: "unavailable", message: "卡片接口暂时不可用" } }, 500);
+}
+
 export async function handleCardCollection(request: Request, runtime: AgentRuntime): Promise<Response> {
   try {
     return await handleCardCollectionUnsafe(request, runtime);
   } catch (error) {
-    console.error("agent cards", error instanceof Error ? error.message : "error");
-    return agentJson({ error: { code: "unavailable", message: "卡片接口暂时不可用" } }, 500);
+    return agentErrorResponse(error, "agent cards");
   }
 }
 
@@ -71,8 +79,7 @@ export async function handleCardItem(request: Request, id: string, runtime: Agen
   try {
     return await handleCardItemUnsafe(request, id, runtime);
   } catch (error) {
-    console.error("agent cards", error instanceof Error ? error.message : "error");
-    return agentJson({ error: { code: "unavailable", message: "卡片接口暂时不可用" } }, 500);
+    return agentErrorResponse(error, "agent cards");
   }
 }
 
