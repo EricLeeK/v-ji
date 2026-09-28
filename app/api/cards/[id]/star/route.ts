@@ -32,6 +32,6 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
     ? 401
     : result.error.includes("不存在") || result.error.includes("已删除")
       ? 404
-      : 400;
+      : 500;
   return json({ error: result.error }, status);
 }

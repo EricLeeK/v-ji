@@ -21,9 +21,9 @@ it("posts the starred flag and treats an empty success body as saved", async () 
 });
 
 it("sends starred false when the card is unstarred", async () => {
-  const fetchImpl = vi.fn(async () => jsonResponse({}));
+  const fetchImpl = vi.fn(async (_url: RequestInfo | URL, init?: RequestInit) => jsonResponse({}));
   expect(await requestStudyStar(cardId, false, fetchImpl)).toEqual({});
-  expect(JSON.parse(String(fetchImpl.mock.calls[0][1]?.body))).toEqual({ starred: false });
+  expect(JSON.parse(String(fetchImpl.mock.calls[0]?.[1]?.body))).toEqual({ starred: false });
 });
 
 it("passes through the server error message", async () => {
@@ -41,4 +41,17 @@ it("never surfaces the browser Failed to fetch message", async () => {
 it("uses a fallback when the error response is not JSON", async () => {
   const fetchImpl = vi.fn(async () => new Response("nope", { status: 500 }));
   expect(await requestStudyStar(cardId, true, fetchImpl)).toEqual({ error: "收藏失败，请重试" });
+});
+
+it("does not treat a 2xx response as saved when its body cannot be read", async () => {
+  const body = new ReadableStream<Uint8Array>({
+    pull(controller) {
+      controller.error(new TypeError("network"));
+    },
+  });
+  const fetchImpl = vi.fn(async () => new Response(body, {
+    status: 200,
+    headers: { "content-type": "application/json" },
+  }));
+  expect(await requestStudyStar(cardId, true, fetchImpl)).toEqual({ error: "收藏失败，请检查网络后重试" });
 });

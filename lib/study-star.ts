@@ -23,7 +23,14 @@ export async function requestStudyStar(
     return { error: NETWORK_ERROR };
   }
 
-  const body = (await response.json().catch(() => null)) as { error?: unknown } | null;
+  let body: { error?: unknown } | null;
+  try {
+    body = (await response.json()) as { error?: unknown };
+  } catch (error) {
+    // A dropped body is not a saved star. Invalid JSON on an HTTP error is a server response.
+    if (!response.ok && error instanceof SyntaxError) return { error: FALLBACK_ERROR };
+    return { error: NETWORK_ERROR };
+  }
   if (!response.ok || typeof body?.error === "string") {
     return { error: typeof body?.error === "string" && body.error ? body.error : FALLBACK_ERROR };
   }

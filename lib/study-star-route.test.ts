@@ -45,6 +45,13 @@ it("maps login and missing-card errors", async () => {
   expect(await missing.json()).toEqual({ error: "卡片不存在或已被删除" });
 });
 
+it("returns 500 when starring fails for an unknown server error", async () => {
+  mocks.toggleStar.mockResolvedValueOnce({ error: "connection reset" });
+  const response = await call({ starred: true });
+  expect(response.status).toBe(500);
+  expect(await response.json()).toEqual({ error: "connection reset" });
+});
+
 it("rejects a bad id or body without touching the database", async () => {
   expect((await call({ starred: true }, "not-a-card")).status).toBe(404);
   expect((await call({ starred: "yes" })).status).toBe(400);
