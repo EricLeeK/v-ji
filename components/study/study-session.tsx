@@ -32,7 +32,13 @@ import { useStudyStore, type ReviewPayload } from "@/lib/stores/study-store";
 import { createReviewQueue } from "@/lib/study-review-queue";
 import { useSpeech } from "@/lib/hooks/use-speech";
 import { resolveStudyShortcut } from "@/lib/study-shortcuts";
-import { resolveSwipeGesture, swipeExitX, type SwipeExit } from "@/lib/study-transition";
+import {
+  KEYBOARD_SWIPE_EXIT_DURATION,
+  resolveSwipeGesture,
+  SWIPE_EXIT_DURATION,
+  swipeExitX,
+  type SwipeExit,
+} from "@/lib/study-transition";
 import {
   studyDoneTitle,
   studyProgress,
@@ -177,14 +183,14 @@ export function StudySession({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function commitRate(rating: Grade, exit?: SwipeExit) {
+  async function commitRate(rating: Grade, exit?: SwipeExit, duration = SWIPE_EXIT_DURATION) {
     if (exitLock.current || actionLock.current || exiting || leaving || !current || face !== "back") return;
     exitLock.current = true;
     setOutgoing(current);
     setExiting(true);
     try {
       if (exit && !reducedMotion) {
-        await animate(x, swipeExitX(exit), { duration: 0.14, ease: "easeOut" });
+        await animate(x, swipeExitX(exit), { duration, ease: "easeOut" });
       }
       const live = useStudyStore.getState();
       // A background failure may have restored an earlier checkpoint mid-swipe.
@@ -201,12 +207,13 @@ export function StudySession({
     }
   }
 
-  function rateSwipe(swipe: SwipeExit) {
+  function rateSwipe(swipe: SwipeExit, duration = SWIPE_EXIT_DURATION) {
     void commitRate(
       gestureToRating(
         swipe === "left" ? storedSettings.gesture.left : storedSettings.gesture.right,
       ),
       swipe,
+      duration,
     );
   }
 
@@ -221,7 +228,7 @@ export function StudySession({
       showAnswer();
       return;
     }
-    rateSwipe(action);
+    rateSwipe(action, KEYBOARD_SWIPE_EXIT_DURATION);
   });
 
   useEffect(() => {
