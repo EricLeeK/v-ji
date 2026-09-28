@@ -7,7 +7,8 @@ import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 
 import { ArrowLeft, ArrowRightLeft, Hand, LoaderCircle, MoreHorizontal, Star, Volume2, Square, Pencil, Pause, Settings, HelpCircle } from "lucide-react";
 import { toast } from "sonner";
 import { submitReview, exitStudy } from "@/app/actions/study";
-import { suspendCard, toggleStar } from "@/app/actions/notes";
+import { suspendCard } from "@/app/actions/notes";
+import { requestStudyStar } from "@/lib/study-star";
 import { CardFace, spokenText } from "@/components/cards/card-face";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -149,7 +150,7 @@ export function StudySession({
     setStarPending(true);
     setStarred(state => ({ ...state, [id]: !before }));
     try {
-      const result = await toggleStar(id, !before);
+      const result = await requestStudyStar(id, !before);
       if (result.error) throw new Error(result.error);
       toast.success(before ? "已取消收藏" : "已收藏卡片");
     } catch (error) {
