@@ -13,32 +13,45 @@ const PUBLIC_PREFIXES = [
   "/_next",
 ];
 
+const AGENT_CORS = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-headers": "Authorization, Content-Type, Accept, Mcp-Protocol-Version, Mcp-Session-Id",
+  "access-control-allow-methods": "GET, POST, PATCH, OPTIONS",
+};
+
 export async function updateSession(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) {
+    console.error("supabase proxy missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY");
+    return supabaseUnavailable(path);
+  }
+
+  try {
+    return await continueSession(request, url, key);
+  } catch (error) {
+    console.error("supabase proxy", error instanceof Error ? error.message : "error");
+    return supabaseUnavailable(path);
+  }
+}
+
+async function continueSession(request: NextRequest, url: string, key: string) {
   let supabaseResponse = NextResponse.next({ request });
 
-  const supabase = createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet, headers) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value),
-          );
-          supabaseResponse = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options),
-          );
-          Object.entries(headers).forEach(([key, value]) =>
-            supabaseResponse.headers.set(key, value),
-          );
-        },
+  const supabase = createServerClient<Database>(url, key, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
+      },
+      setAll(cookiesToSet, headers) {
+        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+        supabaseResponse = NextResponse.next({ request });
+        cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options));
+        Object.entries(headers).forEach(([name, value]) => supabaseResponse.headers.set(name, value));
       },
     },
-  );
+  });
 
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
@@ -55,10 +68,23 @@ export async function updateSession(request: NextRequest) {
 
   // The guide is also linked from the signed-in profile page.
   if (user && path === "/login") {
-    const url = request.nextUrl.clone();
-    url.pathname = "/today";
-    return NextResponse.redirect(url);
+    const nextUrl = request.nextUrl.clone();
+    nextUrl.pathname = "/today";
+    return NextResponse.redirect(nextUrl);
   }
 
   return supabaseResponse;
+}
+
+function supabaseUnavailable(path: string) {
+  if (isAgentApiPath(path)) {
+    return NextResponse.json(
+      { error: { code: "unavailable", message: "服务端未配置 Supabase 连接，卡片接口暂时不可用" } },
+      { status: 503, headers: { "cache-control": "private, no-store", ...AGENT_CORS } },
+    );
+  }
+  return new NextResponse("服务端未配置 Supabase 连接", {
+    status: 503,
+    headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "private, no-store" },
+  });
 }

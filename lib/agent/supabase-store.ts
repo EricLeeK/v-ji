@@ -11,6 +11,7 @@ import {
   type ListQuery,
   type SaveCardInput,
 } from "@/lib/agent/cards";
+import { AgentUnavailableError, isAgentSchemaMissing } from "@/lib/agent/errors";
 import type { Database, Json } from "@/types/database";
 
 type Db = SupabaseClient<Database>;
@@ -117,6 +118,10 @@ function ownCard(value: Json | null, ownerId: string): AgentCard | null {
 function raiseStoreError(error: { message: string } | null) {
   if (!error) return;
   const message = error.message;
+  if (isAgentSchemaMissing(message)) {
+    console.error("agent card store", message);
+    throw new AgentUnavailableError("卡片接口的数据库迁移尚未应用");
+  }
   if (message.includes("not authenticated")) throw new CardStoreError("unauthorized", "需要登录或个人访问令牌");
   if (message.includes("deck not found")) throw new CardStoreError("deck_not_found", "卡片盒不存在");
   if (message.includes("note not found")) throw new CardStoreError("not_found", "卡片不存在");

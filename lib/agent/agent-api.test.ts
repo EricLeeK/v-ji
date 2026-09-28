@@ -12,6 +12,7 @@ import {
 } from "@/lib/agent/cards";
 import { createMemoryDirectory } from "@/lib/agent/memory-store";
 import { handleCardCollection, handleCardItem, type AgentRuntime } from "@/lib/agent/http";
+import { AgentUnavailableError } from "@/lib/agent/errors";
 import { handleMcp } from "@/lib/agent/mcp";
 
 const deckA = "11111111-1111-4111-8111-111111111111";
@@ -43,6 +44,19 @@ it("keeps a bearer token from falling back to another account's session", async 
   expect(actor?.userId).toBe("user-a");
   expect(actor?.tokenHash).toBe(hashApiToken(token));
   expect(await resolveActor(`Bearer ${token}`, "user-b", async () => null)).toBeNull();
+});
+
+it("reports a missing server secret as unavailable instead of an opaque failure", async () => {
+  const response = await handleCardCollection(
+    jsonRequest("GET", "/api/v1/cards", undefined, "Bearer vji_aaaaaaaaaaaaaaaaaaaa"),
+    runtime(async () => {
+      throw new AgentUnavailableError("服务端未配置 SUPABASE_SECRET_KEY");
+    }),
+  );
+  expect(response.status).toBe(503);
+  expect(await response.json()).toEqual({
+    error: { code: "unavailable", message: "服务端未配置 SUPABASE_SECRET_KEY" },
+  });
 });
 
 it("does not treat the card image route as an agent API", () => {

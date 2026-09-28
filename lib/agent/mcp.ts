@@ -1,5 +1,5 @@
 import { clampPageLimit, decodeCursor, executeCardCommand, isUuid, type CardCommand, type CardStore } from "@/lib/agent/cards";
-import { agentJson, type AgentRuntime } from "@/lib/agent/http";
+import { agentErrorResponse, agentJson, type AgentRuntime } from "@/lib/agent/http";
 
 const PROTOCOL_VERSIONS = ["2024-11-05", "2025-03-26", "2025-06-18"];
 const DEFAULT_PROTOCOL = "2025-03-26";
@@ -69,8 +69,7 @@ export async function handleMcp(request: Request, runtime: AgentRuntime): Promis
   try {
     return await handleMcpUnsafe(request, runtime);
   } catch (error) {
-    console.error("agent mcp", error instanceof Error ? error.message : "error");
-    return agentJson({ error: { code: "unavailable", message: "卡片接口暂时不可用" } }, 500);
+    return agentErrorResponse(error, "agent mcp");
   }
 }
 
