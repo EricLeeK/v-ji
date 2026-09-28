@@ -90,12 +90,21 @@ export function DeckList({ decks }: { decks: DeckItem[] }) {
                 </span>
               </span>
             </Link>
-            <Link
-              href={`/study?deckId=${deck.id}`}
-              className="col-start-2 row-start-2 inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-primary/10 bg-primary/10 px-3 text-xs font-medium text-primary transition-colors hover:bg-primary/15"
-            >
-              学习
-            </Link>
+            <div className="col-start-2 row-start-2 flex flex-col items-stretch gap-1">
+              <Link
+                href={`/study?deckId=${deck.id}`}
+                className="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-primary/10 bg-primary/10 px-3 text-xs font-medium text-primary transition-colors hover:bg-primary/15"
+              >
+                学习
+              </Link>
+              <Link
+                href={`/study?deckId=${deck.id}&shuffle=1`}
+                aria-label={`打乱学习：${deck.name}`}
+                className="inline-flex min-h-8 shrink-0 items-center justify-center rounded-full border border-primary/15 px-3 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+              >
+                打乱
+              </Link>
+            </div>
             <button
               type="button"
               aria-label={`更多操作：${deck.name}`}
