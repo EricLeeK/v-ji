@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { signInAnonymously, signInWithPassword, signUpWithPassword } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { loginFailureMessage } from "@/lib/login-failure";
 import { toast } from "sonner";
 
 export function LoginForm() {
@@ -20,7 +21,10 @@ export function LoginForm() {
     lock.current = true;
     setPending(true);
     try { await action(); }
-    catch { toast.error("暂时无法登录，请检查网络后重试"); }
+    catch (error) {
+      const message = loginFailureMessage(error);
+      if (message) toast.error(message);
+    }
     finally { lock.current = false; setPending(false); }
   }
 
