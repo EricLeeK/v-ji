@@ -9,7 +9,7 @@ export function callIntegrationRpc<T>(
   functionName: string,
   args?: Record<string, unknown>,
 ): Promise<IntegrationRpcResult<T>> {
-  const rpc = supabase.rpc as unknown as (
+  const rpc = supabase.rpc.bind(supabase) as unknown as (
     name: string,
     parameters?: Record<string, unknown>,
   ) => Promise<IntegrationRpcResult<T>>;
