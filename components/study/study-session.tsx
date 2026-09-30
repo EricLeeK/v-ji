@@ -37,6 +37,7 @@ import {
   studySessionPhase,
   type StudyScope,
 } from "@/lib/study-progress";
+import { resolveDeckColor } from "@/lib/deck-tone";
 import { cn } from "@/lib/utils";
 import { localDateKey } from "@/lib/dates";
 import { leaveStudyFailureMessage } from "@/lib/study-exit";
@@ -405,7 +406,8 @@ export function StudySession({
               if (display.note.type === "choice") return;
               showAnswer();
             }}
-            className="touch-pan-y relative flex max-h-full min-h-[280px] w-full cursor-pointer flex-col overflow-hidden rounded-[30px] bg-white p-6 text-left shadow-[0_18px_50px_rgba(30,70,60,0.12)] will-change-transform"
+            data-tone={resolveDeckColor(display.deckColor, display.deck_id)}
+            className="touch-pan-y relative flex max-h-full min-h-[280px] w-full cursor-pointer flex-col overflow-hidden rounded-[30px] bg-[var(--tone-surface)] p-6 text-left shadow-[0_18px_50px_rgba(30,70,60,0.12)] transition-colors duration-300 will-change-transform"
           >
             <motion.div aria-hidden style={{ opacity: leftHint }} className="pointer-events-none absolute inset-0 rounded-[28px] border-4 border-rose-400" />
             <motion.div aria-hidden style={{ opacity: rightHint }} className="pointer-events-none absolute inset-0 rounded-[28px] border-4 border-emerald-400" />

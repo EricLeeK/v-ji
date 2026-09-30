@@ -29,6 +29,7 @@ export default async function DecksPage() {
       id: deck.id,
       name: deck.name,
       icon: deck.icon,
+      color: deck.color,
       ...summary,
     };
   });

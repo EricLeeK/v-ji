@@ -9,6 +9,8 @@ import { createDeck } from "@/app/actions/decks";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DECK_ICONS, DECK_ICON_LABELS, resolveDeckIcon } from "@/lib/deck-icons";
+import { type DeckColor } from "@/lib/deck-tone";
+import { DeckColorPicker } from "@/components/decks/deck-color-picker";
 import { toast } from "sonner";
 
 const ICONS = DECK_ICONS;
@@ -17,11 +19,12 @@ export default function NewDeckPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [icon, setIcon] = useState("book");
+  const [color, setColor] = useState<DeckColor>("mint");
   const { pending, run } = useAction();
 
   async function submit() {
     if (!name.trim()) return;
-    await run(() => createDeck({ name, icon }), result => {
+    await run(() => createDeck({ name, icon, color }), result => {
       if (result.id) { toast.success("卡片盒已创建"); router.push(`/decks/${result.id}`); }
     });
   }
@@ -51,6 +54,7 @@ export default function NewDeckPage() {
             </button>
           ))}
         </div>
+        <DeckColorPicker value={color} disabled={pending} onChange={setColor} />
         <Button className="h-11 w-full rounded-full" disabled={pending || !name.trim()} type="submit">
           {pending ? "创建中…" : "创建"}
         </Button>

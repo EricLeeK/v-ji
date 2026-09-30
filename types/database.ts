@@ -432,6 +432,7 @@ export type Database = {
           owner_id: string;
           source_book_id: string | null;
           updated_at: string;
+          color: string | null;
         };
         Insert: {
           created_at?: string;
@@ -442,6 +443,7 @@ export type Database = {
           owner_id: string;
           source_book_id?: string | null;
           updated_at?: string;
+          color?: string | null;
         };
         Update: {
           created_at?: string;
@@ -452,6 +454,7 @@ export type Database = {
           owner_id?: string;
           source_book_id?: string | null;
           updated_at?: string;
+          color?: string | null;
         };
         Relationships: [];
       };

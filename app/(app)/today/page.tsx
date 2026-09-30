@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { CalendarDays, Check, ChevronRight, Flame, Play, Target } from "lucide-react";
 import { countStreak, formatDateLabel, greeting, localDateKey } from "@/lib/dates";
-import { deckTone } from "@/lib/deck-tone";
+import { resolveDeckColor } from "@/lib/deck-tone";
 import { parseSettings } from "@/lib/settings";
 import { buildTodayQueue } from "@/lib/srs/queue";
 import { createClient, getUserId } from "@/lib/supabase/server";
@@ -25,7 +25,7 @@ export default async function TodayPage() {
       .eq("owner_id", uid)
       .eq("suspended", false),
     supabase.from("daily_stats").select("date, reviews, new_cards").eq("owner_id", uid).order("date", { ascending: false }).limit(120),
-    supabase.from("decks").select("id, name, icon, created_at").eq("owner_id", uid).order("created_at", { ascending: false }).limit(3),
+    supabase.from("decks").select("id, name, icon, color, created_at").eq("owner_id", uid).order("created_at", { ascending: false }).limit(3),
   ]);
 
   const settings = parseSettings(profile?.settings);
@@ -151,7 +151,7 @@ export default async function TodayPage() {
       {deckRows.length > 0 ? <section className="px-5">
         <div className="mb-3 flex items-center justify-between"><h2 className="text-base font-semibold tracking-tight">近期卡盒</h2><Link href="/decks" className="flex items-center gap-1 text-xs text-muted-foreground">查看全部 <ChevronRight className="size-3.5" /></Link></div>
         <div className="grid grid-cols-2 gap-2.5">
-          {deckRows.map(deck => <Link key={deck.id} href={`/decks/${deck.id}`} data-tone={deckTone(deck.id)} className="app-card app-card-interactive deck-tile min-w-0 rounded-[22px] p-3 active:scale-[0.98]">
+          {deckRows.map(deck => <Link key={deck.id} href={`/decks/${deck.id}`} data-tone={resolveDeckColor(deck.color, deck.id)} className="app-card app-card-interactive deck-tile min-w-0 rounded-[22px] p-3 active:scale-[0.98]">
             <span className="tone-icon flex size-9 items-center justify-center rounded-xl"><DeckIcon name={deck.icon} className="size-5" /></span>
             <p className="mt-3 text-[0.8125rem] font-medium leading-5 text-balance [overflow-wrap:anywhere]">{deck.name}</p>
             <p className="mt-2 text-[11px] text-muted-foreground">{deck.count} 张卡片</p>
@@ -162,7 +162,7 @@ export default async function TodayPage() {
       {planRows.length > 0 ? <section className="px-5 pt-5">
         <div className="app-card rounded-[26px] p-4">
           <div className="mb-3 flex items-center justify-between"><h2 className="text-base font-semibold tracking-tight">待学卡片盒</h2><Link href="/decks" className="flex items-center gap-1 text-xs text-muted-foreground">查看全部 <ChevronRight className="size-3.5" /></Link></div>
-          <div className="space-y-3">{planRows.map(item => <Link key={item.id} href={`/study?deckId=${item.id}`} data-tone={deckTone(item.id)} className="flex items-center gap-3 text-[0.8125rem] leading-5">
+          <div className="space-y-3">{planRows.map(item => <Link key={item.id} href={`/study?deckId=${item.id}`} data-tone={resolveDeckColor(item.color, item.id)} className="flex items-center gap-3 text-[0.8125rem] leading-5">
             <span className="tone-icon flex size-9 shrink-0 items-center justify-center rounded-xl"><DeckIcon name={item.icon} className="size-4" /></span>
             <span className="min-w-0 flex-1"><span className="block [overflow-wrap:anywhere]">{item.name}</span><span className="block text-[0.6875rem] text-muted-foreground">新卡 {item.newCount} 张 · 复习 {item.due - item.newCount} 张</span></span>
             <ChevronRight className="size-4 shrink-0 text-muted-foreground" />

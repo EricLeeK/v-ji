@@ -3,6 +3,7 @@ import type { Tables } from "@/types/database";
 export type QueueCard = Tables<"cards"> & {
   note: Tables<"notes">;
   deckName: string;
+  deckColor?: string | null;
 };
 
 export type QueueMeta = Pick<Tables<"cards">, "id" | "state" | "due" | "created_at" | "suspended">;

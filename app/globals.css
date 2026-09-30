@@ -281,6 +281,26 @@
   --tone-ink: oklch(0.43 0.07 170);
   --tone-border: oklch(0.88 0.04 165);
 }
+[data-tone="rose"] {
+  --tone-surface: oklch(0.96 0.03 15);
+  --tone-ink: oklch(0.46 0.1 15);
+  --tone-border: oklch(0.89 0.04 15);
+}
+[data-tone="lemon"] {
+  --tone-surface: oklch(0.97 0.04 100);
+  --tone-ink: oklch(0.45 0.08 95);
+  --tone-border: oklch(0.9 0.05 100);
+}
+[data-tone="sea"] {
+  --tone-surface: oklch(0.955 0.03 200);
+  --tone-ink: oklch(0.42 0.07 200);
+  --tone-border: oklch(0.88 0.04 200);
+}
+[data-tone="iris"] {
+  --tone-surface: oklch(0.955 0.03 280);
+  --tone-ink: oklch(0.44 0.09 280);
+  --tone-border: oklch(0.88 0.04 280);
+}
 .tone-icon, .tinted-stat {
   background: var(--tone-surface);
   color: var(--tone-ink);
@@ -295,3 +315,7 @@
 .dark [data-tone="apricot"] { --tone-surface: oklch(0.28 0.035 75); --tone-ink: oklch(0.86 0.075 75); --tone-border: oklch(0.38 0.04 75); }
 .dark [data-tone="lilac"] { --tone-surface: oklch(0.28 0.035 305); --tone-ink: oklch(0.84 0.07 305); --tone-border: oklch(0.38 0.04 305); }
 .dark [data-tone="mint"] { --tone-surface: oklch(0.28 0.035 165); --tone-ink: oklch(0.84 0.07 165); --tone-border: oklch(0.38 0.04 165); }
+.dark [data-tone="rose"] { --tone-surface: oklch(0.28 0.04 15); --tone-ink: oklch(0.86 0.07 15); --tone-border: oklch(0.38 0.04 15); }
+.dark [data-tone="lemon"] { --tone-surface: oklch(0.3 0.04 100); --tone-ink: oklch(0.88 0.07 100); --tone-border: oklch(0.4 0.04 100); }
+.dark [data-tone="sea"] { --tone-surface: oklch(0.28 0.035 200); --tone-ink: oklch(0.84 0.07 200); --tone-border: oklch(0.38 0.04 200); }
+.dark [data-tone="iris"] { --tone-surface: oklch(0.28 0.04 280); --tone-ink: oklch(0.84 0.07 280); --tone-border: oklch(0.38 0.04 280); }

@@ -18,7 +18,8 @@ import {
 import { useAction } from "@/lib/hooks/use-action";
 import { Input } from "@/components/ui/input";
 import { DECK_ICONS, DECK_ICON_LABELS, resolveDeckIcon } from "@/lib/deck-icons";
-import { deckTone } from "@/lib/deck-tone";
+import { resolveDeckColor, type DeckColor } from "@/lib/deck-tone";
+import { DeckColorPicker } from "@/components/decks/deck-color-picker";
 import type { DeckSummary } from "@/lib/deck-summary";
 import { toast } from "sonner";
 
@@ -26,6 +27,7 @@ export type DeckItem = {
   id: string;
   name: string;
   icon: string;
+  color: string | null;
 } & DeckSummary;
 
 export function DeckList({ decks }: { decks: DeckItem[] }) {
@@ -33,6 +35,7 @@ export function DeckList({ decks }: { decks: DeckItem[] }) {
   const [editing, setEditing] = useState<DeckItem | null>(null);
   const [name, setName] = useState("");
   const [icon, setIcon] = useState("book");
+  const [color, setColor] = useState<DeckColor>("mint");
   const [removing, setRemoving] = useState<DeckItem | null>(null);
 
   const { pending, run } = useAction();
@@ -42,13 +45,14 @@ export function DeckList({ decks }: { decks: DeckItem[] }) {
     setEditing(deck);
     setName(deck.name);
     setIcon(resolveDeckIcon(deck.icon));
+    setColor(resolveDeckColor(deck.color, deck.id));
   };
 
   return (
     <>
       <ul className="space-y-3">
         {decks.map((deck) => (
-          <li key={deck.id} data-tone={deckTone(deck.id)} className="app-card app-card-interactive deck-tile grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 rounded-[24px] p-3.5 active:scale-[0.99]">
+          <li key={deck.id} data-tone={resolveDeckColor(deck.color, deck.id)} className="app-card app-card-interactive deck-tile grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 rounded-[24px] p-3.5 active:scale-[0.99]">
             <Link
               href={`/decks/${deck.id}`}
               onContextMenu={(event) => {
@@ -124,6 +128,7 @@ export function DeckList({ decks }: { decks: DeckItem[] }) {
             <AlertDialogTitle>编辑卡片盒</AlertDialogTitle>
           </AlertDialogHeader>
           <Input aria-label="卡片盒名称" maxLength={80} disabled={pending} value={name} onChange={(e) => setName(e.target.value)} />
+          <DeckColorPicker value={color} disabled={pending} onChange={setColor} />
           <div className="grid grid-cols-5 gap-2">
             {DECK_ICONS.map((item) => (
               <button
@@ -149,7 +154,7 @@ export function DeckList({ decks }: { decks: DeckItem[] }) {
               onClick={event => {
                 event.preventDefault();
                 if (!editing) return;
-                void run(() => updateDeck(editing.id, { name, icon }), () => { toast.success("已更新"); setEditing(null); router.refresh(); });
+                void run(() => updateDeck(editing.id, { name, icon, color }), () => { toast.success("已更新"); setEditing(null); router.refresh(); });
               }}
             >
               {pending ? "保存中…" : "保存"}

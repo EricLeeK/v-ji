@@ -8,7 +8,7 @@ import type { Tables } from "@/types/database";
 
 type CardRow = Tables<"cards"> & {
   notes: Tables<"notes"> | null;
-  decks: { name: string } | null;
+  decks: { name: string; color: string | null } | null;
 };
 
 export const getProfile = cache(async function getProfile() {
@@ -20,7 +20,7 @@ export const getProfile = cache(async function getProfile() {
 });
 
 const cardSelect =
-  "id, note_id, deck_id, owner_id, ord, state, due, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, last_review, starred, suspended, created_at, notes(id, deck_id, owner_id, type, fields, tags, layout, source, created_at, updated_at), decks(name)";
+  "id, note_id, deck_id, owner_id, ord, state, due, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, last_review, starred, suspended, created_at, notes(id, deck_id, owner_id, type, fields, tags, layout, source, created_at, updated_at), decks(name, color)";
 
 export async function getStudyQueue(deckId?: string, options?: { shuffleDeck?: boolean }): Promise<{
   queue: QueueCard[];
@@ -106,5 +106,6 @@ function toQueueCards(rows: CardRow[] | null | undefined): QueueCard[] {
       ...card,
       note: card.notes!,
       deckName: card.decks?.name ?? "卡片盒",
+      deckColor: card.decks?.color ?? null,
     }));
 }
