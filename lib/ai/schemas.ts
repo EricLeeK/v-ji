@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { NoteType } from "@/types/database";
 import type { NoteFields } from "@/lib/templates";
 
-export const NOTE_TYPES = ["qa", "cloze", "choice", "vocab", "poem", "note"] as const satisfies readonly NoteType[];
+export const NOTE_TYPES = ["qa", "cloze", "choice", "vocab", "poem", "note", "dict", "sentence", "writing"] as const satisfies readonly NoteType[];
 
 export const CARD_LAYOUTS = ["minimal", "emphasis", "illustrated"] as const;
 export type CardLayout = (typeof CARD_LAYOUTS)[number];

@@ -64,7 +64,7 @@
 
 社区的“人在学”按当前保有已加入副本的独立账号统计，排除演示账号；0 人不显示，1 人及以上显示准确人数。重复加入不重复计数，删除副本后不再计入。它表示加入人数，不是同时在线人数。
 
-### 六种卡片，各有用处
+### 九种卡片，各有用处
 
 | 模板 | 适合整理的内容 |
 | --- | --- |
@@ -74,6 +74,11 @@
 | 英语单词 | 单词、音标、释义与例句 |
 | 古诗文 | 原文、译文与作者 |
 | 笔记卡 | 用标题与正文归纳知识 |
+| 词典卡 | 词条、词性、语境、语境译文与难度。复习时高亮语境里的词条 |
+| 长难句卡 | 原句按主语、谓语、宾语等成分着色，并保留从句、难点、还原和译文 |
+| 写作批改卡 | 原文上的删除与替换、修改后全文和总评 |
+
+词典卡、长难句卡和写作批改卡对应陪读蛙的词典、长难句解析和写作批改。陪读蛙把结果交给 Learning Hub，再同步进绑定的那一个卡片盒。其他 Agent 直接调用下方的 V 记 MCP，不经过 Learning Hub。陪读蛙里没有这三种结构的结果，仍按问答、单词、挖空或笔记入库。
 
 社区现有「入党积极分子 · 党课与题库」和「湖北省选调 · 省情与时政」两套资料卡册，保留来源、章节和资料年份；内容范围与已知缺损见[整理说明](./docs/community-presets.md)。示例卡册用于体验卡型，会在标题与介绍中明确标注。
 
@@ -122,8 +127,16 @@ cp .env.example .env.local
 9. [社区卡册来源、章节与版式](./supabase/migrations/20260925220000_book_note_metadata.sql)
 10. [入党积极分子预设卡组](./supabase/migrations/20260925220100_party-activist.sql)
 11. [湖北省选调预设卡组](./supabase/migrations/20260925220200_hubei-selected-graduates.sql)
+12. [真实在学人数](./supabase/migrations/20260926120000_real_learner_counts.sql)
+13. [示例卡册标注](./supabase/migrations/20260926121000_label_sample_books.sql)
+14. [Agent 卡片接口](./supabase/migrations/20260928040000_agent_card_api.sql)
+15. [Learning Hub 同步](./supabase/migrations/20260929090000_learning_hub.sql)
+16. [Agent 卡片盒发现](./supabase/migrations/20260930030000_agent_deck_discovery.sql)
+17. [陪读蛙三种卡片类型](./supabase/migrations/20260930100000_read_frog_cards.sql)
+18. [陪读蛙卡片字段校验](./supabase/migrations/20260930100100_read_frog_card_validation.sql)
+19. [Learning Hub 同步这三种卡片](./supabase/migrations/20260930100200_read_frog_learning_hub_sync.sql)
 
-两套考试卡组的卡型设计、来源版本和缺损处理见[整理说明](./docs/community-presets.md)。
+两套考试卡组的卡型设计、来源版本和缺损处理见[整理说明](./docs/community-presets.md)。第 17 到 19 步未执行时，线上会拒绝词典卡、长难句卡和写作批改卡。
 
 在 Supabase Auth 中配置站点地址，并将 `http://localhost:3000/auth/callback` 加入允许的回调地址。若使用「先随便看看」，还需启用匿名登录。
 
@@ -161,7 +174,7 @@ npm run dev
 | 读取 / 更新 | `GET`、`PATCH /api/v1/cards/<卡片 ID>` |
 | MCP | `POST /api/mcp`，工具 `agent_help`、`list_decks`、`list_cards`、`get_card`、`create_card`、`update_card` |
 
-卡片 ID 就是现有笔记 ID。创建和更新走同一套题型、字段和卡片盒归属校验；不能读或改别人的卡片，也不能通过这个接口改复习进度。需要先执行迁移 `supabase/migrations/20260928040000_agent_card_api.sql` 和 `supabase/migrations/20260930030000_agent_deck_discovery.sql`。`list_decks` 包括空盒，以 `nextOffset` 翻页；`agent_help` 提供六种题型字段示例与保存流程。
+卡片 ID 就是现有笔记 ID。创建和更新走同一套题型、字段和卡片盒归属校验；不能读或改别人的卡片，也不能通过这个接口改复习进度。需要先执行迁移 `supabase/migrations/20260928040000_agent_card_api.sql`、`supabase/migrations/20260930030000_agent_deck_discovery.sql`，以及上面的第 17 到 19 步。`list_decks` 包括空盒，以 `nextOffset` 翻页；`agent_help` 提供九种题型字段示例与保存流程。Agent 在这里直接建卡，不经过陪读蛙的 Learning Hub。
 
 ```json
 {

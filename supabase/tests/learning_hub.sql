@@ -244,6 +244,73 @@ begin
     raise exception 'Hub sized fields, source, or tags were truncated or rejected';
   end if;
 
+  result := public.learning_hub_sync(token_text, jsonb_build_array(
+    jsonb_build_object(
+      'external_id', 'frog:dict', 'version', 1, 'type', 'dict',
+      'fields', jsonb_build_object(
+        'term', 'blossom', 'phonetic', '/ˈblɒs.əm/', 'partOfSpeech', 'noun',
+        'definition', '花', 'context', 'cherry blossoms',
+        'contextTerm', '[{"text":"blossoms"}]', 'contextTranslation', '樱花', 'difficulty', 'B2'
+      ),
+      'tags', jsonb_build_array('陪读蛙'), 'source', 'dict.md', 'content_hash', repeat('a', 64)
+    ),
+    jsonb_build_object(
+      'external_id', 'frog:sentence', 'version', 1, 'type', 'sentence',
+      'fields', jsonb_build_object(
+        'sentence', 'The committee has postponed the decision.',
+        'annotations', '[{"text":"The committee","type":"subject"},{"text":"has postponed","type":"predicate"}]',
+        'translation', '委员会推迟了决定。'
+      ),
+      'tags', jsonb_build_array('陪读蛙'), 'source', 'sentence.md', 'content_hash', repeat('b', 64)
+    ),
+    jsonb_build_object(
+      'external_id', 'frog:writing', 'version', 1, 'type', 'writing',
+      'fields', jsonb_build_object(
+        'original', 'Please explain me.',
+        'annotations', '[{"text":"explain me","fix":"explain it to me","type":"grammar","note":"介词"}]',
+        'improved', 'Please explain it to me.', 'summary', '补上介词', 'setting', 'Neutral · email'
+      ),
+      'tags', jsonb_build_array('陪读蛙'), 'source', 'writing.md', 'content_hash', repeat('c', 64)
+    )
+  ));
+  if jsonb_array_length(result) <> 3
+     or result->0->>'status' <> 'created'
+     or result->1->>'status' <> 'created'
+     or result->2->>'status' <> 'created' then
+    raise exception 'read frog structured cards were not created: %', result;
+  end if;
+  if not exists (
+    select 1 from public.notes n
+    join public.cards c on c.note_id = n.id
+    where n.id = (result->0->>'note_id')::uuid and n.type = 'dict' and n.fields->>'term' = 'blossom' and c.ord = 0
+  ) or not exists (
+    select 1 from public.notes n
+    where n.id = (result->1->>'note_id')::uuid and n.type = 'sentence' and n.fields->>'sentence' like 'The committee%'
+  ) or not exists (
+    select 1 from public.notes n
+    where n.id = (result->2->>'note_id')::uuid and n.type = 'writing' and n.fields->>'improved' = 'Please explain it to me.'
+  ) then
+    raise exception 'read frog card types or review cards were not stored';
+  end if;
+
+  begin
+    perform public.learning_hub_sync(token_text, jsonb_build_array(jsonb_build_object(
+      'external_id', 'frog:sentence-invalid', 'version', 1, 'type', 'sentence',
+      'fields', jsonb_build_object(
+        'sentence', 'The committee met.',
+        'annotations', '[{"text":"The committee","type":"clause"}]',
+        'translation', '委员会开会了。'
+      ),
+      'tags', jsonb_build_array(), 'source', 'sentence.md', 'content_hash', repeat('d', 64)
+    )));
+    raise exception 'expected invalid sentence annotation rejection' using errcode = 'P0001';
+  exception when invalid_parameter_value then
+    null;
+  end;
+  if exists (select 1 from private.learning_hub_notes where external_id = 'frog:sentence-invalid') then
+    raise exception 'invalid sentence annotation was stored';
+  end if;
+
   delete from public.notes where id = qa_note_id and owner_id = first_user;
   begin
     perform public.learning_hub_sync(token_text, jsonb_build_array(jsonb_build_object(

@@ -126,4 +126,50 @@ describe("validateNoteFields", () => {
     ).toBeNull();
     expect(validateNoteFields("cloze", { text: "海内存知己，{{c1::天涯若比邻}}。" })).toBeNull();
   });
+
+  it("creates study-ready cards for Read Frog's dictionary, sentence and writing outputs", () => {
+    expect(
+      TEMPLATES.some((item) => item.type === "dict" && item.label === "词典卡"),
+    ).toBe(true);
+    expect(
+      TEMPLATES.some((item) => item.type === "sentence" && item.label === "长难句卡"),
+    ).toBe(true);
+    expect(
+      TEMPLATES.some((item) => item.type === "writing" && item.label === "写作批改卡"),
+    ).toBe(true);
+
+    expect(
+      validateNoteFields("dict", {
+        term: "retrieval",
+        definition: "the process of getting something back",
+        context: "Information retrieval is useful.",
+      }),
+    ).toBeNull();
+    expect(
+      validateNoteFields("sentence", {
+        sentence: "The committee has postponed the decision.",
+        annotations: JSON.stringify([
+          { text: "The committee", type: "subject" },
+          { text: "has postponed", type: "predicate" },
+        ]),
+      }),
+    ).toBeNull();
+    expect(
+      validateNoteFields("writing", {
+        original: "I want to know if you are free.",
+        annotations: JSON.stringify([
+          {
+            text: "I want to know",
+            fix: "I was wondering",
+            type: "register",
+            note: "more polite",
+          },
+        ]),
+      }),
+    ).toBeNull();
+
+    expect(validateNoteFields("dict", emptyFields("dict"))).toMatch(/词条|释义/);
+    expect(validateNoteFields("sentence", emptyFields("sentence"))).toMatch(/句子|标注/);
+    expect(validateNoteFields("writing", emptyFields("writing"))).toMatch(/原文|标注/);
+  });
 });

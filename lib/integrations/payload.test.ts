@@ -98,4 +98,46 @@ describe("parseLearningHubBatch", () => {
       expect(parseLearningHubBatch([invalid]).success).toBe(false);
     }
   });
+
+  it("accepts Read Frog dictionary, sentence-analysis and writing cards", () => {
+    const examples = [
+      item({
+        external_id: "dict",
+        type: "dict",
+        fields: {
+          term: "retrieval",
+          definition: "提取",
+          context: "Information retrieval is useful.",
+        },
+      }),
+      item({
+        external_id: "sentence",
+        type: "sentence",
+        fields: {
+          sentence: "The committee has postponed the decision.",
+          annotations: JSON.stringify([
+            { text: "The committee", type: "subject" },
+            { text: "has postponed", type: "predicate" },
+          ]),
+          translation: "委员会推迟了决定。",
+        },
+      }),
+      item({
+        external_id: "writing",
+        type: "writing",
+        fields: {
+          original: "I want to know.",
+          annotations: JSON.stringify([
+            { text: "I want to know", fix: "I was wondering", type: "register" },
+          ]),
+          improved: "I was wondering.",
+        },
+      }),
+    ];
+
+    const result = parseLearningHubBatch(examples);
+
+    expect(result.success).toBe(true);
+    if (result.success) expect(result.data).toEqual(examples);
+  });
 });

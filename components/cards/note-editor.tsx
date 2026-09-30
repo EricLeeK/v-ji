@@ -147,6 +147,77 @@ export function TemplateFields({
       </div>
     );
   }
+
+  if (type === "dict") {
+    return (
+      <div className="space-y-3">
+        <Field label="词条">
+          <Input value={fields.term ?? ""} onChange={(e) => onChange({ term: e.target.value })} />
+        </Field>
+        <div className="grid grid-cols-2 gap-3">
+          <Field label="音标">
+            <Input value={fields.phonetic ?? ""} onChange={(e) => onChange({ phonetic: e.target.value })} />
+          </Field>
+          <Field label="词性">
+            <Input value={fields.partOfSpeech ?? ""} onChange={(e) => onChange({ partOfSpeech: e.target.value })} />
+          </Field>
+        </div>
+        <Field label="语境释义">
+          <Textarea value={fields.definition ?? ""} onChange={(e) => onChange({ definition: e.target.value })} rows={3} />
+        </Field>
+        <Field label="原句语境">
+          <Textarea value={fields.context ?? ""} onChange={(e) => onChange({ context: e.target.value })} rows={3} />
+        </Field>
+        <Field label="语境词条（JSON 数组）">
+          <Textarea value={fields.contextTerm ?? ""} onChange={(e) => onChange({ contextTerm: e.target.value })} rows={2} />
+        </Field>
+        <Field label="语境翻译">
+          <Textarea value={fields.contextTranslation ?? ""} onChange={(e) => onChange({ contextTranslation: e.target.value })} rows={2} />
+        </Field>
+        <Field label="难度">
+          <Input value={fields.difficulty ?? ""} onChange={(e) => onChange({ difficulty: e.target.value })} />
+        </Field>
+      </div>
+    );
+  }
+
+  if (type === "sentence") {
+    return (
+      <div className="space-y-3">
+        <Field label="长难句">
+          <Textarea value={fields.sentence ?? ""} onChange={(e) => onChange({ sentence: e.target.value })} rows={4} />
+        </Field>
+        <Field label="成分标注（JSON 数组）">
+          <Textarea value={fields.annotations ?? "[]"} onChange={(e) => onChange({ annotations: e.target.value })} rows={8} />
+        </Field>
+        <Field label="译文">
+          <Textarea value={fields.translation ?? ""} onChange={(e) => onChange({ translation: e.target.value })} rows={3} />
+        </Field>
+      </div>
+    );
+  }
+
+  if (type === "writing") {
+    return (
+      <div className="space-y-3">
+        <Field label="原文">
+          <Textarea value={fields.original ?? ""} onChange={(e) => onChange({ original: e.target.value })} rows={4} />
+        </Field>
+        <Field label="批改标注（JSON 数组）">
+          <Textarea value={fields.annotations ?? "[]"} onChange={(e) => onChange({ annotations: e.target.value })} rows={8} />
+        </Field>
+        <Field label="修改后">
+          <Textarea value={fields.improved ?? ""} onChange={(e) => onChange({ improved: e.target.value })} rows={4} />
+        </Field>
+        <Field label="总评">
+          <Textarea value={fields.summary ?? ""} onChange={(e) => onChange({ summary: e.target.value })} rows={3} />
+        </Field>
+        <Field label="适用场景">
+          <Input value={fields.setting ?? ""} onChange={(e) => onChange({ setting: e.target.value })} />
+        </Field>
+      </div>
+    );
+  }
   if (type === "poem") {
     return (
       <div className="space-y-3">

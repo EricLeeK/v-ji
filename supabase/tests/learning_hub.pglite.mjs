@@ -125,6 +125,12 @@ export async function initializeLearningHubTestDb() {
 
     const migration = await readFile(resolve(repoRoot, "supabase/migrations/20260929090000_learning_hub.sql"), "utf8");
     await pg.exec(migration);
+    const readFrogEnum = await readFile(resolve(repoRoot, "supabase/migrations/20260930100000_read_frog_cards.sql"), "utf8");
+    const readFrogValidation = await readFile(resolve(repoRoot, "supabase/migrations/20260930100100_read_frog_card_validation.sql"), "utf8");
+    const readFrogSync = await readFile(resolve(repoRoot, "supabase/migrations/20260930100200_read_frog_learning_hub_sync.sql"), "utf8");
+    await pg.exec(readFrogEnum);
+    await pg.exec(readFrogValidation);
+    await pg.exec(readFrogSync);
     return pg;
   } catch (error) {
     await pg.close();

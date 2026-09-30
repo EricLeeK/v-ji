@@ -42,6 +42,30 @@ export const AGENT_GUIDE = {
       author: "作者",
     },
     note: { title: "标题", body: "笔记正文" },
+    dict: {
+      term: "词条",
+      definition: "语境释义",
+      phonetic: "音标",
+      partOfSpeech: "词性",
+      context: "原句语境",
+      contextTerm: '[{"text":"词条在语境中的部分"}]',
+      contextTranslation: "语境翻译",
+      difficulty: "A1–C2 或其他难度标签",
+    },
+    sentence: {
+      sentence: "长难句原文",
+      annotations:
+        '[{"text":"The committee","type":"subject"},{"text":"has postponed","type":"predicate"}]',
+      translation: "整句译文",
+    },
+    writing: {
+      original: "原文",
+      annotations:
+        '[{"text":"explain me","fix":"explain them to me","type":"grammar","note":"介词语法"}]',
+      improved: "修改后全文",
+      summary: "总评",
+      setting: "写作场景",
+    },
   },
   permissions:
     "此连接可读写当前账号的所有卡片盒。用户给出的目标卡片盒是操作目标，不是权限边界。无法删除卡片或提交复习评分。",
@@ -51,7 +75,7 @@ export const AGENT_GUIDE = {
 const TOOLS = [
   {
     name: "agent_help",
-    description: "首次连接时读取 V 记制卡流程、六种题型字段和能力边界。",
+    description: "首次连接时读取 V 记制卡流程、九种题型字段和能力边界。",
     inputSchema: {
       type: "object",
       properties: {},
@@ -97,14 +121,14 @@ const TOOLS = [
   {
     name: "create_card",
     description:
-      "在当前账号的卡片盒中新建卡片。题型与字段同应用内的问答、选择、挖空、单词、古诗文和笔记卡。",
+      "在当前账号的卡片盒中新建卡片。题型与字段同应用内的问答、选择、挖空、单词、古诗文、笔记、词典、长难句和写作批改卡。",
     inputSchema: {
       type: "object",
       properties: {
         deckId: { type: "string" },
         type: {
           type: "string",
-          enum: ["qa", "choice", "cloze", "vocab", "poem", "note"],
+          enum: ["qa", "choice", "cloze", "vocab", "poem", "note", "dict", "sentence", "writing"],
         },
         fields: { type: "object" },
         tags: { type: "array", items: { type: "string" } },
@@ -129,7 +153,7 @@ const TOOLS = [
         deckId: { type: "string" },
         type: {
           type: "string",
-          enum: ["qa", "choice", "cloze", "vocab", "poem", "note"],
+          enum: ["qa", "choice", "cloze", "vocab", "poem", "note", "dict", "sentence", "writing"],
         },
         fields: { type: "object" },
         tags: { type: "array", items: { type: "string" } },

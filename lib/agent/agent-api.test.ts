@@ -96,6 +96,34 @@ it("does not treat the card image route as an agent API", () => {
   expect(isAgentApiPath("/decks")).toBe(false);
 });
 
+it("documents Read Frog structured card types through MCP", async () => {
+  const dir = directory();
+  const response = await handleMcp(
+    jsonRequest("POST", "/api/mcp", {
+      jsonrpc: "2.0",
+      id: 1,
+      method: "tools/list",
+    }),
+    authRuntime(dir, new Map(), "user-a"),
+  );
+  expect(response.status).toBe(200);
+  const body = (await response.json()) as {
+    result: { tools: Array<{ name: string; inputSchema: { properties: { type: { enum: string[] } } } }> };
+  };
+  const create = body.result.tools.find((tool) => tool.name === "create_card");
+  expect(create?.inputSchema.properties.type.enum).toEqual([
+    "qa",
+    "choice",
+    "cloze",
+    "vocab",
+    "poem",
+    "note",
+    "dict",
+    "sentence",
+    "writing",
+  ]);
+});
+
 it("drops rows that are not owned by the actor", () => {
   const parsed = parseStoredCard(stored("user-a", deckA));
   expect(parsed?.deckId).toBe(deckA);

@@ -2,7 +2,17 @@ import { notePreview, sanitizeChoiceFields, validateNoteFields, type NoteFields 
 import type { Json, NoteType } from "@/types/database";
 import { CARD_LAYOUTS, type CardLayout } from "@/lib/ai/schemas";
 
-const NOTE_TYPES = ["note", "qa", "choice", "cloze", "poem", "vocab"] as const satisfies readonly NoteType[];
+const NOTE_TYPES = [
+  "note",
+  "qa",
+  "choice",
+  "cloze",
+  "poem",
+  "vocab",
+  "dict",
+  "sentence",
+  "writing",
+] as const satisfies readonly NoteType[];
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const MAX_PAGE = 100;
 const DEFAULT_PAGE = 50;
@@ -239,7 +249,7 @@ function parseCreateBody(body: unknown): { ok: true; input: SaveCardInput } | { 
     return { ok: false, result: failure(400, "invalid_request", "deckId 须为卡片盒 ID") };
   }
   const type = parseType(record.type);
-  if (!type) return { ok: false, result: failure(400, "invalid_request", "type 须为 qa、choice、cloze、vocab、poem 或 note") };
+  if (!type) return { ok: false, result: failure(400, "invalid_request", "type 须为 qa、choice、cloze、vocab、poem、note、dict、sentence 或 writing") };
   const fields = asFields(record.fields);
   if (!fields) return { ok: false, result: failure(400, "invalid_request", "fields 须为对象") };
   const tags = record.tags === undefined ? [] : parseTags(record.tags);
@@ -267,7 +277,7 @@ function parseUpdateBody(
     return { ok: false, result: failure(400, "invalid_request", "deckId 须为卡片盒 ID") };
   }
   const type = record.type === undefined ? existing.type : parseType(record.type);
-  if (!type) return { ok: false, result: failure(400, "invalid_request", "type 须为 qa、choice、cloze、vocab、poem 或 note") };
+  if (!type) return { ok: false, result: failure(400, "invalid_request", "type 须为 qa、choice、cloze、vocab、poem、note、dict、sentence 或 writing") };
   const fields = record.fields === undefined ? existing.fields : mergeFields(existing.fields, record.fields);
   if (!fields) return { ok: false, result: failure(400, "invalid_request", "fields 须为对象") };
   const tags = record.tags === undefined ? existing.tags : parseTags(record.tags);

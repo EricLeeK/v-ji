@@ -6,7 +6,7 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
-export type NoteType = "note" | "qa" | "choice" | "cloze" | "poem" | "vocab";
+export type NoteType = "note" | "qa" | "choice" | "cloze" | "poem" | "vocab" | "dict" | "sentence" | "writing";
 
 export type Database = {
   public: {

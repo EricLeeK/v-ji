@@ -1,5 +1,12 @@
 import { clozeIds } from "@/lib/cloze";
-import { notePreview, parseFields, type NoteFields } from "@/lib/templates";
+import {
+  isValidSentenceAnnotation,
+  isValidWritingAnnotation,
+  notePreview,
+  parseFields,
+  parseStructuredAnnotations,
+  type NoteFields,
+} from "@/lib/templates";
 import type { NoteType } from "@/types/database";
 import {
   generatedCardInputSchema,
@@ -99,6 +106,21 @@ function fieldErrors(type: NoteType, fields: NoteFields): string[] {
       const keys = new Set(options.map((option) => option.key));
       if (!fields.answer || !keys.has(fields.answer)) return ["正确答案必须是已有选项"];
       if (!fields.stem?.trim()) return ["题干不能为空"];
+      return [];
+    }
+    case "dict":
+      return required(fields, [
+        ["term", "词条"],
+        ["definition", "释义"],
+      ]);
+    case "sentence": {
+      if (!fields.sentence?.trim()) return ["句子不能为空"];
+      if (!parseStructuredAnnotations(fields.annotations, isValidSentenceAnnotation)) return ["长难句标注必须是有效的 JSON 数组"];
+      return [];
+    }
+    case "writing": {
+      if (!fields.original?.trim()) return ["原文不能为空"];
+      if (!parseStructuredAnnotations(fields.annotations, isValidWritingAnnotation)) return ["写作批改标注必须是有效的 JSON 数组"];
       return [];
     }
     default:

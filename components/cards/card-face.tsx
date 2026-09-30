@@ -7,6 +7,7 @@ import type { Json } from "@/types/database";
 import { cn } from "@/lib/utils";
 import type { CardLayout, NoteSource } from "@/lib/ai/schemas";
 import { protectCardImageUrl } from "@/lib/card-image-url";
+import { DictionaryFace, SentenceFace, WritingFace } from "@/components/cards/read-frog-cards";
 
 export function CardFace({
   type,
@@ -77,6 +78,80 @@ export function CardFace({
           <p className="text-sm leading-6 text-muted-foreground">{data.translation}</p>
         ) : null}
         {revealed ? <SourceLine text={citation} /> : null}
+      </div>
+    );
+  }
+
+  if (type === "dict") {
+    return (
+      <div className="space-y-3 text-center">
+        {image}
+        {revealed ? (
+          <DictionaryFace
+            term={data.term}
+            phonetic={data.phonetic}
+            partOfSpeech={data.partOfSpeech}
+            definition={data.definition}
+            context={data.context}
+            contextTerm={data.contextTerm}
+            contextTranslation={data.contextTranslation}
+            difficulty={data.difficulty}
+            citation={citation}
+          />
+        ) : (
+          <>
+            <div className="text-3xl font-semibold tracking-tight">{data.term}</div>
+            <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
+              {data.phonetic ? <span>{data.phonetic}</span> : null}
+              {data.partOfSpeech ? <span className="rounded-full bg-primary/10 px-2 py-0.5">{data.partOfSpeech}</span> : null}
+              {data.difficulty ? <span className="rounded-full bg-secondary px-2 py-0.5">{data.difficulty}</span> : null}
+            </div>
+            <p className="text-sm text-muted-foreground">回忆语境释义和用法</p>
+          </>
+        )}
+      </div>
+    );
+  }
+
+  if (type === "sentence") {
+    return (
+      <div className="space-y-3">
+        {image}
+        {revealed ? (
+          <SentenceFace
+            sentence={data.sentence}
+            annotations={data.annotations}
+            translation={data.translation}
+            citation={citation}
+          />
+        ) : (
+          <>
+            <p className="whitespace-pre-wrap text-[17px] leading-8">{data.sentence}</p>
+            <p className="text-sm text-muted-foreground">先拆主干，再看成分和难点</p>
+          </>
+        )}
+      </div>
+    );
+  }
+
+  if (type === "writing") {
+    return (
+      <div className="space-y-3">
+        {image}
+        {revealed ? (
+          <WritingFace
+            original={data.original}
+            annotations={data.annotations}
+            improved={data.improved}
+            summary={data.summary}
+            citation={citation}
+          />
+        ) : (
+          <>
+            <div className="rounded-2xl bg-secondary/50 px-3 py-2 text-[15px] leading-7">{data.original}</div>
+            <p className="text-sm text-muted-foreground">先自己改，再看批改和说明</p>
+          </>
+        )}
       </div>
     );
   }
@@ -242,5 +317,8 @@ export function spokenText(type: NoteType, fields: Json, revealed: boolean, ord 
   if (type === "cloze") return clozeParts(data.text ?? "", ord).map(part => part.type === "text" ? part.value : revealed ? part.answer : "空白").join("");
   if (type === "choice") return data.stem || "";
   if (type === "note") return `${data.title ?? ""}。${revealed ? data.body ?? "" : ""}`;
+  if (type === "dict") return data.term || "";
+  if (type === "sentence") return data.sentence || "";
+  if (type === "writing") return data.original || "";
   return revealed ? `${data.question}。${data.answer}` : data.question || "";
 }
