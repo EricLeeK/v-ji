@@ -41,6 +41,11 @@ import { cn } from "@/lib/utils";
 import { localDateKey } from "@/lib/dates";
 import { leaveStudyFailureMessage } from "@/lib/study-exit";
 
+const exitButtonMotion = {
+  idle: { scale: 1 },
+  armed: { scale: [1, 1.18, 1] },
+};
+
 export function StudySession({
   initialQueue,
   settings,
@@ -54,12 +59,14 @@ export function StudySession({
 }) {
   const [pendingSaves, setPendingSaves] = useState(0);
   const [leaving, setLeaving] = useState(false);
+  const [exitArmed, setExitArmed] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [starred, setStarred] = useState<Record<string, boolean>>({});
   const [starPending, setStarPending] = useState(false);
   const [suspending, setSuspending] = useState(false);
   const starLock = useRef(false);
   const actionLock = useRef(false);
+  const exitButtonRef = useRef<HTMLButtonElement>(null);
   const reducedMotion = useReducedMotion();
   const [saves] = useState(() => createReviewQueue<ReviewPayload & { clientDate: string }>({
     async send({ cardId, rating, next, durationMs, isNew, expected, clientDate }) {
@@ -82,6 +89,20 @@ export function StudySession({
     window.addEventListener("beforeunload", warnBeforeClose);
     return () => window.removeEventListener("beforeunload", warnBeforeClose);
   }, [pendingSaves]);
+
+  useEffect(() => {
+    if (!exitArmed) return;
+    const timer = window.setTimeout(() => setExitArmed(false), 5000);
+    const disarm = (event: PointerEvent) => {
+      if (exitButtonRef.current?.contains(event.target as Node)) return;
+      setExitArmed(false);
+    };
+    document.addEventListener("pointerdown", disarm);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("pointerdown", disarm);
+    };
+  }, [exitArmed]);
 
   async function leave(next: string) {
     if (actionLock.current) return;
@@ -288,15 +309,34 @@ export function StudySession({
     >
       <div className="mx-auto flex min-h-0 w-full max-w-[430px] flex-1 flex-col">
         <header className="flex items-center justify-between px-4 py-3">
-          <button
+          <motion.button
+            ref={exitButtonRef}
             type="button"
-            aria-label="结束学习"
+            aria-label={exitArmed ? "再点一次结束学习" : "结束学习"}
+            aria-pressed={exitArmed}
             disabled={leaving}
-            onClick={() => void leave("/today")}
-            className="flex size-10 items-center justify-center rounded-full bg-white/80 shadow-sm"
+            onClick={() => {
+              if (!exitArmed) {
+                setExitArmed(true);
+                return;
+              }
+              void leave("/today");
+            }}
+            whileTap={reducedMotion ? undefined : { scale: 0.88 }}
+            initial={false}
+            animate={exitArmed && !reducedMotion ? "armed" : "idle"}
+            variants={exitButtonMotion}
+            transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+            className={cn(
+              "relative flex size-10 items-center justify-center rounded-full shadow-sm transition-colors duration-200",
+              exitArmed ? "bg-rose-500 text-white shadow-rose-500/35" : "bg-white/80",
+            )}
           >
-            <ArrowLeft className="size-5" />
-          </button>
+            {exitArmed ? (
+              <span className="pointer-events-none absolute inset-0 rounded-full bg-rose-400/50 motion-safe:animate-ping" />
+            ) : null}
+            <ArrowLeft className="relative size-5" />
+          </motion.button>
           <div className="min-w-0 flex-1 px-4">
             <div className="truncate text-center text-base font-semibold">学习中</div>
             {shuffled ? <div className="truncate text-center text-xs text-muted-foreground">本轮顺序已打乱</div> : null}
