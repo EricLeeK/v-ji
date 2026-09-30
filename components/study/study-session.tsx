@@ -4,7 +4,7 @@ import { AppIcon } from "@/components/app-icon";
 import { useEffect, useEffectEvent, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { animate, motion, useMotionValue, useReducedMotion, useTransform } from "motion/react";
-import { ArrowLeft, ArrowRightLeft, Hand, LoaderCircle, MoreHorizontal, Star, Volume2, Square, Pencil, Pause, Settings, HelpCircle } from "lucide-react";
+import { ArrowLeft, ArrowRightLeft, Hand, LoaderCircle, MoreHorizontal, Shuffle, Star, Volume2, Square, Pencil, Pause, Settings, HelpCircle } from "lucide-react";
 import { toast } from "sonner";
 import { submitReview, exitStudy } from "@/app/actions/study";
 import { suspendCard } from "@/app/actions/notes";
@@ -53,10 +53,12 @@ export function StudySession({
   initialQueue,
   settings,
   scope = "today",
+  shuffled = false,
 }: {
   initialQueue: QueueCard[];
   settings: UserSettings;
   scope?: StudyScope;
+  shuffled?: boolean;
 }) {
   const [leaveOpen, setLeaveOpen] = useState(false);
   const [pendingSaves, setPendingSaves] = useState(0);
@@ -141,6 +143,18 @@ export function StudySession({
       x.jump(0);
       toast.info("已放到本轮最后，稍后再学");
     } else toast.info("本轮只剩这一张卡片，可以先查看答案");
+  }
+
+  function shuffleToday() {
+    if (exiting || leaving || suspending) return;
+    cancelSpeech();
+    setPicked(undefined);
+    x.jump(0);
+    if (!useStudyStore.getState().shuffleQueue()) {
+      toast.info("剩下的卡片太少，不用打乱");
+      return;
+    }
+    toast.success("已打乱今日卡片，继续学习");
   }
 
   async function saveStar() {
@@ -295,6 +309,7 @@ export function StudySession({
           </button>
           <div className="min-w-0 flex-1 px-4">
             <div className="truncate text-center text-base font-semibold">学习中</div>
+            {shuffled ? <div className="truncate text-center text-xs text-muted-foreground">本轮顺序已打乱</div> : null}
           </div>
           <div className="flex items-center gap-1.5">
             <button type="button" aria-label={speaking ? "停止朗读" : "朗读"} aria-pressed={speaking} onClick={() => speaking ? cancelSpeech() : speak(spokenText(display.note.type, display.note.fields, face === "back", display.ord))} className={cn("flex size-10 items-center justify-center rounded-full shadow-sm", speaking ? "bg-primary/15 text-primary" : "bg-white/80")}>
@@ -313,6 +328,17 @@ export function StudySession({
               style={{ transform: `scaleX(${progress.percent / 100})` }}
             />
           </div>
+          {scope === "today" ? (
+            <button
+              type="button"
+              className="mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-full bg-white/80 text-sm font-medium text-primary shadow-sm disabled:opacity-60"
+              disabled={exiting || leaving || suspending}
+              onClick={shuffleToday}
+            >
+              <Shuffle className="size-4" />
+              打乱今日卡片
+            </button>
+          ) : null}
         </div>
 
         <div className="relative flex min-h-0 flex-1 items-center overflow-hidden px-5 py-6">

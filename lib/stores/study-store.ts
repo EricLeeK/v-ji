@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import type { UserSettings } from "@/lib/settings";
 import { DEFAULT_SETTINGS } from "@/lib/settings";
+import { shuffleItems } from "@/lib/shuffle";
 import type { QueueCard } from "@/lib/srs/queue";
 import {
   Rating,
@@ -47,6 +48,7 @@ type StudyState = {
   hydrate: (queue: QueueCard[], settings: UserSettings) => void;
   showAnswer: () => void;
   postpone: () => boolean;
+  shuffleQueue: (random?: () => number) => boolean;
   removeCard: (cardId: string) => void;
   rate: (rating: Grade) => ReviewPayload | null;
   restore: (payload: ReviewPayload) => void;
@@ -82,6 +84,12 @@ export const useStudyStore = create<StudyState>((set, get) => ({
     const { queue } = get();
     if (queue.length < 2) return false;
     set({ queue: [...queue.slice(1), queue[0]], face: "front", cardStartedAt: Date.now() });
+    return true;
+  },
+  shuffleQueue(random = Math.random) {
+    const { queue } = get();
+    if (queue.length < 2) return false;
+    set({ queue: shuffleItems(queue, random), face: "front", cardStartedAt: Date.now() });
     return true;
   },
   removeCard(cardId) {

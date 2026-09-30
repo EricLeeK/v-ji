@@ -2,6 +2,7 @@ import { createClient, getUserId } from "@/lib/supabase/server";
 import { cache } from "react";
 import { localDateKey } from "@/lib/dates";
 import { parseSettings } from "@/lib/settings";
+import { orderByIds, pickShuffledIds } from "@/lib/shuffle";
 import type { QueueCard } from "@/lib/srs/queue";
 import type { Tables } from "@/types/database";
 
@@ -18,18 +19,19 @@ export const getProfile = cache(async function getProfile() {
   return data;
 });
 
-export async function getStudyQueue(deckId?: string): Promise<{
+const cardSelect =
+  "id, note_id, deck_id, owner_id, ord, state, due, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, last_review, starred, suspended, created_at, notes(id, deck_id, owner_id, type, fields, tags, layout, source, created_at, updated_at), decks(name)";
+
+export async function getStudyQueue(deckId?: string, options?: { shuffleDeck?: boolean }): Promise<{
   queue: QueueCard[];
   settings: ReturnType<typeof parseSettings>;
 } | null> {
   const uid = await getUserId();
   if (!uid) return null;
   const supabase = await createClient();
+  if (deckId && options?.shuffleDeck) return loadShuffledDeckQueue(supabase, uid, deckId);
   const now = new Date().toISOString();
   // Keep the join narrow — study only needs note content fields, not every note column forever.
-  const cardSelect =
-    "id, note_id, deck_id, owner_id, ord, state, due, stability, difficulty, elapsed_days, scheduled_days, learning_steps, reps, lapses, last_review, starred, suspended, created_at, notes(id, deck_id, owner_id, type, fields, tags, layout, source, created_at, updated_at), decks(name)";
-
   let reviewsQuery = supabase
     .from("cards")
     .select(cardSelect)
@@ -73,6 +75,28 @@ export async function getStudyQueue(deckId?: string): Promise<{
   const news = toQueueCards(newsRows as CardRow[] | null).slice(0, newsCap);
   const queue = [...toQueueCards(reviewRows as CardRow[] | null), ...news];
   return { queue, settings };
+}
+
+async function loadShuffledDeckQueue(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  uid: string,
+  deckId: string,
+) {
+  const [{ data: profile }, { data: idRows }] = await Promise.all([
+    supabase.from("profiles").select("settings").eq("id", uid).maybeSingle(),
+    supabase.from("cards").select("id").eq("owner_id", uid).eq("deck_id", deckId).eq("suspended", false).limit(1000),
+  ]);
+  const settings = parseSettings(profile?.settings);
+  const ids = pickShuffledIds((idRows ?? []).map((row) => row.id));
+  if (!ids.length) return { queue: [] as QueueCard[], settings };
+  const { data: rows } = await supabase
+    .from("cards")
+    .select(cardSelect)
+    .eq("owner_id", uid)
+    .eq("deck_id", deckId)
+    .eq("suspended", false)
+    .in("id", ids);
+  return { queue: toQueueCards(orderByIds((rows ?? []) as unknown as CardRow[], ids)), settings };
 }
 
 function toQueueCards(rows: CardRow[] | null | undefined): QueueCard[] {

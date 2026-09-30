@@ -37,9 +37,14 @@ export default async function DeckDetailPage({
             {notes?.length ?? 0} 张笔记 · {mastered} 张进入复习
           </p>
         </div>
-        <Button asChild className="shrink-0 rounded-full">
-          <Link href={`/study?deckId=${deck.id}`} prefetch={true}>学习</Link>
-        </Button>
+        <div className="flex shrink-0 flex-col gap-2">
+          <Button asChild className="rounded-full">
+            <Link href={`/study?deckId=${deck.id}`} prefetch={true}>学习</Link>
+          </Button>
+          <Button asChild variant="outline" className="rounded-full">
+            <Link href={`/study?deckId=${deck.id}&shuffle=1`} prefetch={true}>打乱学习</Link>
+          </Button>
+        </div>
       </div>
 
       <div className="mt-5 flex gap-2">

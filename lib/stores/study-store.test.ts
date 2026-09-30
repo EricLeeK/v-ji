@@ -143,6 +143,20 @@ it('does not restore a failed old session over a freshly opened session', () => 
   expect(useStudyStore.getState().queue).toEqual(nextSession);
 });
 
+it("shuffles the remaining cards without grading them or changing progress", () => {
+  const cards = [fakeCard("c1", "卡 1"), fakeCard("c2", "卡 2"), fakeCard("c3", "卡 3")];
+  useStudyStore.getState().hydrate(cards, DEFAULT_SETTINGS);
+  useStudyStore.getState().showAnswer();
+  let step = 0;
+  const rolls = [0, 0.9];
+  expect(useStudyStore.getState().shuffleQueue(() => rolls[step++] ?? 0)).toBe(true);
+  expect(useStudyStore.getState().queue.map((card) => card.id)).toEqual(["c3", "c2", "c1"]);
+  expect(useStudyStore.getState()).toMatchObject({ reviews: 0, total: 3, face: "front" });
+  useStudyStore.getState().hydrate([cards[0]], DEFAULT_SETTINGS);
+  expect(useStudyStore.getState().shuffleQueue()).toBe(false);
+  expect(useStudyStore.getState().queue).toEqual([cards[0]]);
+});
+
 it('postpones the current card without grading it or changing progress', () => {
   const cards = [fakeCard('a', 'A'), fakeCard('b', 'B')];
   useStudyStore.getState().hydrate(cards, DEFAULT_SETTINGS);
