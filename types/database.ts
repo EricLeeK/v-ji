@@ -613,6 +613,8 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      list_own_agent_decks: { Args: {p_limit?:number;p_offset?:number}; Returns: Json };
+      agent_list_decks: { Args: {p_token_hash:string;p_limit?:number;p_offset?:number}; Returns: Json };
       agent_get_card: { Args: { p_note_id: string; p_token_hash: string }; Returns: Json };
       agent_list_cards: {
         Args: {

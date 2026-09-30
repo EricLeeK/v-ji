@@ -1,7 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { apiTokenPrefix, generateApiToken, hashApiToken } from "@/lib/agent/token";
+import {
+  apiTokenPrefix,
+  generateApiToken,
+  hashApiToken,
+} from "@/lib/agent/token";
 import { createClient, getUserId } from "@/lib/supabase/server";
 
 const MAX_ACTIVE_TOKENS = 10;
@@ -19,18 +23,24 @@ export async function createApiToken(name: string) {
     .eq("owner_id", uid)
     .is("revoked_at", null);
   if (countError) return { error: "暂时无法创建令牌" };
-  if ((count ?? 0) >= MAX_ACTIVE_TOKENS) return { error: "最多保留 10 个有效令牌，请先撤销不用的令牌" };
+  if ((count ?? 0) >= MAX_ACTIVE_TOKENS)
+    return { error: "最多保留 10 个有效令牌，请先撤销不用的令牌" };
 
   const token = generateApiToken();
-  const { error } = await supabase.from("api_tokens").insert({
-    owner_id: uid,
-    name: trimmed,
-    token_hash: hashApiToken(token),
-    token_prefix: apiTokenPrefix(token),
-  });
+  const { data, error } = await supabase
+    .from("api_tokens")
+    .insert({
+      owner_id: uid,
+      name: trimmed,
+      token_hash: hashApiToken(token),
+      token_prefix: apiTokenPrefix(token),
+    })
+    .select("id")
+    .single();
   if (error) return { error: "暂时无法创建令牌" };
   revalidatePath("/me/settings");
-  return { token };
+  revalidatePath("/me/settings/agent");
+  return { token, id: data.id };
 }
 
 export async function revokeApiToken(id: string) {
@@ -48,5 +58,6 @@ export async function revokeApiToken(id: string) {
   if (error) return { error: "暂时无法撤销令牌" };
   if (!data) return { error: "令牌不存在或已经撤销" };
   revalidatePath("/me/settings");
+  revalidatePath("/me/settings/agent");
   return {};
 }

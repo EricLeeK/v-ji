@@ -1,5 +1,9 @@
 import { expect, it } from "vitest";
-import { generateApiToken, hashApiToken, resolveActor } from "@/lib/agent/token";
+import {
+  generateApiToken,
+  hashApiToken,
+  resolveActor,
+} from "@/lib/agent/token";
 import { isAgentApiPath } from "@/lib/agent/paths";
 import {
   applyListQuery,
@@ -11,7 +15,11 @@ import {
   type AgentCard,
 } from "@/lib/agent/cards";
 import { createMemoryDirectory } from "@/lib/agent/memory-store";
-import { handleCardCollection, handleCardItem, type AgentRuntime } from "@/lib/agent/http";
+import {
+  handleCardCollection,
+  handleCardItem,
+  type AgentRuntime,
+} from "@/lib/agent/http";
 import { AgentUnavailableError } from "@/lib/agent/errors";
 import { handleMcp } from "@/lib/agent/mcp";
 
@@ -29,26 +37,48 @@ function runtime(authenticate: AgentRuntime["authenticate"]): AgentRuntime {
   return { authenticate };
 }
 
-function authRuntime(dir: ReturnType<typeof directory>, tokens: Map<string, string>, sessionUserId: string | null): AgentRuntime {
+function authRuntime(
+  dir: ReturnType<typeof directory>,
+  tokens: Map<string, string>,
+  sessionUserId: string | null,
+): AgentRuntime {
   return runtime(async (request) => {
-    const actor = await resolveActor(request.headers.get("authorization"), sessionUserId, async (hash) => tokens.get(hash) ?? null);
+    const actor = await resolveActor(
+      request.headers.get("authorization"),
+      sessionUserId,
+      async (hash) => tokens.get(hash) ?? null,
+    );
     return actor ? dir.storeFor(actor.userId) : null;
   });
 }
 
 it("keeps a bearer token from falling back to another account's session", async () => {
-  expect(await resolveActor("Bearer not-a-token", "user-b", async () => "user-a")).toBeNull();
-  expect(await resolveActor(null, "user-b", async () => "user-a")).toEqual({ userId: "user-b", tokenHash: null });
+  expect(
+    await resolveActor("Bearer not-a-token", "user-b", async () => "user-a"),
+  ).toBeNull();
+  expect(await resolveActor(null, "user-b", async () => "user-a")).toEqual({
+    userId: "user-b",
+    tokenHash: null,
+  });
   const token = generateApiToken();
-  const actor = await resolveActor(`Bearer ${token}`, "user-b", async (hash) => (hash === hashApiToken(token) ? "user-a" : null));
+  const actor = await resolveActor(`Bearer ${token}`, "user-b", async (hash) =>
+    hash === hashApiToken(token) ? "user-a" : null,
+  );
   expect(actor?.userId).toBe("user-a");
   expect(actor?.tokenHash).toBe(hashApiToken(token));
-  expect(await resolveActor(`Bearer ${token}`, "user-b", async () => null)).toBeNull();
+  expect(
+    await resolveActor(`Bearer ${token}`, "user-b", async () => null),
+  ).toBeNull();
 });
 
 it("reports a missing server secret as unavailable instead of an opaque failure", async () => {
   const response = await handleCardCollection(
-    jsonRequest("GET", "/api/v1/cards", undefined, "Bearer vji_aaaaaaaaaaaaaaaaaaaa"),
+    jsonRequest(
+      "GET",
+      "/api/v1/cards",
+      undefined,
+      "Bearer vji_aaaaaaaaaaaaaaaaaaaa",
+    ),
     runtime(async () => {
       throw new AgentUnavailableError("服务端未配置 SUPABASE_SECRET_KEY");
     }),
@@ -75,55 +105,110 @@ it("drops rows that are not owned by the actor", () => {
 
 it("creates and updates only the authenticated account's cards", async () => {
   const dir = directory();
-  const tokens = new Map([[hashApiToken("vji_aaaaaaaaaaaaaaaaaaaa"), "user-a"]]);
+  const tokens = new Map([
+    [hashApiToken("vji_aaaaaaaaaaaaaaaaaaaa"), "user-a"],
+  ]);
   const api = authRuntime(dir, tokens, null);
-  const created = await handleCardCollection(jsonRequest("POST", "/api/v1/cards", {
-    ownerId: "user-b",
-    deckId: deckA,
-    type: "qa",
-    fields: { question: "问", answer: "答" },
-  }, "Bearer vji_aaaaaaaaaaaaaaaaaaaa"), api);
+  const created = await handleCardCollection(
+    jsonRequest(
+      "POST",
+      "/api/v1/cards",
+      {
+        ownerId: "user-b",
+        deckId: deckA,
+        type: "qa",
+        fields: { question: "问", answer: "答" },
+      },
+      "Bearer vji_aaaaaaaaaaaaaaaaaaaa",
+    ),
+    api,
+  );
   expect(created.status).toBe(201);
-  const body = await created.json() as { card: { id: string; deckId: string; fields: { question: string } } };
+  const body = (await created.json()) as {
+    card: { id: string; deckId: string; fields: { question: string } };
+  };
   expect(body.card.deckId).toBe(deckA);
   expect(dir.cardsOf("user-b")).toEqual([]);
 
-  const stolen = await handleCardCollection(jsonRequest("POST", "/api/v1/cards", {
-    deckId: deckB,
-    type: "qa",
-    fields: { question: "别人的盒", answer: "不行" },
-  }, "Bearer vji_aaaaaaaaaaaaaaaaaaaa"), api);
+  const stolen = await handleCardCollection(
+    jsonRequest(
+      "POST",
+      "/api/v1/cards",
+      {
+        deckId: deckB,
+        type: "qa",
+        fields: { question: "别人的盒", answer: "不行" },
+      },
+      "Bearer vji_aaaaaaaaaaaaaaaaaaaa",
+    ),
+    api,
+  );
   expect(stolen.status).toBe(404);
   expect(dir.cardsOf("user-b")).toEqual([]);
 
-  const moved = await handleCardItem(jsonRequest("PATCH", `/api/v1/cards/${body.card.id}`, {
-    deckId: deckB,
-  }, "Bearer vji_aaaaaaaaaaaaaaaaaaaa"), body.card.id, api);
+  const moved = await handleCardItem(
+    jsonRequest(
+      "PATCH",
+      `/api/v1/cards/${body.card.id}`,
+      {
+        deckId: deckB,
+      },
+      "Bearer vji_aaaaaaaaaaaaaaaaaaaa",
+    ),
+    body.card.id,
+    api,
+  );
   expect(moved.status).toBe(404);
   expect(dir.cardsOf("user-a")[0]?.deckId).toBe(deckA);
 
-  const updated = await handleCardItem(jsonRequest("PATCH", `/api/v1/cards/${body.card.id}`, {
-    ownerId: "user-b",
-    fields: { answer: "新答案" },
-  }, "Bearer vji_aaaaaaaaaaaaaaaaaaaa"), body.card.id, api);
+  const updated = await handleCardItem(
+    jsonRequest(
+      "PATCH",
+      `/api/v1/cards/${body.card.id}`,
+      {
+        ownerId: "user-b",
+        fields: { answer: "新答案" },
+      },
+      "Bearer vji_aaaaaaaaaaaaaaaaaaaa",
+    ),
+    body.card.id,
+    api,
+  );
   expect(updated.status).toBe(200);
-  const after = await updated.json() as { card: { fields: { question: string; answer: string } } };
+  const after = (await updated.json()) as {
+    card: { fields: { question: string; answer: string } };
+  };
   expect(after.card.fields).toMatchObject({ question: "问", answer: "新答案" });
 
   const other = authRuntime(dir, new Map(), "user-b");
-  const hidden = await handleCardItem(new Request("http://localhost/api/v1/cards/" + body.card.id), body.card.id, other);
+  const hidden = await handleCardItem(
+    new Request("http://localhost/api/v1/cards/" + body.card.id),
+    body.card.id,
+    other,
+  );
   expect(hidden.status).toBe(404);
-  const tamper = await handleCardItem(jsonRequest("PATCH", `/api/v1/cards/${body.card.id}`, {
-    fields: { answer: "被改掉" },
-  }), body.card.id, other);
+  const tamper = await handleCardItem(
+    jsonRequest("PATCH", `/api/v1/cards/${body.card.id}`, {
+      fields: { answer: "被改掉" },
+    }),
+    body.card.id,
+    other,
+  );
   expect(tamper.status).toBe(404);
   expect(dir.cardsOf("user-a")[0]?.fields).toMatchObject({ answer: "新答案" });
 });
 
 it("rejects an invalid token even when a browser session exists", async () => {
   const dir = directory();
-  const api = authRuntime(dir, new Map([[hashApiToken("vji_bbbbbbbbbbbbbbbbbbbb"), "user-b"]]), "user-b");
-  const response = await handleCardCollection(jsonRequest("GET", "/api/v1/cards", undefined, "Bearer vji_not-valid"), api);
+  const api = authRuntime(
+    dir,
+    new Map([[hashApiToken("vji_bbbbbbbbbbbbbbbbbbbb"), "user-b"]]),
+    "user-b",
+  );
+  const response = await handleCardCollection(
+    jsonRequest("GET", "/api/v1/cards", undefined, "Bearer vji_not-valid"),
+    api,
+  );
   expect(response.status).toBe(401);
   expect(dir.cardsOf("user-b")).toEqual([]);
 });
@@ -131,11 +216,14 @@ it("rejects an invalid token even when a browser session exists", async () => {
 it("rejects incomplete cards and pages only the caller's deck", async () => {
   const dir = directory();
   const api = authRuntime(dir, new Map(), "user-a");
-  const invalid = await handleCardCollection(jsonRequest("POST", "/api/v1/cards", {
-    deckId: deckA,
-    type: "qa",
-    fields: { question: "只有问题" },
-  }), api);
+  const invalid = await handleCardCollection(
+    jsonRequest("POST", "/api/v1/cards", {
+      deckId: deckA,
+      type: "qa",
+      fields: { question: "只有问题" },
+    }),
+    api,
+  );
   expect(invalid.status).toBe(400);
   expect(dir.cardsOf("user-a")).toEqual([]);
 
@@ -147,55 +235,124 @@ it("rejects incomplete cards and pages only the caller's deck", async () => {
     op: "create",
     body: { deckId: deckB, type: "note", fields: { title: "二", body: "乙" } },
   });
-  const listed = await handleCardCollection(new Request(`http://localhost/api/v1/cards?deckId=${deckA}&limit=1`), api);
+  const listed = await handleCardCollection(
+    new Request(`http://localhost/api/v1/cards?deckId=${deckA}&limit=1`),
+    api,
+  );
   expect(listed.status).toBe(200);
-  const page = await listed.json() as { cards: Array<{ deckId: string }>; nextCursor: string | null };
+  const page = (await listed.json()) as {
+    cards: Array<{ deckId: string }>;
+    nextCursor: string | null;
+  };
   expect(page.cards.map((card) => card.deckId)).toEqual([deckA]);
   expect(page.nextCursor).toBeNull();
 });
 
 it("orders cards for cursor pagination", () => {
-  const older = card("2026-09-01T00:00:00.000Z", "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa");
-  const newer = card("2026-09-02T00:00:00.000Z", "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb");
+  const older = card(
+    "2026-09-01T00:00:00.000Z",
+    "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  );
+  const newer = card(
+    "2026-09-02T00:00:00.000Z",
+    "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+  );
   const cursor = decodeCursor(encodeCursor(newer));
   expect(cursor?.id).toBe(newer.id);
-  const page = applyListQuery([older, newer], { limit: 10, cursorUpdated: cursor!.updatedAt, cursorId: cursor!.id });
+  const page = applyListQuery([older, newer], {
+    limit: 10,
+    cursorUpdated: cursor!.updatedAt,
+    cursorId: cursor!.id,
+  });
   expect(page.map((item) => item.id)).toEqual([older.id]);
 });
 
 it("exposes the same create and ownership rules over MCP", async () => {
   const dir = directory();
   const token = "vji_cccccccccccccccccccc";
-  const api = authRuntime(dir, new Map([[hashApiToken(token), "user-a"]]), null);
-  const denied = await handleMcp(jsonRpc("tools/call", { name: "list_cards", arguments: {} }), api);
+  const api = authRuntime(
+    dir,
+    new Map([[hashApiToken(token), "user-a"]]),
+    null,
+  );
+  const denied = await handleMcp(
+    jsonRpc("tools/call", { name: "list_cards", arguments: {} }),
+    api,
+  );
   expect(denied.status).toBe(401);
 
-  const authed = await handleMcp(jsonRpc("tools/call", {
-    name: "create_card",
-    arguments: { deckId: deckA, type: "qa", fields: { question: "MCP", answer: "可以" }, ownerId: "user-b" },
-  }, token), api);
+  const authed = await handleMcp(
+    jsonRpc(
+      "tools/call",
+      {
+        name: "create_card",
+        arguments: {
+          deckId: deckA,
+          type: "qa",
+          fields: { question: "MCP", answer: "可以" },
+          ownerId: "user-b",
+        },
+      },
+      token,
+    ),
+    api,
+  );
   expect(authed.status).toBe(200);
-  const created = await authed.json() as { result: { isError: boolean; content: Array<{ text: string }> } };
+  const created = (await authed.json()) as {
+    result: { isError: boolean; content: Array<{ text: string }> };
+  };
   expect(created.result.isError).toBe(false);
   const cardId = JSON.parse(created.result.content[0].text).card.id as string;
   expect(dir.cardsOf("user-b")).toEqual([]);
 
-  const listed = await handleMcp(jsonRpc("tools/call", { name: "list_cards", arguments: {} }, token), api);
-  const listBody = await listed.json() as { result: { content: Array<{ text: string }> } };
+  const listed = await handleMcp(
+    jsonRpc("tools/call", { name: "list_cards", arguments: {} }, token),
+    api,
+  );
+  const listBody = (await listed.json()) as {
+    result: { content: Array<{ text: string }> };
+  };
   expect(JSON.parse(listBody.result.content[0].text).cards).toHaveLength(1);
 
-  const other = authRuntime(dir, new Map([[hashApiToken("vji_dddddddddddddddddddd"), "user-b"]]), null);
-  const missing = await handleMcp(jsonRpc("tools/call", { name: "get_card", arguments: { id: cardId } }, "vji_dddddddddddddddddddd"), other);
-  const missingBody = await missing.json() as { result: { isError: boolean } };
+  const other = authRuntime(
+    dir,
+    new Map([[hashApiToken("vji_dddddddddddddddddddd"), "user-b"]]),
+    null,
+  );
+  const missing = await handleMcp(
+    jsonRpc(
+      "tools/call",
+      { name: "get_card", arguments: { id: cardId } },
+      "vji_dddddddddddddddddddd",
+    ),
+    other,
+  );
+  const missingBody = (await missing.json()) as {
+    result: { isError: boolean };
+  };
   expect(missingBody.result.isError).toBe(true);
   expect(dir.cardsOf("user-a")[0]?.fields).toMatchObject({ answer: "可以" });
 
   const tools = await handleMcp(jsonRpc("tools/list", {}, token), api);
-  const toolBody = await tools.json() as { result: { tools: Array<{ name: string }> } };
-  expect(toolBody.result.tools.map((tool) => tool.name)).toEqual(["list_cards", "get_card", "create_card", "update_card"]);
+  const toolBody = (await tools.json()) as {
+    result: { tools: Array<{ name: string }> };
+  };
+  expect(toolBody.result.tools.map((tool) => tool.name)).toEqual([
+    "agent_help",
+    "list_decks",
+    "list_cards",
+    "get_card",
+    "create_card",
+    "update_card",
+  ]);
 });
 
-function jsonRequest(method: string, path: string, body?: unknown, authorization?: string) {
+function jsonRequest(
+  method: string,
+  path: string,
+  body?: unknown,
+  authorization?: string,
+) {
   return new Request(`http://localhost${path}`, {
     method,
     headers: {
@@ -247,3 +404,46 @@ function stored(ownerId: string, deckId: string) {
     updated_at: "2026-09-28T00:00:00.000Z",
   };
 }
+
+it("lets a fresh agent discover only its own empty decks and get a usable first-run guide", async () => {
+  const dir = directory();
+  const token = "vji_eeeeeeeeeeeeeeeeeeee";
+  const tokens = new Map([[hashApiToken(token), "user-a"]]);
+  const api = authRuntime(dir, tokens, null);
+  const response = await handleMcp(
+    jsonRpc("tools/call", { name: "list_decks", arguments: {} }, token),
+    api,
+  );
+  const body = await response.json();
+  expect(body.result?.isError).toBe(false);
+  expect(JSON.parse(body.result.content[0].text).decks).toEqual([
+    { id: deckA, name: "甲的卡片盒" },
+  ]);
+  const help = await handleMcp(
+    jsonRpc("tools/call", { name: "agent_help", arguments: {} }, token),
+    api,
+  );
+  const guide = JSON.parse((await help.json()).result.content[0].text);
+  expect(guide.workflow.join(" ")).toContain("list_decks");
+  expect(guide.cardTypes.qa).toEqual({ question: "问题", answer: "答案" });
+  tokens.clear();
+  expect(
+    (
+      await handleMcp(
+        jsonRpc("tools/call", { name: "list_decks", arguments: {} }, token),
+        api,
+      )
+    ).status,
+  ).toBe(401);
+});
+
+it("rejects invalid deck pagination and does not ignore unsupported arguments", async () => {
+  const api = authRuntime(directory(), new Map(), "user-a");
+  for (const args of [{ limit: 0 }, { offset: -1 }, { ownerId: "user-b" }]) {
+    const response = await handleMcp(
+      jsonRpc("tools/call", { name: "list_decks", arguments: args }),
+      api,
+    );
+    expect((await response.json()).result?.isError).toBe(true);
+  }
+});

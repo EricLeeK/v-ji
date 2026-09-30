@@ -144,7 +144,14 @@ npm run dev
 
 ## 给 Agent 用的卡片接口
 
-登录后在「我的 → 设置 → Agent 接入」创建个人访问令牌。令牌只代表当前账号，原文只显示一次。外部 Agent 无法使用浏览器登录态，所以需要这个令牌；已经登录的浏览器也可以直接用会话调用。
+登录后在「我的 → 设置 → 连接我的 Agent」（`/me/settings/agent`）创建个人连接。每个用户使用自己的令牌，原文只在本次页面中显示，离开或刷新后不能重新查看。外部 Agent 使用令牌；已经登录的浏览器也可以直接用会话调用。
+
+1. 为每个 Agent 单独创建连接，复制含实际令牌的完整 MCP 配置到客户端设置。也可分别复制服务地址和令牌。
+2. 点击「测试令牌与接口」，确认令牌可读取自己的卡片盒；此测试不代表外部客户端已完成配置。
+3. 选择目标卡片盒，复制首次使用指令，附上材料发给 Agent。它先检查已有内容、展示草稿，用户确认后保存，并回读核对。
+4. 回到卡片盒开始复习；在「我的连接」查看最近调用，或撤销不用的连接。最近调用也包括页面接口测试。
+
+令牌可读写当前用户自己的全部卡片盒；页面选择的卡片盒是任务目标，不是令牌的权限范围。连接配置只交给可信客户端，不发到聊天正文。当前支持远程 HTTP MCP + Bearer 令牌，不提供 OAuth 网页授权；客户端须支持 URL 和认证请求头。
 
 | | |
 | --- | --- |
@@ -152,15 +159,15 @@ npm run dev
 | 鉴权 | `Authorization: Bearer vji_...` |
 | 列出 / 新建 | `GET`、`POST /api/v1/cards` |
 | 读取 / 更新 | `GET`、`PATCH /api/v1/cards/<卡片 ID>` |
-| MCP | `POST /api/mcp`，工具 `list_cards`、`get_card`、`create_card`、`update_card` |
+| MCP | `POST /api/mcp`，工具 `agent_help`、`list_decks`、`list_cards`、`get_card`、`create_card`、`update_card` |
 
-卡片 ID 就是现有笔记 ID。创建和更新走同一套题型、字段和卡片盒归属校验；不能读或改别人的卡片，也不能通过这个接口改复习进度。需要先执行迁移 `supabase/migrations/20260928040000_agent_card_api.sql`。
+卡片 ID 就是现有笔记 ID。创建和更新走同一套题型、字段和卡片盒归属校验；不能读或改别人的卡片，也不能通过这个接口改复习进度。需要先执行迁移 `supabase/migrations/20260928040000_agent_card_api.sql` 和 `supabase/migrations/20260930030000_agent_deck_discovery.sql`。`list_decks` 包括空盒，以 `nextOffset` 翻页；`agent_help` 提供六种题型字段示例与保存流程。
 
 ```json
 {
   "mcpServers": {
     "v-ji": {
-      "url": "http://localhost:3000/api/mcp",
+      "url": "https://v-ji-six.vercel.app/api/mcp",
       "headers": { "Authorization": "Bearer <个人访问令牌>" }
     }
   }

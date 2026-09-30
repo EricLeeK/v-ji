@@ -1,5 +1,12 @@
 import { randomUUID } from "node:crypto";
-import { applyListQuery, type AgentCard, type CardStore, type ListQuery, type SaveCardInput, CardStoreError } from "@/lib/agent/cards";
+import {
+  applyListQuery,
+  type AgentCard,
+  type CardStore,
+  type ListQuery,
+  type SaveCardInput,
+  CardStoreError,
+} from "@/lib/agent/cards";
 
 type Row = AgentCard & { ownerId: string };
 
@@ -9,6 +16,13 @@ export function createMemoryDirectory() {
 
   function storeFor(ownerId: string): CardStore {
     return {
+      async listDecks(limit, offset) {
+        return [...decks]
+          .filter(([, deck]) => deck.ownerId === ownerId)
+          .sort(([a], [b]) => a.localeCompare(b))
+          .slice(offset, offset + limit)
+          .map(([id, deck]) => ({ id, name: deck.name }));
+      },
       async list(query: ListQuery) {
         return applyListQuery(
           notes.filter((note) => note.ownerId === ownerId).map(strip),
@@ -16,12 +30,15 @@ export function createMemoryDirectory() {
         );
       },
       async get(id: string) {
-        const note = notes.find((item) => item.id === id && item.ownerId === ownerId);
+        const note = notes.find(
+          (item) => item.id === id && item.ownerId === ownerId,
+        );
         return note ? strip(note) : null;
       },
       async save(input: SaveCardInput) {
         const deck = decks.get(input.deckId);
-        if (!deck || deck.ownerId !== ownerId) throw new CardStoreError("deck_not_found", "卡片盒不存在");
+        if (!deck || deck.ownerId !== ownerId)
+          throw new CardStoreError("deck_not_found", "卡片盒不存在");
         const now = new Date().toISOString();
         if (!input.id) {
           const created: Row = {
@@ -40,7 +57,9 @@ export function createMemoryDirectory() {
           notes.push(created);
           return strip(created);
         }
-        const index = notes.findIndex((item) => item.id === input.id && item.ownerId === ownerId);
+        const index = notes.findIndex(
+          (item) => item.id === input.id && item.ownerId === ownerId,
+        );
         if (index < 0) throw new CardStoreError("not_found", "卡片不存在");
         const current = notes[index];
         const updated: Row = {

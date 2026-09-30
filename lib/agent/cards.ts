@@ -42,7 +42,10 @@ export type ListQuery = {
   cursorId: string | null;
 };
 
+export type AgentDeck = { id: string; name: string };
+
 export type CardStore = {
+  listDecks(limit: number, offset: number): Promise<AgentDeck[]>;
   list(query: ListQuery): Promise<AgentCard[]>;
   get(id: string): Promise<AgentCard | null>;
   save(input: SaveCardInput): Promise<AgentCard>;
