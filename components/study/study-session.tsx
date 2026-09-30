@@ -48,6 +48,7 @@ import {
 } from "@/lib/study-progress";
 import { cn } from "@/lib/utils";
 import { localDateKey } from "@/lib/dates";
+import { leaveStudyFailureMessage } from "@/lib/study-exit";
 
 export function StudySession({
   initialQueue,
@@ -103,8 +104,9 @@ export function StudySession({
       }
       cancelSpeech();
       await exitStudy(next);
-    } catch {
-      toast.error("暂时无法离开，请检查网络后重试");
+    } catch (error) {
+      const message = leaveStudyFailureMessage(error);
+      if (message) toast.error(message);
     } finally {
       actionLock.current = false;
       setLeaving(false);
