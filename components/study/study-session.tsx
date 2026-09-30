@@ -12,15 +12,6 @@ import { requestStudyStar } from "@/lib/study-star";
 import { CardFace, spokenText } from "@/components/cards/card-face";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import type { UserSettings } from "@/lib/settings";
 import {
   Rating,
@@ -61,7 +52,6 @@ export function StudySession({
   scope?: StudyScope;
   shuffled?: boolean;
 }) {
-  const [leaveOpen, setLeaveOpen] = useState(false);
   const [pendingSaves, setPendingSaves] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
@@ -98,10 +88,7 @@ export function StudySession({
     actionLock.current = true;
     setLeaving(true);
     try {
-      if (saves.pending && !(await saves.flush())) {
-        setLeaveOpen(false);
-        return;
-      }
+      if (saves.pending && !(await saves.flush())) return;
       cancelSpeech();
       await exitStudy(next);
     } catch (error) {
@@ -236,7 +223,7 @@ export function StudySession({
 
   const onStudyKeyDown = useEffectEvent((event: KeyboardEvent) => {
     const action = resolveStudyShortcut(event, {
-      blocked: optionsOpen || leaveOpen || leaving,
+      blocked: optionsOpen || leaving,
     });
     if (!action) return;
     event.preventDefault();
@@ -304,7 +291,8 @@ export function StudySession({
           <button
             type="button"
             aria-label="结束学习"
-            onClick={() => setLeaveOpen(true)}
+            disabled={leaving}
+            onClick={() => void leave("/today")}
             className="flex size-10 items-center justify-center rounded-full bg-white/80 shadow-sm"
           >
             <ArrowLeft className="size-5" />
@@ -464,19 +452,6 @@ export function StudySession({
           </div>
         </SheetContent>
       </Sheet>
-
-      <AlertDialog open={leaveOpen} onOpenChange={setLeaveOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>结束本轮学习？</AlertDialogTitle>
-          </AlertDialogHeader>
-          <p className="text-sm text-muted-foreground">未完成的卡片会留在今日任务里。</p>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={leaving}>继续学</AlertDialogCancel>
-            <AlertDialogAction disabled={leaving} onClick={event => { event.preventDefault(); void leave("/today"); }}>{leaving ? "正在保存…" : "结束"}</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   );
 }
